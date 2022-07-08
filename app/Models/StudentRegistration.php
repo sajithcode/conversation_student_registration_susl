@@ -10,9 +10,28 @@ class StudentRegistration extends Model
     use HasFactory;
 
     protected $fillable = [
-        'indexNum',
+        'nameWithInitial',
+        'fullNameInEnglishBlock',
+        'fullNameInSinhala',
+        'gender',
         'nic',
+        'address',
         'mobileNumber',
+        'email',
+        'degreeName',
+        'regNum',
+        'indexNum',
+        'monthExamination',
+        'yearExamination',
+        'degreeClass',
+        'attendance',
+        'nameVisitor1',
+        'nameVisitor2',
+        'nicVisitor1',
+        'nicVisitor2',
+        'signedDate',
+
+
 
     ];
 }
