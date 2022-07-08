@@ -15,45 +15,16 @@ function checkPermission($permissions){
 function getMyPermission($id)
 {
     switch ($id) {
-        case -1:
-            return 'admin';
-            break;
         case 1:
-            return 'vice_chancello';
+            return 'examinationBranch';
             break;
         case 2:
-            return 'registrar';
+            return 'mainStoreClark';
             break;
-        case 31:
-            return 'graduate_studies_assistant_registrar';
+        case 3:
+            return 'viceChancellor';
             break;
-        case 32:
-            return 'agriculture_science_assistant_registrar';
-            break;
-        case 33:
-            return 'applied_sciences_assistant_registrar';
-            break;
-        case 34:
-            return 'geomatics_assistant_registrar';
-            break;
-        case 35:
-            return 'management_studies_assistant_registrar';
-            break;
-        case 36:
-            return 'medicine_assistant_registrar';
-            break;
-        case 37:
-            return 'social_sciences_assistant_registrar';
-            break;
-        case 38:
-            return 'technology_assistant_registrar';
-            break;
-        case 4:
-            return 'student_affairs_division_clerk';
-            break;
-        case 5:
-            return 'finance_division_clerk';
-            break;
+
         default:
             return 'student';
             break;
