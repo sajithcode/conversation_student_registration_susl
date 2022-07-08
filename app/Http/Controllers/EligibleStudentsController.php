@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EligibleStudent;
+use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
 
 class EligibleStudentsController extends Controller
@@ -14,8 +15,10 @@ class EligibleStudentsController extends Controller
      */
     public function index()
     {
-        $eligibleStudents = EligibleStudent::latest()->paginate(10);
-        return view('eligibleStudents.index',compact('eligibleStudents'));
+
+        $studentRegistrations = StudentRegistration::all();
+        $eligibleStudents = EligibleStudent::all();
+        return view('eligibleStudents.index',compact('eligibleStudents','studentRegistrations'));
         //
     }
 

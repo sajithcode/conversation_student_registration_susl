@@ -9,8 +9,11 @@ class EligibleStudent extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nic',
-        'mobileNumber',
+        'nameWithInitials',
+        'regNum',
+        'indexNum',
+        'faculty',
+        'department',
 
     ];
 }
