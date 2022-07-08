@@ -48,7 +48,7 @@ class StudentRegistrationController extends Controller
      */
     public function show(StudentRegistration $studentRegistration)
     {
-        //
+        return view('studentRegistration.show',compact('studentRegistration'));
     }
 
     /**

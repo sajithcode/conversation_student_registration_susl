@@ -63,7 +63,7 @@
                 </div>
             @endif
 
-        @foreach ($eligibleStudents as $eligibleStudent)
+            @foreach ($eligibleStudents as $eligibleStudent)
                 @if (($eligibleStudent->indexNum === Auth::user()->index))
 
                     @foreach ($studentRegistrations as $studentRegistration)
@@ -126,7 +126,10 @@
                     <td>
                         <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
 
-                            <a class="btn btn-info" href="{{ route('eligibleStudents.show',$eligibleStudent->id) }}">Show</a>
+
+
+
+
 
                             <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
 
@@ -135,6 +138,13 @@
                             @method('DELETE')
 
                             <button type="submit" class="btn btn-danger">Delete</button>
+
+                            @foreach ($studentRegistrations as $studentRegistration)
+                                @if ($studentRegistration->indexNum === $eligibleStudent->indexNum)
+                                    <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registered</a>
+                                @endif
+                            @endforeach
+
                         </form>
                     </td>
                     @endif

@@ -90,6 +90,14 @@ class EligibleStudentsController extends Controller
 
     }
 
+    public function updateStatus(Request $request, EligibleStudent $eligibleStudent)
+    {
+        $eligibleStudent->update([
+            'faculty'=>'123',
+        ]);
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
