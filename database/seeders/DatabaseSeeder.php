@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name'=>'Vice Chancellor',
                 'email'=>'vc@gmail.com',
-                'is_permission'=>'2',
+                'is_permission'=>'3',
                 'password'=> bcrypt('123456'),
             ],
             [
