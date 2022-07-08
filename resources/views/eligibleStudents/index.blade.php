@@ -36,7 +36,7 @@
                     @endphp
                     <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
                         <div class="pull-left">
-                            <h2 style="color: #0048ff; font-weight: bold">Your already Registered</h2>
+                            <h2 style="color: #0048ff; font-weight: bold">Your are already Registered</h2>
                         </div>
                     </div>
                 @endif
@@ -70,7 +70,7 @@
                         @if ($studentRegistration->indexNum === Auth::user()->index)
                             <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
                                 <div class="pull-right">
-                                    <a class="btn btn-info" href="{{ route('studentRegistration.create') }}">Edit Your Registration</a>
+                                    <a class="btn btn-info" href="{{ route('studentRegistration.edit',$studentRegistration->id) }}">Edit Your Registration</a>
                                 </div>
                             </div>
                         @endif

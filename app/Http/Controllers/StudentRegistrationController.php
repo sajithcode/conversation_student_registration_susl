@@ -59,7 +59,8 @@ class StudentRegistrationController extends Controller
      */
     public function edit(StudentRegistration $studentRegistration)
     {
-        //
+        return view('studentRegistration.edit',compact('studentRegistration'));
+
     }
 
     /**
@@ -71,7 +72,15 @@ class StudentRegistrationController extends Controller
      */
     public function update(Request $request, StudentRegistration $studentRegistration)
     {
-        //
+        $studentRegistration->update([
+            'indexNum'=>$request->input('indexNum'),
+            'nic'=>$request->input('nic'),
+            'mobileNumber'=>$request->input('mobileNumber'),
+
+        ]);
+
+        return redirect()->route('eligibleStudents.index')
+            ->with('success','Registration updated successfully');
     }
 
     /**
