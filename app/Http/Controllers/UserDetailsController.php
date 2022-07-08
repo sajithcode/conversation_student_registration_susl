@@ -19,11 +19,12 @@ class UserDetailsController extends Controller
     }
 
     public function edit(Request $request,$id) {
+        $index = $request->input('index');
         $name = $request->input('name');
         $email = $request->input('email');
         $is_permission = $request->input('is_permission');
 
-        DB::update('update users set name = ?,email=?,is_permission=? where id = ?',[$name,$email,$is_permission,$id]);
+        DB::update('update users set name = ?,email=?,index=?, is_permission=? where id = ?',[$name,$index,$email,$is_permission,$id]);
         return back()->with('success','Updated successfully');
     }
     public function destroy($id) {
