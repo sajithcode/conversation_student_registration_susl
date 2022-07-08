@@ -27,7 +27,7 @@
     <div id="app">
         <nav style="background-color: #6b7280" class="navbar navbar-expand-md navbar-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('eligibleStudents.index') }}">
 {{--                    {{ config('app.name', 'Laravel') }}--}}
                     SUSL
                 </a>
