@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 
 
+use App\Models\eligible_students;
+
 class HomeController extends Controller
 {
     /**
@@ -27,8 +29,8 @@ class HomeController extends Controller
     public function index()
     {
 
-
-        return view('home');
+        $eligibleStudents = eligible_students::latest()->paginate(10);;
+        return view('eligibleStudents.index',compact('eligibleStudents'));
     }
 
 
