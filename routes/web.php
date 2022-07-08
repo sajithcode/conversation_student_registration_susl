@@ -33,6 +33,7 @@ Route::get('/home', [App\Http\Controllers\EligibleStudentsController::class, 'in
 
 
 Route::resource('eligibleStudents', \App\Http\Controllers\EligibleStudentsController::class);
+Route::resource('studentRegistration', \App\Http\Controllers\StudentRegistrationController::class);
 
 
 //Route::get('/getPDF', [App\Http\Controllers\PDFController::class, 'download']);
