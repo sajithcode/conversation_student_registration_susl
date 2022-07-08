@@ -104,25 +104,28 @@
         @endif
         <table class="table table-bordered">
             <tr>
-                {{--            <th>No</th>--}}
+                            <th>No</th>
                 <th>Name</th>
                 <th>Register Number</th>
                 <th>Index Number</th>
                 <th>Faculty</th>
                 <th>Department</th>
-                @if(checkPermission(['examinationBranch']))
+                @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
                 <th width="280px">Action</th>
                 @endif
             </tr>
+            @php
+                $a = 0
+            @endphp
             @foreach ($eligibleStudents as $eligibleStudent)
                 <tr>
-                    {{--                <td>{{ ++$i }}</td>--}}
+                    <td>{{ ++$a }}</td>
                     <td>{{ $eligibleStudent->nameWithInitials }}</td>
                     <td>{{ $eligibleStudent->regNum }}</td>
                     <td>{{ $eligibleStudent->indexNum }}</td>
                     <td>{{ $eligibleStudent->faculty }}</td>
                     <td>{{ $eligibleStudent->department }}</td>
-                    @if(checkPermission(['examinationBranch']))
+                    @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
                     <td>
                         <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
 
@@ -130,14 +133,14 @@
 
 
 
-
+                            @if(checkPermission(['examinationBranch']))
                             <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
-
 
                             @csrf
                             @method('DELETE')
 
                             <button type="submit" class="btn btn-danger">Delete</button>
+                            @endif
 
                             @foreach ($studentRegistrations as $studentRegistration)
                                 @if ($studentRegistration->indexNum === $eligibleStudent->indexNum)
