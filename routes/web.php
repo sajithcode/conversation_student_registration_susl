@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\eligible_students;
 use App\Models\VCorRegComment;
 use Illuminate\Support\Facades\Route;
 
@@ -20,20 +21,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\EligibleStudentsController::class, 'index'])->name('home');
 
 
 
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
+//Auth::routes();
+//
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
-Route::get('/getPDF', [App\Http\Controllers\PDFController::class, 'download']);
+Route::resource('eligibleStudents', \App\Http\Controllers\EligibleStudentsController::class);
+
+
+//Route::get('/getPDF', [App\Http\Controllers\PDFController::class, 'download']);
 
 Route::group(['middleware'=>'auth'], function () {
     Route::get('permissions-all-users',['middleware'=>'check-permission:user|admin|superadmin','uses'=>'HomeController@allUsers']);
@@ -47,7 +49,9 @@ Route::get('edit/{id}','App\Http\Controllers\UserDetailsController@show');
 Route::post('edit/{id}','App\Http\Controllers\UserDetailsController@edit');
 Route::get('delete/{id}','App\Http\Controllers\UserDetailsController@destroy');
 
-;
+
+//Route::post('/eligible_students/updateDetail',[\App\Http\Controllers\EligibleStudentsController0::class,'updateDetail'])->name('eligible_students.updateDetail');
+
 
 
 Route::get('/tab1',function (){
