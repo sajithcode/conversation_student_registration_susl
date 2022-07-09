@@ -19,7 +19,7 @@
             @endphp
             @foreach ($eligibleStudents as $eligibleStudent)
 
-                @if ($eligibleStudent->indexNum === Auth::user()->index)
+                @if ($eligibleStudent->regNum === Auth::user()->regNum)
                     @php
                         $i = 2
                     @endphp
@@ -30,7 +30,7 @@
 {{--            1--}}
 
             @foreach ($studentRegistrations as $studentRegistration)
-                @if ($studentRegistration->indexNum === Auth::user()->index)
+                @if ($studentRegistration->regNum === Auth::user()->regNum)
                     @php
                         $i = 3
                     @endphp
@@ -64,10 +64,10 @@
             @endif
 
             @foreach ($eligibleStudents as $eligibleStudent)
-                @if (($eligibleStudent->indexNum === Auth::user()->index))
+                @if (($eligibleStudent->regNum === Auth::user()->regNum))
 
                     @foreach ($studentRegistrations as $studentRegistration)
-                        @if ($studentRegistration->indexNum === Auth::user()->index)
+                        @if ($studentRegistration->regNum === Auth::user()->regNum)
                             <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
                                 <div class="pull-right">
                                     <a class="btn btn-info" href="{{ route('studentRegistration.edit',$studentRegistration->id) }}">Edit Your Registration</a>
@@ -105,7 +105,7 @@
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('importstudents') }}">Import</a>
+                        <a class="btn btn-success" href="{{ route('importstudents') }}">Import Data</a>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                             @endif
 
                             @foreach ($studentRegistrations as $studentRegistration)
-                                @if ($studentRegistration->indexNum === $eligibleStudent->indexNum)
+                                @if ($studentRegistration->regNum === $eligibleStudent->regNum)
                                     <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registered</a>
                                 @endif
                             @endforeach
