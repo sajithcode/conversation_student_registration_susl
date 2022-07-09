@@ -29,7 +29,7 @@ class CreateStudentRegistrationsTable extends Migration
             $table->string('indexNum');
             $table->string('monthExamination');
             $table->string('yearExamination');
-            $table->string('degreeClass');
+            $table->string('degreeClass')->nullable();;
             $table->string('attendance');
             $table->string('nameVisitor1')->nullable();
             $table->string('nameVisitor2')->nullable();
