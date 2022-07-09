@@ -12,12 +12,12 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="index" class="col-md-4 col-form-label text-md-end">{{ __('Index Number') }}</label>
+                            <label for="regNum" class="col-md-4 col-form-label text-md-end">{{ __('Registration Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="index" type="text" class="form-control @error('index') is-invalid @enderror" name="index" value="{{ old('index') }}" required autocomplete="index" autofocus>
+                                <input id="regNum" type="text" class="form-control @error('regNum') is-invalid @enderror" name="regNum" value="{{ old('regNum') }}" required autocomplete="regNum" autofocus>
 
-                                @error('index')
+                                @error('regNum')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
