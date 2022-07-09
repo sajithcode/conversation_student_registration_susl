@@ -31,10 +31,10 @@ class CreateStudentRegistrationsTable extends Migration
             $table->string('yearExamination');
             $table->string('degreeClass');
             $table->string('attendance');
-            $table->string('nameVisitor1');
-            $table->string('nameVisitor2');
-            $table->string('nicVisitor1');
-            $table->string('nicVisitor2');
+            $table->string('nameVisitor1')->nullable();
+            $table->string('nameVisitor2')->nullable();
+            $table->string('nicVisitor1')->nullable();
+            $table->string('nicVisitor2')->nullable();
             $table->string('signedDate');
 
             $table->timestamps();
