@@ -41,19 +41,19 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name with initials:</strong>
-                    <input type="text" name="nameWithInitial" class="form-control" placeholder="Name with initials">
+                    <input required type="text" name="nameWithInitial" class="form-control" placeholder="Name with initials">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Full name in English block letters:</strong>
-                    <input type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
+                    <input required type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Full name in Sinhala:</strong>
-                    <input type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
+                    <input required type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <strong>Gender:</strong>
 
-                    <select name="gender" class="custom-select" id="inputGroupSelect01" >
+                    <select required name="gender" class="custom-select" id="inputGroupSelect01" >
                         <option selected>Choose...</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -72,49 +72,49 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>NIC Number:</strong>
-                    <input type="text" name="nic" class="form-control" placeholder="NIC Number">
+                    <input required type="text" name="nic" class="form-control" placeholder="NIC Number">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Postal Address:</strong>
-                    <input type="text" name="address" class="form-control" placeholder="Postal Address">
+                    <input required type="text" name="address" class="form-control" placeholder="Postal Address">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Mobile Number:</strong>
-                    <input type="text" name="mobileNumber" class="form-control" placeholder="Mobile Number">
+                    <input required type="text" name="mobileNumber" class="form-control" placeholder="Mobile Number">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Email:</strong>
-                    <input type="text" name="email" class="form-control" placeholder="Email">
+                    <input required type="text" name="email" class="form-control" placeholder="Email">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name of the degree to be conferred:</strong>
-                    <input type="text" name="degreeName" class="form-control" placeholder="Name of the degree to be conferred">
+                    <input required type="text" name="degreeName" class="form-control" placeholder="Name of the degree to be conferred">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Register Number:</strong>
-                    <input type="text" name="regNum" class="form-control" placeholder="Register Number">
+                    <input required type="text" name="regNum" class="form-control" placeholder="Register Number">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Index Number:</strong>
-                    <input type="text" name="indexNum" class="form-control" placeholder="Index Number">
+                    <input required type="text" name="indexNum" class="form-control" placeholder="Index Number">
                 </div>
             </div>
 
@@ -124,12 +124,12 @@
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <input type="text" name="monthExamination" class="form-control" placeholder="MM">
+                    <input required type="text" name="monthExamination" class="form-control" placeholder="MM">
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <input type="text" name="yearExamination" class="form-control" placeholder="YYYY">
+                    <input required type="text" name="yearExamination" class="form-control" placeholder="YYYY">
                 </div>
             </div>
 
@@ -139,15 +139,19 @@
                     <div class="row">
                         <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
                             <strong style="margin-right:10px">1st Class:</strong>
-                            <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="First Class" >
+                            <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="1st Class" >
                         </div>
                         <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
-                            <strong style="margin-right:10px">2nd Class:</strong>
-                            <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="Second Class" >
+                            <strong style="margin-right:10px">2nd Upper:</strong>
+                            <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="2nd Upper" >
                         </div>
                         <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
-                            <strong style="margin-right:10px">3rd Class:</strong>
-                            <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="Third Class" >
+                            <strong style="margin-right:10px">2nd Lower:</strong>
+                            <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="2nd Lower" >
+                        </div>
+                        <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
+                            <strong style="margin-right:10px">Ordinary Pass:</strong>
+                            <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="Ordinary Pass" >
                         </div>
 
                     </div>
@@ -197,7 +201,7 @@
             <div class="form-group">
                 <strong>Whether you attend the convocation:</strong>
                 <div>
-                    <select class="form-control" id="frm_duration">
+                    <select required name="attendance" class="form-control" id="frm_duration">
                         <option selected>Choose...</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -276,7 +280,7 @@
                 <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker1'>
-                            <input name="signedDate" type='text' class="form-control" />
+                            <input required name="signedDate" type='text' class="form-control" />
                             <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
