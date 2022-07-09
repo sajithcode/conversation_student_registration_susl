@@ -17,9 +17,9 @@
             @php
                 $i = 1
             @endphp
-            @foreach ($eligibleStudents as $eligibleStudent)
+            @foreach (($eligibleStudents) as $eligibleStudent)
 
-                @if ($eligibleStudent->regNum === Auth::user()->regNum)
+                @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))
                     @php
                         $i = 2
                     @endphp
@@ -30,7 +30,7 @@
 {{--            1--}}
 
             @foreach ($studentRegistrations as $studentRegistration)
-                @if ($studentRegistration->regNum === Auth::user()->regNum)
+                @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim(Auth::user()->regNum)))
                     @php
                         $i = 3
                     @endphp
@@ -64,10 +64,10 @@
             @endif
 
             @foreach ($eligibleStudents as $eligibleStudent)
-                @if (($eligibleStudent->regNum === Auth::user()->regNum))
+                @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))
 
                     @foreach ($studentRegistrations as $studentRegistration)
-                        @if ($studentRegistration->regNum === Auth::user()->regNum)
+                        @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim(Auth::user()->regNum)))
                             <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
                                 <div class="pull-right">
                                     <a class="btn btn-info" href="{{ route('studentRegistration.edit',$studentRegistration->id) }}">Edit Your Registration</a>
@@ -152,7 +152,7 @@
                             @endif
 
                             @foreach ($studentRegistrations as $studentRegistration)
-                                @if ($studentRegistration->regNum === $eligibleStudent->regNum)
+                                @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim($eligibleStudent->regNum)))
                                     <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registered</a>
                                 @endif
                             @endforeach
