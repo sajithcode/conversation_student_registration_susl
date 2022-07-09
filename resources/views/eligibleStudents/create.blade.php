@@ -97,7 +97,13 @@
         </div>
 
     </form>
-    <button onclick="document.getElementById('selectform').reset(); document.getElementById('from').value = null; return false;">
-        CLEAR ENTRY
-    </button>
+    <div style="margin-bottom:50px;margin-top: -30px" class="row">
+        <div class="col-xs-11 col-sm-11 col-md-11 text-center">
+        </div>
+        <div  class="col-xs-1 col-sm-1 col-md-1">
+            <button class="btn btn-dark" onclick="document.getElementById('selectform').reset(); document.getElementById('from').value = null; return false;">
+                Reset
+            </button>
+        </div>
+    </div>
 @endsection
