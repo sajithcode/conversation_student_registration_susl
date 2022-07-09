@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,8 @@ class StudentRegistrationController extends Controller
      */
     public function create()
     {
-        return view('studentRegistration.create');
+        $eligibleStudents = EligibleStudent::all();
+        return view('studentRegistration.create',compact('eligibleStudents'));
     }
 
     /**
