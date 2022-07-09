@@ -52,8 +52,8 @@ Route::get('delete/{id}','App\Http\Controllers\UserDetailsController@destroy');
 
 
 //Route::post('/eligible_students/updateDetail',[\App\Http\Controllers\EligibleStudentsController0::class,'updateDetail'])->name('eligible_students.updateDetail');
-
-
+Route::get('/import-users', [\App\Http\Controllers\EligibleStudentsController::class, 'importstudents'])->name('importstudents');
+Route::post('/upload-users', [\App\Http\Controllers\EligibleStudentsController::class, 'uploadstudents'])->name('uploadstudents');
 
 Route::get('/tab1',function (){
     return view('home');

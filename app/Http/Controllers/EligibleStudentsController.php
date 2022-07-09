@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel;
+use App\Imports\StudentsImport;
 
 class EligibleStudentsController extends Controller
 {
@@ -110,5 +112,16 @@ class EligibleStudentsController extends Controller
         $eligibleStudent -> delete();
         return redirect()->route('eligibleStudents.index')
             ->with('success','Product deleted successfully');
+    }
+
+    public function importstudents()
+    {
+        return view('eligibleStudents.importstudents');
+    }
+    public function uploadstudents(Request $request)
+    {
+        \Maatwebsite\Excel\Facades\Excel::import(new StudentsImport, $request->file);
+
+        return redirect()->route('eligibleStudents.index')->with('success', 'User Imported Successfully');
     }
 }

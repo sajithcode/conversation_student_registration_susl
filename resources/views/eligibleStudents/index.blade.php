@@ -101,6 +101,15 @@
                 </div>
             </div>
         </div>
+
+            <div class="row" style="margin-bottom: 10px">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="pull-right">
+                        <a class="btn btn-success" href="{{ route('importstudents') }}">Import</a>
+                    </div>
+                </div>
+            </div>
+
         @endif
         <table class="table table-bordered">
             <tr>
