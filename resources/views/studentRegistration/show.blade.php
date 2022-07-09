@@ -104,6 +104,12 @@
                 {{ $studentRegistration->degreeClass }}
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Whether he/she attend the convocation:</strong>
+                {{ $studentRegistration->attendance }}
+            </div>
+        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
