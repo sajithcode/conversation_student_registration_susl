@@ -19,28 +19,28 @@ class DatabaseSeeder extends Seeder
         $user = [
             [
                 'name'=>'Examination Branch',
-                'index'=>'none',
+                'regNum'=>'none',
                 'email'=>'eb@gmail.com',
                 'is_permission'=>'1',
                 'password'=> bcrypt('123456'),
             ],
             [
                 'name'=>'Main Store Clark',
-                'index'=>'none',
+                'regNum'=>'none',
                 'email'=>'ms@gmail.com',
                 'is_permission'=>'2',
                 'password'=> bcrypt('123456'),
             ],
             [
                 'name'=>'Vice Chancellor',
-                'index'=>'none',
+                'regNum'=>'none',
                 'email'=>'vc@gmail.com',
                 'is_permission'=>'3',
                 'password'=> bcrypt('123456'),
             ],
             [
                 'name'=>'Student',
-                'index'=>'none',
+                'regNum'=>'none',
                 'email'=>'std@gmail.com',
                 'is_permission'=>'0',
                 'password'=> bcrypt('123456'),
