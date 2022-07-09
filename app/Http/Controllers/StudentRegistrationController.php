@@ -73,9 +73,26 @@ class StudentRegistrationController extends Controller
     public function update(Request $request, StudentRegistration $studentRegistration)
     {
         $studentRegistration->update([
-            'indexNum'=>$request->input('indexNum'),
+            'nameWithInitial'=>$request->input('nameWithInitial'),
+            'fullNameInEnglishBlock'=>$request->input('fullNameInEnglishBlock'),
+            'fullNameInSinhala'=>$request->input('fullNameInSinhala'),
+            'gender'=>$request->input('gender'),
             'nic'=>$request->input('nic'),
+            'address'=>$request->input('address'),
             'mobileNumber'=>$request->input('mobileNumber'),
+            'email'=>$request->input('email'),
+            'degreeName'=>$request->input('degreeName'),
+            'regNum'=>$request->input('regNum'),
+            'indexNum'=>$request->input('indexNum'),
+            'monthExamination'=>$request->input('monthExamination'),
+            'yearExamination'=>$request->input('yearExamination'),
+            'degreeClass'=>$request->input('degreeClass'),
+            'attendance'=>$request->input('attendance'),
+            'nameVisitor1'=>$request->input('nameVisitor1'),
+            'nameVisitor2'=>$request->input('nameVisitor2'),
+            'nicVisitor1'=>$request->input('nicVisitor1'),
+            'nicVisitor2'=>$request->input('nicVisitor2'),
+            'signedDate'=>$request->input('signedDate'),
 
         ]);
 
