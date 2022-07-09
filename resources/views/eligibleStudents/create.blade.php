@@ -40,21 +40,21 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name with Initials:</strong>
-                    <input type="text" name="nameWithInitials" class="form-control" placeholder="Name with Initials">
+                    <input required type="text" name="nameWithInitials" class="form-control" placeholder="Name with Initials">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Registration Number:</strong>
-                    <input type="text" name="regNum" class="form-control" placeholder="Registration Number">
+                    <input required type="text" name="regNum" class="form-control" placeholder="Registration Number">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Index Number:</strong>
-                    <input type="text" name="indexNum" class="form-control" placeholder="Index Number">
+                    <input required type="text" name="indexNum" class="form-control" placeholder="Index Number">
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <strong>Faculty:</strong>
 
-                    <select name="faculty" class="custom-select" id="inputGroupSelect01" >
+                    <select required name="faculty" class="custom-select" id="inputGroupSelect01" >
                         <option selected>Choose...</option>
                         {{--                                                <option value="Graduate Studies">Graduate Studies</option>--}}
                         <option value="Agricultural Sciences">Agricultural Sciences</option>
@@ -81,7 +81,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Department:</strong>
-                    <input type="text" name="department" class="form-control"
+                    <input required type="text" name="department" class="form-control"
                            placeholder="Department">
                 </div>
             </div>
