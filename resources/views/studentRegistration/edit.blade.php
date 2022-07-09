@@ -139,15 +139,19 @@
                         <div class="row">
                             <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
                                 <strong style="margin-right:10px">1st Class:</strong>
-                                <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="First Class" >
+                                <input {{ ($studentRegistration->degreeClass == "1st Class") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="1st Class" >
                             </div>
                             <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
-                                <strong style="margin-right:10px">2nd Class:</strong>
-                                <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="Second Class" >
+                                <strong style="margin-right:10px">2nd Upper:</strong>
+                                <input {{ ($studentRegistration->degreeClass == "2nd Upper") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="2nd Upper" >
                             </div>
                             <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
-                                <strong style="margin-right:10px">3rd Class:</strong>
-                                <input style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="Third Class" >
+                                <strong style="margin-right:10px">2nd Lower:</strong>
+                                <input {{ ($studentRegistration->degreeClass == "2nd Lower") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="2nd Lower" >
+                            </div>
+                            <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
+                                <strong style="margin-right:10px">Ordinary Pass:</strong>
+                                <input {{ ($studentRegistration->degreeClass == "Ordinary Pass") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="Ordinary Pass" >
                             </div>
 
                         </div>
