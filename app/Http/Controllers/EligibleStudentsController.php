@@ -34,6 +34,10 @@ class EligibleStudentsController extends Controller
         return view('eligibleStudents.create');
     }
 
+//    public function show()
+//    {
+//           }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -55,7 +59,10 @@ class EligibleStudentsController extends Controller
      */
     public function show(EligibleStudent $eligibleStudent)
     {
-        //
+//        $studentRegistrations = StudentRegistration::all();
+//        $eligibleStudents = EligibleStudent::all();
+//        return view('eligibleStudents.show',compact('eligibleStudents','studentRegistrations'));
+
     }
 
     /**
