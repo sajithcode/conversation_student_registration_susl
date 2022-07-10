@@ -153,6 +153,7 @@
 {{--                            <option selected>Choose</option>--}}
                             <option selected value="All">All Eligible Students</option>
                             <option value="Registered">Registered Students</option>
+                            <option value="NotRegistered">Not Registered Students</option>
                         </select>
                     </div>
                 </div>
@@ -236,6 +237,9 @@
                         @foreach ($studentRegistrations as $studentRegistration)
                             @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim($eligibleStudent->regNum)))
 
+{{--                                @php--}}
+{{--                                    return 0--}}
+{{--                                @endphp--}}
                             {{--                        ==--}}
                         <td>{{ ++$a }}</td>
                         <td>{{ $eligibleStudent->nameWithInitials }}</td>
@@ -267,7 +271,9 @@
                             </td>
                         @endif
 
+
                         @endif
+
                         @endforeach
 {{--                        ==--}}
                     </tr>
@@ -275,6 +281,74 @@
             </table>
 
 
+            {{--            =========== Not Registered Table==========--}}
+
+            <table id="divFrmNotRegistered" style="display:none" class="table table-bordered form-duration-div">
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Register Number</th>
+                    <th>Index Number</th>
+                    <th>Faculty</th>
+                    <th>Department</th>
+                    @if(checkPermission(['examinationBranch']))
+                        <th width="280px">Action</th>
+                    @endif
+                </tr>
+                @php
+                    $a = 0
+                @endphp
+                @foreach ($eligibleStudents as $eligibleStudent)
+                    <tr>
+                        @php
+                            $x = 0
+                        @endphp
+                        @foreach ($studentRegistrations as $studentRegistration)
+                            @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim($eligibleStudent->regNum)))
+                                @php
+                                    $x = 1
+                                @endphp
+                                @break
+
+                            @endif
+
+                        @endforeach
+                        {{--                        ==--}}
+                        @if($x===0)
+                            <td>{{ ++$a }}</td>
+                            <td>{{ $eligibleStudent->nameWithInitials }}</td>
+                            <td>{{ $eligibleStudent->regNum }}</td>
+                            <td>{{ $eligibleStudent->indexNum }}</td>
+                            <td>{{ $eligibleStudent->faculty }}</td>
+                            <td>{{ $eligibleStudent->department }}</td>
+                            @if(checkPermission(['examinationBranch']))
+                                <td>
+                                    <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
+
+
+
+
+
+                                        @if(checkPermission(['examinationBranch']))
+                                            <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
+
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        @endif
+
+{{--                                        <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registered</a>--}}
+
+
+                                    </form>
+                                </td>
+                            @endif
+
+                        @endif
+                    </tr>
+                @endforeach
+            </table>
 
 
     </div>
