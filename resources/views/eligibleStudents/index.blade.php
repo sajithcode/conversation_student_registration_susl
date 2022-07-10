@@ -161,6 +161,37 @@
             @endif
 
 
+
+{{--            =================list show for students==============--}}
+            @if(checkPermission(['student']))
+            <table  class="table table-bordered">
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Register Number</th>
+                    <th>Index Number</th>
+                    <th>Faculty</th>
+                    <th>Department</th>
+
+                </tr>
+                @php
+                    $a = 0
+                @endphp
+                @foreach ($eligibleStudents as $eligibleStudent)
+                    <tr>
+                        <td>{{ ++$a }}</td>
+                        <td>{{ $eligibleStudent->nameWithInitials }}</td>
+                        <td>{{ $eligibleStudent->regNum }}</td>
+                        <td>{{ $eligibleStudent->indexNum }}</td>
+                        <td>{{ $eligibleStudent->faculty }}</td>
+                        <td>{{ $eligibleStudent->department }}</td>
+
+                    </tr>
+                @endforeach
+            </table>
+            @endif
+
+{{--            =================all eligible students=============--}}
         <table id="divFrmAll" style="display:none" class="table table-bordered form-duration-div">
             <tr>
                             <th>No</th>
