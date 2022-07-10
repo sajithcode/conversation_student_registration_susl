@@ -27,8 +27,9 @@ class CreateStudentRegistrationsTable extends Migration
             $table->string('degreeName');
             $table->string('regNum');
             $table->string('indexNum');
-            $table->string('monthExamination');
-            $table->string('yearExamination');
+            $table->string('monthAndYearExamination');
+//            $table->string('monthExamination');
+//            $table->string('yearExamination');
             $table->string('degreeClass')->nullable();;
             $table->string('attendance');
             $table->string('nameVisitor1')->nullable();

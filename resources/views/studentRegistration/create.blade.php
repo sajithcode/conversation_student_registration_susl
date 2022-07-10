@@ -119,20 +119,64 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <strong>Month and Year of the Degree Examination:</strong>
 
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
+
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker2').datepicker({
+                                format: "mm/yyyy",
+                                viewMode: "months",
+                                minViewMode: "months",
+                                weekStart: 0,
+                                calendarWeeks: true,
+                                autoclose: true,
+                                todayHighlight: true,
+                                orientation: "auto",
+
+                            });
+                        });
+                    </script>
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <input required type="text" name="monthExamination" class="form-control" placeholder="MM">
+                            <strong>Month and Year of the Degree Examination: </strong>
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />
+                                <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <input required type="text" name="yearExamination" class="form-control" placeholder="YYYY">
-                        </div>
-                    </div>
+
+{{--                    <div class="row" style="margin-top: 30px">--}}
+{{--                        <div class="col-xs-1 col-sm-1 col-md-1" style="margin-top: 8px">--}}
+{{--                            <strong>Month and Year of the Degree Examination: </strong>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="col-xs-3 col-sm-3 col-md-3">--}}
+{{--                            <div class="form-group">--}}
+{{--                                --}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+
+{{--                    <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                        <strong>Month and Year of the Degree Examination:</strong>--}}
+
+{{--                    </div>--}}
+{{--                    <div class="col-xs-6 col-sm-6 col-md-6">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <input required type="text" name="monthExamination" class="form-control" placeholder="MM">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-xs-6 col-sm-6 col-md-6">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <input required type="text" name="yearExamination" class="form-control" placeholder="YYYY">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -278,10 +322,11 @@
                         <div class="col-xs-1 col-sm-1 col-md-1" style="margin-top: 8px">
                             <strong>Date: </strong>
                         </div>
+
                         <div class="col-xs-3 col-sm-3 col-md-3">
                             <div class="form-group">
                                 <div class='input-group date' id='datetimepicker1'>
-                                    <input required name="signedDate" type='text' class="form-control" />
+                                    <input placeholder="MM/DD/YYYY" required name="signedDate" type='text' class="form-control" />
                                     <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -298,12 +343,13 @@
                     <script type="text/javascript">
                         $(function () {
                             $('#datetimepicker1').datepicker({
-                                format: "mm/dd/yy",
+                                format: "mm/dd/yyyy",
                                 weekStart: 0,
                                 calendarWeeks: true,
                                 autoclose: true,
                                 todayHighlight: true,
-                                orientation: "auto"
+                                orientation: "auto",
+
                             });
                         });
                     </script>

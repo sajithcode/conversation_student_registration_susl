@@ -86,17 +86,17 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Month of the Degree Examination:</strong>
-                {{ $studentRegistration->monthExamination }}
+                <strong>Month and year of the Degree Examination:</strong>
+                {{ $studentRegistration->monthAndYearExamination }}
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Year of the Degree Examination:</strong>
-                {{ $studentRegistration->yearExamination }}
-            </div>
-        </div>
+{{--        <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--            <div class="form-group">--}}
+{{--                <strong>Year of the Degree Examination:</strong>--}}
+{{--                {{ $studentRegistration->yearExamination }}--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">

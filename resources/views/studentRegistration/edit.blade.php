@@ -118,20 +118,48 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <strong>Month and Year of the Degree Examination:</strong>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker2').datepicker({
+                            format: "mm/yyyy",
+                            viewMode: "months",
+                            minViewMode: "months",
+                            weekStart: 0,
+                            calendarWeeks: true,
+                            autoclose: true,
+                            todayHighlight: true,
+                            orientation: "auto",
 
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                        });
+                    });
+                </script>
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <input value="{{ $studentRegistration->monthExamination }}" type="text" name="monthExamination" class="form-control" placeholder="MM">
+                        <strong>Month and Year of the Degree Examination: </strong>
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input value="{{ $studentRegistration->monthAndYearExamination }}" placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />
+                            <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div class="form-group">
-                        <input value="{{ $studentRegistration->yearExamination }}" type="text" name="yearExamination" class="form-control" placeholder="YYYY">
-                    </div>
-                </div>
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <strong>Month and Year of the Degree Examination:</strong>--}}
+
+{{--                </div>--}}
+{{--                <div class="col-xs-6 col-sm-6 col-md-6">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <input value="{{ $studentRegistration->monthExamination }}" type="text" name="monthExamination" class="form-control" placeholder="MM">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xs-6 col-sm-6 col-md-6">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <input value="{{ $studentRegistration->yearExamination }}" type="text" name="yearExamination" class="form-control" placeholder="YYYY">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">

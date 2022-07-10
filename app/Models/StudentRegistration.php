@@ -21,8 +21,10 @@ class StudentRegistration extends Model
         'degreeName',
         'regNum',
         'indexNum',
-        'monthExamination',
-        'yearExamination',
+
+        'monthAndYearExamination',
+
+
         'degreeClass',
         'attendance',
         'nameVisitor1',
