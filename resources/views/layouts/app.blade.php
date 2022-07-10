@@ -29,11 +29,11 @@
 
 </head>
 
-<body>
+<body style="background-color: rgba(128,15,15,0.11)">
     <div id="app">
-        <nav style="background-color: #6b7280" class="navbar navbar-expand-md navbar-dark shadow-sm">
+        <nav style="background-color: #800f0f" class="navbar navbar-expand-md navbar-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('eligibleStudents.index') }}">
+                <a class="navbar-brand" href="{{ route('welcome') }}">
 {{--                    {{ config('app.name', 'Laravel') }}--}}
                     SUSL
                 </a>

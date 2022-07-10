@@ -30,7 +30,7 @@
     <body class="antialiased">
 
 
-        <div  class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+        <div style="background-color: rgba(128,15,15,0.11)" class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
                 <div class="fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -47,7 +47,7 @@
             @endif
 {{--                <div class="welcomebgimage">--}}
                     <div class="mycenter">
-                        <div class="wecomebox" style="background: #6b7280">
+                        <div class="wecomebox" style="background: #800f0f">
                             <h1 style="font-weight: bold">Welcome To</h1>
                             <h2>Conversation Student Registration System</h2>
                             <h5>Sabaragamuwa University of Sri Lanka</h5>

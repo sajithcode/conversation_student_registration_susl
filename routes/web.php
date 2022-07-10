@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\EligibleStudentsController::class, 'index'])->name('home');
