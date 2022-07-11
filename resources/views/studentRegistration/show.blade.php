@@ -139,6 +139,13 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Payment Receipt:</strong>
+                <img src="{{ asset('/images/'.$studentRegistration->image) }}">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Signed Date:</strong>
                 {{ $studentRegistration->signedDate }}
             </div>

@@ -36,6 +36,9 @@ class CreateStudentRegistrationsTable extends Migration
             $table->string('nameVisitor2')->nullable();
             $table->string('nicVisitor1')->nullable();
             $table->string('nicVisitor2')->nullable();
+
+            $table->string('image');
+
             $table->string('signedDate');
 
             $table->timestamps();

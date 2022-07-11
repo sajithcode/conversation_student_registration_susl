@@ -37,7 +37,48 @@ class StudentRegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        StudentRegistration::create($request->all());
+
+
+
+
+
+        $pro=new StudentRegistration();
+        $pro->nameWithInitial = $request->nameWithInitial;
+        $pro->fullNameInEnglishBlock = $request->fullNameInEnglishBlock;
+        $pro->fullNameInSinhala = $request->fullNameInSinhala;
+        $pro->gender = $request->gender;
+
+        $pro->nic = $request->nic;
+        $pro->address = $request->address;
+        $pro->mobileNumber = $request->mobileNumber;
+        $pro->email = $request->email;
+
+        $pro->degreeName = $request->degreeName;
+        $pro->regNum = $request->regNum;
+        $pro->indexNum = $request->indexNum;
+        $pro->monthAndYearExamination = $request->monthAndYearExamination;
+
+        $pro->degreeClass = $request->degreeClass;
+        $pro->attendance = $request->attendance;
+        $pro->nameVisitor1 = $request->nameVisitor1;
+        $pro->nameVisitor2 = $request->nameVisitor2;
+
+        $pro->nicVisitor1 = $request->nicVisitor1;
+        $pro->nicVisitor2 = $request->nicVisitor2;
+        $pro->signedDate = $request->signedDate;
+
+        if($request->image){
+            $file= $request->image;
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('/images'), $filename);
+            $pro->image=$filename;
+
+        }
+
+        $pro->save();
+
+
+//        StudentRegistration::create($request->all());
         return redirect()->route('eligibleStudents.index')
             ->with('success','Registration successfully.');
     }
@@ -74,6 +115,15 @@ class StudentRegistrationController extends Controller
      */
     public function update(Request $request, StudentRegistration $studentRegistration)
     {
+//        $filename ='';
+//        if($request->image){
+            $file= $request->image;
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('/images'), $filename);
+//            $pro->image=$filename;
+
+//        }
+
         $studentRegistration->update([
             'nameWithInitial'=>$request->input('nameWithInitial'),
             'fullNameInEnglishBlock'=>$request->input('fullNameInEnglishBlock'),
@@ -95,7 +145,14 @@ class StudentRegistrationController extends Controller
             'nameVisitor2'=>$request->input('nameVisitor2'),
             'nicVisitor1'=>$request->input('nicVisitor1'),
             'nicVisitor2'=>$request->input('nicVisitor2'),
+
+            'image' => $filename,
+
+
+
             'signedDate'=>$request->input('signedDate'),
+
+
 
         ]);
 

@@ -24,7 +24,7 @@
             </div>
         @endif
 
-        <form action="{{ route('studentRegistration.update',$studentRegistration->id) }}" method="POST">
+        <form action="{{ route('studentRegistration.update',$studentRegistration->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -296,6 +296,13 @@
                     {{--                </div>--}}
 
                     {{--            ============--}}
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Payment Receipt:</strong>
+                        <input required value="{{ $studentRegistration->image }}" type="file" name="image" class="form-control" placeholder="image" id="image">
+                    </div>
                 </div>
 
                 <div>

@@ -31,6 +31,9 @@ class StudentRegistration extends Model
         'nameVisitor2',
         'nicVisitor1',
         'nicVisitor2',
+
+        'image',
+
         'signedDate',
 
 

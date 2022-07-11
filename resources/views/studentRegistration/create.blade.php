@@ -34,7 +34,7 @@
         </div>
     @endif
 
-    <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST">
+    <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST" enctype="multipart/form-data">
         @csrf
         @foreach ($eligibleStudents as $eligibleStudent)
             @if ($eligibleStudent->regNum === Auth::user()->regNum)
@@ -108,14 +108,14 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Register Number:</strong>
-                            <input value="{{ $eligibleStudent->regNum }}" required type="text" name="regNum" class="form-control" placeholder="Register Number">
+                            <input readonly value="{{ $eligibleStudent->regNum }}" required type="text" name="regNum" class="form-control" placeholder="Register Number">
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Index Number:</strong>
-                            <input value="{{ $eligibleStudent->indexNum }}" required type="text" name="indexNum" class="form-control" placeholder="Index Number">
+                            <input readonly value="{{ $eligibleStudent->indexNum }}" required type="text" name="indexNum" class="form-control" placeholder="Index Number">
                         </div>
                     </div>
 
@@ -315,9 +315,18 @@
                         {{--            ============--}}
                     </div>
 
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Payment Receipt:</strong>
+                            <input required type="file" name="image" class="form-control" placeholder="image" id="image">
+                        </div>
+                    </div>
+
                     <div>
                         I do solemnly declare that I shall faithfully observe the statutes, by - laws and regulations and rules of the Sabaragamuwa University of Sri Lanka in so far as they may apply to me and that I shall not make use of the privileges to be presently conferred on me in any manners so as bring the University into disrepute.
                     </div>
+
+
                     <div class="row" style="margin-top: 30px">
                         <div class="col-xs-1 col-sm-1 col-md-1" style="margin-top: 8px">
                             <strong>Date: </strong>
