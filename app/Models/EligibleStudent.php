@@ -14,6 +14,7 @@ class EligibleStudent extends Model
         'indexNum',
         'faculty',
         'department',
+        'degreeName'
 
     ];
 }

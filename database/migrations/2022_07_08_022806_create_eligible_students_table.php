@@ -20,6 +20,7 @@ class CreateEligibleStudentsTable extends Migration
             $table->string('indexNum');
             $table->string('faculty');
             $table->string('department');
+            $table->string('degreeName');
 
             $table->timestamps();
         });

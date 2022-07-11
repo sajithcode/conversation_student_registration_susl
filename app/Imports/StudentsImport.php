@@ -18,11 +18,12 @@ class StudentsImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         $eligibleStudent = new EligibleStudent([
-            "nameWithInitials" => $row['namewithinitials'],
-            "regNum" => $row['regnum'],
-            "indexNum" => $row['indexnum'],
+            "nameWithInitials" => $row['name_with_initials'],
+            "regNum" => $row['reg_number'],
+            "indexNum" => $row['index_number'],
             "faculty" => $row['faculty'],
             "department" => $row['department'],
+            "degreeName" => $row['degree_name'],
 
         ]);
 

@@ -92,6 +92,7 @@ class EligibleStudentsController extends Controller
             'indexNum'=>$request->input('indexNum'),
             'faculty'=>$request->input('faculty'),
             'department'=>$request->input('department'),
+            'degreeName'=>$request->input('degreeName'),
         ]);
 
         return redirect()->route('eligibleStudents.index')

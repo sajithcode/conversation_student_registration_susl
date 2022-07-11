@@ -41,19 +41,19 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Name with initials:</strong>
-                        <input value="{{ $studentRegistration->nameWithInitial }}" type="text" name="nameWithInitial" class="form-control" placeholder="Name with initials">
+                        <input required value="{{ $studentRegistration->nameWithInitial }}" type="text" name="nameWithInitial" class="form-control" placeholder="Name with initials">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Full name in English block letters:</strong>
-                        <input value="{{ $studentRegistration->fullNameInEnglishBlock }}" type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
+                        <input required value="{{ $studentRegistration->fullNameInEnglishBlock }}" type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Full name in Sinhala:</strong>
-                        <input value="{{ $studentRegistration->fullNameInSinhala }}" type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
+                        <input required value="{{ $studentRegistration->fullNameInSinhala }}" type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <strong>Gender:</strong>
 
-                        <select name="gender" class="custom-select" id="inputGroupSelect01" >
+                        <select required name="gender" class="custom-select" id="inputGroupSelect01" >
                             <option selected>{{ $studentRegistration->gender }}</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -72,49 +72,49 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>NIC Number:</strong>
-                        <input value="{{ $studentRegistration->indexNum }}" type="text" name="nic" class="form-control" placeholder="NIC Number">
+                        <input required value="{{ $studentRegistration->indexNum }}" type="text" name="nic" class="form-control" placeholder="NIC Number">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Postal Address:</strong>
-                        <input value="{{ $studentRegistration->address }}" type="text" name="address" class="form-control" placeholder="Postal Address">
+                        <input required value="{{ $studentRegistration->address }}" type="text" name="address" class="form-control" placeholder="Postal Address">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Mobile Number:</strong>
-                        <input value="{{ $studentRegistration->mobileNumber }}" type="text" name="mobileNumber" class="form-control" placeholder="Mobile Number">
+                        <input required value="{{ $studentRegistration->mobileNumber }}" type="text" name="mobileNumber" class="form-control" placeholder="Mobile Number">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Email:</strong>
-                        <input value="{{ $studentRegistration->email }}" type="text" name="email" class="form-control" placeholder="Email">
+                        <input required value="{{ $studentRegistration->email }}" type="text" name="email" class="form-control" placeholder="Email">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Name of the degree to be conferred:</strong>
-                        <input value="{{ $studentRegistration->degreeName }}" type="text" name="degreeName" class="form-control" placeholder="Name of the degree to be conferred">
+                        <input readonly value="{{ $studentRegistration->degreeName }}" type="text" name="degreeName" class="form-control" placeholder="Name of the degree to be conferred">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Register Number:</strong>
-                        <input value="{{ $studentRegistration->regNum }}" type="text" name="regNum" class="form-control" placeholder="Register Number">
+                        <input readonly value="{{ $studentRegistration->regNum }}" type="text" name="regNum" class="form-control" placeholder="Register Number">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Index Number:</strong>
-                        <input value="{{ $studentRegistration->indexNum }}" type="text" name="indexNum" class="form-control" placeholder="Index Number">
+                        <input readonly value="{{ $studentRegistration->indexNum }}" type="text" name="indexNum" class="form-control" placeholder="Index Number">
                     </div>
                 </div>
 
@@ -139,7 +139,7 @@
                     <div class="form-group">
                         <strong>Month and Year of the Degree Examination: </strong>
                         <div class='input-group date' id='datetimepicker2'>
-                            <input value="{{ $studentRegistration->monthAndYearExamination }}" placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />
+                            <input required value="{{ $studentRegistration->monthAndYearExamination }}" placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />
                             <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -229,7 +229,7 @@
                     <div class="form-group">
                         <strong>Whether you attend the convocation:</strong>
                         <div>
-                            <select name="attendance" class="form-control" id="frm_duration">
+                            <select required name="attendance" class="form-control" id="frm_duration">
                                 <option selected>{{ $studentRegistration->attendance }}</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
@@ -315,7 +315,7 @@
                     <div class="col-xs-3 col-sm-3 col-md-3">
                         <div class="form-group">
                             <div class='input-group date' id='datetimepicker1'>
-                                <input value="{{ $studentRegistration->signedDate }}" name="signedDate" type='text' class="form-control" />
+                                <input required value="{{ $studentRegistration->signedDate }}" name="signedDate" type='text' class="form-control" />
                                 <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>

@@ -101,7 +101,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Name of the degree to be conferred:</strong>
-                            <input required type="text" name="degreeName" class="form-control" placeholder="Name of the degree to be conferred">
+                            <input readonly value="{{ $eligibleStudent->degreeName }}" type="text" name="degreeName" class="form-control" placeholder="Name of the degree to be conferred">
                         </div>
                     </div>
 

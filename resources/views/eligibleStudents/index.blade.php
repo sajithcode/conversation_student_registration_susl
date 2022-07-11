@@ -228,6 +228,7 @@
                     <th>Index Number</th>
                     <th>Faculty</th>
                     <th>Department</th>
+                    <th>Degree Name</th>
 
                 </tr>
                 @php
@@ -241,6 +242,7 @@
                         <td>{{ $eligibleStudent->indexNum }}</td>
                         <td>{{ $eligibleStudent->faculty }}</td>
                         <td>{{ $eligibleStudent->department }}</td>
+                        <td>{{ $eligibleStudent->degreeName }}</td>
 
                     </tr>
                 @endforeach
@@ -256,6 +258,7 @@
                 <th>Index Number</th>
                 <th>Faculty</th>
                 <th>Department</th>
+                <th>Degree Name</th>
                 @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
                 <th width="280px">Action</th>
                 @endif
@@ -271,7 +274,9 @@
                     <td>{{ $eligibleStudent->indexNum }}</td>
                     <td>{{ $eligibleStudent->faculty }}</td>
                     <td>{{ $eligibleStudent->department }}</td>
-                    @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
+                    <td>{{ $eligibleStudent->degreeName }}</td>
+
+                @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
                     <td>
                         <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
 
@@ -312,6 +317,7 @@
                     <th>Index Number</th>
                     <th>Faculty</th>
                     <th>Department</th>
+                    <th>Degree Name</th>
                     @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
                         <th width="280px">Action</th>
                     @endif
@@ -334,7 +340,9 @@
                         <td>{{ $eligibleStudent->indexNum }}</td>
                         <td>{{ $eligibleStudent->faculty }}</td>
                         <td>{{ $eligibleStudent->department }}</td>
-                        @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
+                                <td>{{ $eligibleStudent->degreeName }}</td>
+
+                            @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
                             <td>
                                 <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
 
@@ -378,6 +386,7 @@
                     <th>Index Number</th>
                     <th>Faculty</th>
                     <th>Department</th>
+                    <th>Degree Name</th>
                     @if(checkPermission(['examinationBranch']))
                         <th width="280px">Action</th>
                     @endif
@@ -408,7 +417,9 @@
                             <td>{{ $eligibleStudent->indexNum }}</td>
                             <td>{{ $eligibleStudent->faculty }}</td>
                             <td>{{ $eligibleStudent->department }}</td>
-                            @if(checkPermission(['examinationBranch']))
+                            <td>{{ $eligibleStudent->degreeName }}</td>
+
+                        @if(checkPermission(['examinationBranch']))
                                 <td>
                                     <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
 
