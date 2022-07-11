@@ -46,7 +46,7 @@
             @if ($i===1)
                 <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
                     <div class="pull-left">
-                        <h2 style="color: #ff0000; font-weight: bold">Sorry! You are Not Eligible For Conversation</h2>
+                        <h2 style="color: #ff0000; font-weight: bold">Sorry! You are Not Eligible For Convocation</h2>
                     </div>
                 </div>
             @endif
@@ -55,11 +55,21 @@
             @if ($i===2)
                 <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
                     <div class="pull-left">
-                        <h2 style="color: #00a95a; font-weight: bold">Congratulation! You are Eligible  For Conversation</h2>
+                        <h2 style="color: #00a95a; font-weight: bold">Congratulation! You are Eligible  For Convocation</h2>
                     </div>
-                    <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('studentRegistration.create') }}">Register Now</a>
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <div class="pull-right">
+                                <a class="btn btn-success" href="{{ route('studentRegistration.create') }}">Register Now</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <div class="pull-right">
+                                <a class="btn btn-dark" href="{{ route('studentRegistration.create') }}">Payment</a>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             @endif
 
