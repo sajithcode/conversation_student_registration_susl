@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/style.css">
 
 {{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
-    <title>Conversation Student Registration</title>
+    <title>Convocation Student Registration</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
