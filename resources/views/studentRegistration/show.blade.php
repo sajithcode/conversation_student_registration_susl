@@ -16,6 +16,13 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Registration Status:</strong>
+                {{ $studentRegistration->status }}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Full name in english block letters:</strong>
                 {{ $studentRegistration->fullNameInEnglishBlock }}
             </div>
@@ -152,16 +159,9 @@
         </div>
 
 
-        <div style="margin-bottom:50px;margin-top: -30px" class="row">
-            <div class="col-xs-11 col-sm-11 col-md-11 text-center">
-            </div>
-            <div  class="col-xs-1 col-sm-1 col-md-1">
-                <button class="btn btn-dark" onclick="document.getElementById('selectform').reset(); document.getElementById('from').value = null; return false;">
-                    Reset
-                </button>
-            </div>
-        </div>
 
+
+        @if(checkPermission(['examinationBranch']))
 
         <form action="{{ route('studentRegistration.update',$studentRegistration->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -223,6 +223,6 @@
             </div>
 
         </form>
-
+        @endif
     </div>
 @endsection
