@@ -152,5 +152,77 @@
         </div>
 
 
+        <div style="margin-bottom:50px;margin-top: -30px" class="row">
+            <div class="col-xs-11 col-sm-11 col-md-11 text-center">
+            </div>
+            <div  class="col-xs-1 col-sm-1 col-md-1">
+                <button class="btn btn-dark" onclick="document.getElementById('selectform').reset(); document.getElementById('from').value = null; return false;">
+                    Reset
+                </button>
+            </div>
+        </div>
+
+
+        <form action="{{ route('studentRegistration.update',$studentRegistration->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
+            <div style="margin: 60px" class="row">
+
+
+                <script>
+
+                    $(function() {
+
+                        // run on change for the selectbox
+                        $( "#frm_duration" ).change(function() {
+                            updateDurationDivs();
+                        });
+
+                        // handle the updating of the duration divs
+                        function updateDurationDivs() {
+                            // hide all form-duration-divs
+                            $('.form-duration-div').hide();
+
+                            var divKey = $( "#frm_duration option:selected" ).val();
+                            $('#divFrm'+divKey).show();
+                        }
+
+                        // run at load, for the currently selected div to show up
+                        updateDurationDivs();
+
+                    });
+                </script>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Review Status:</strong>
+                        <div>
+                            <select name="status" class="form-control" id="frm_duration">
+                                <option selected>{{ $studentRegistration->status }}</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Accept">Accept</option>
+                                <option value="Reject">Reject</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="divFrmReject" class="form-group form-duration-div" style="display:none">
+                    <input value="{{ $studentRegistration->statusMessage }}" name="statusMessage" type='text' class="form-control" />
+
+                </div>
+
+
+
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Reviewed</button>
+                </div>
+            </div>
+
+        </form>
+
     </div>
 @endsection

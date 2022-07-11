@@ -41,6 +41,9 @@ class CreateStudentRegistrationsTable extends Migration
 
             $table->string('signedDate');
 
+            $table->string('status')->default('Pending');
+            $table->string('statusMessage')->default('none')->nullable();
+
             $table->timestamps();
         });
     }

@@ -115,46 +115,56 @@ class StudentRegistrationController extends Controller
      */
     public function update(Request $request, StudentRegistration $studentRegistration)
     {
-//        $filename ='';
-//        if($request->image){
+
+        if($request->image){
+
             $file= $request->image;
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('/images'), $filename);
-//            $pro->image=$filename;
 
-//        }
 
-        $studentRegistration->update([
-            'nameWithInitial'=>$request->input('nameWithInitial'),
-            'fullNameInEnglishBlock'=>$request->input('fullNameInEnglishBlock'),
-            'fullNameInSinhala'=>$request->input('fullNameInSinhala'),
-            'gender'=>$request->input('gender'),
-            'nic'=>$request->input('nic'),
-            'address'=>$request->input('address'),
-            'mobileNumber'=>$request->input('mobileNumber'),
-            'email'=>$request->input('email'),
-            'degreeName'=>$request->input('degreeName'),
-            'regNum'=>$request->input('regNum'),
-            'indexNum'=>$request->input('indexNum'),
-            'monthAndYearExamination'=>$request->input('monthAndYearExamination'),
+            $studentRegistration->update([
+                'nameWithInitial'=>$request->input('nameWithInitial'),
+                'fullNameInEnglishBlock'=>$request->input('fullNameInEnglishBlock'),
+                'fullNameInSinhala'=>$request->input('fullNameInSinhala'),
+                'gender'=>$request->input('gender'),
+                'nic'=>$request->input('nic'),
+                'address'=>$request->input('address'),
+                'mobileNumber'=>$request->input('mobileNumber'),
+                'email'=>$request->input('email'),
+                'degreeName'=>$request->input('degreeName'),
+                'regNum'=>$request->input('regNum'),
+                'indexNum'=>$request->input('indexNum'),
+                'monthAndYearExamination'=>$request->input('monthAndYearExamination'),
 //            'monthExamination'=>$request->input('monthExamination'),
 //            'yearExamination'=>$request->input('yearExamination'),
-            'degreeClass'=>$request->input('degreeClass'),
-            'attendance'=>$request->input('attendance'),
-            'nameVisitor1'=>$request->input('nameVisitor1'),
-            'nameVisitor2'=>$request->input('nameVisitor2'),
-            'nicVisitor1'=>$request->input('nicVisitor1'),
-            'nicVisitor2'=>$request->input('nicVisitor2'),
+                'degreeClass'=>$request->input('degreeClass'),
+                'attendance'=>$request->input('attendance'),
+                'nameVisitor1'=>$request->input('nameVisitor1'),
+                'nameVisitor2'=>$request->input('nameVisitor2'),
+                'nicVisitor1'=>$request->input('nicVisitor1'),
+                'nicVisitor2'=>$request->input('nicVisitor2'),
 
-            'image' => $filename,
-
-
-
-            'signedDate'=>$request->input('signedDate'),
+                'image' => $filename,
 
 
 
-        ]);
+                'signedDate'=>$request->input('signedDate'),
+
+                'status' => 'Pending',
+                'statusMessage' => 'none',
+            ]);
+        }else{
+            $studentRegistration->update([
+
+                'status' => $request->input('status'),
+                'statusMessage' => $request->input('statusMessage'),
+            ]);
+        }
+
+
+
+
 
         return redirect()->route('eligibleStudents.index')
             ->with('success','Registration updated successfully');

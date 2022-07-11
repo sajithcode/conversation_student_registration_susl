@@ -35,9 +35,55 @@
                         $i = 3
                     @endphp
                     <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
-                        <div class="pull-left">
-                            <h2 style="color: #0048ff; font-weight: bold">Your are already Registered</h2>
-                        </div>
+                        @if($studentRegistration->status==='Pending')
+                            <div class="pull-left">
+                                <h2 style="color: #00ffe1; font-weight: bold">Your Registration is Pending</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="pull-right">
+                                        <a class="btn btn-info" href="{{ route('studentRegistration.edit',$studentRegistration->id) }}">Edit Your Registration</a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="pull-right">
+                                        <a class="btn btn-dark" href="{{ route('studentRegistration.create') }}">Payment</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                            @if($studentRegistration->status==='Reject')
+                                <div class="pull-left">
+                                    <h2 style="color: #ff5900; font-weight: bold">Your Registration is Registered</h2>
+                                    <p style="color:red;">{{$studentRegistration->statusMessage}}}</p>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="pull-right">
+                                            <a class="btn btn-info" href="{{ route('studentRegistration.edit',$studentRegistration->id) }}">Edit Your Registration</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="pull-right">
+                                            <a class="btn btn-dark" href="{{ route('studentRegistration.create') }}">Payment</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if($studentRegistration->status==='Accept')
+                                <div class="pull-left">
+                                    <h2 style="color: #0048ff; font-weight: bold">Your are already Registered</h2>
+                                </div>
+
+                            @endif
+{{--                        <div class="pull-left">--}}
+{{--                            <h2 style="color: #0048ff; font-weight: bold">Your are already Registered</h2>--}}
+{{--                        </div>--}}
+{{--                        <div class="pull-left">--}}
+{{--                            <h2 style="color: #0048ff; font-weight: bold">Your Registration is {{$studentRegistration->status}}</h2>--}}
+{{--                        </div>--}}
                     </div>
                 @endif
             @endforeach
@@ -73,21 +119,21 @@
                 </div>
             @endif
 
-            @foreach ($eligibleStudents as $eligibleStudent)
-                @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))
+{{--            @foreach ($eligibleStudents as $eligibleStudent)--}}
+{{--                @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
 
-                    @foreach ($studentRegistrations as $studentRegistration)
-                        @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim(Auth::user()->regNum)))
-                            <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
-                                <div class="pull-right">
-                                    <a class="btn btn-info" href="{{ route('studentRegistration.edit',$studentRegistration->id) }}">Edit Your Registration</a>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
+{{--                    @foreach ($studentRegistrations as $studentRegistration)--}}
+{{--                        @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
+{{--                            <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">--}}
+{{--                                <div class="pull-right">--}}
+{{--                                    <a class="btn btn-info" href="{{ route('studentRegistration.edit',$studentRegistration->id) }}">Edit Your Registration</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                    @endforeach--}}
 
-                @endif
-            @endforeach
+{{--                @endif--}}
+{{--            @endforeach--}}
 
             @endif
 

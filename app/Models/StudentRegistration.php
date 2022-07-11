@@ -36,6 +36,9 @@ class StudentRegistration extends Model
 
         'signedDate',
 
+        'status',
+        'statusMessage',
+
 
 
     ];

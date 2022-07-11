@@ -34,6 +34,7 @@
                         <div class="col-sm-12 mb-3 mt-3 mb-sm-0">
                             <span style="color:red;">*</span>File Input(Datasheet)</label>
                             <input
+                                required
                                 type="file"
                                 class="form-control form-control-user @error('file') is-invalid @enderror"
                                 id="exampleFile"
