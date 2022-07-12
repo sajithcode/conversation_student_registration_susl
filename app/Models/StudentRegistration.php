@@ -18,6 +18,10 @@ class StudentRegistration extends Model
         'address',
         'mobileNumber',
         'email',
+
+        'faculty',
+        'department',
+
         'degreeName',
         'regNum',
         'indexNum',

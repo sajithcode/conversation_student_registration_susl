@@ -100,6 +100,20 @@
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
+                            <strong>Faculty:</strong>
+                            <input readonly value="{{ $eligibleStudent->faculty }}" required type="text" name="faculty" class="form-control" placeholder="Faculty">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Department:</strong>
+                            <input readonly value="{{ $eligibleStudent->department }}" required type="text" name="department" class="form-control" placeholder="Department">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
                             <strong>Name of the degree to be conferred:</strong>
                             <input readonly value="{{ $eligibleStudent->degreeName }}" type="text" name="degreeName" class="form-control" placeholder="Name of the degree to be conferred">
                         </div>

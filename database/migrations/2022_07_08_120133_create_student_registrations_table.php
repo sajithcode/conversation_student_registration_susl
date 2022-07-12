@@ -24,6 +24,10 @@ class CreateStudentRegistrationsTable extends Migration
             $table->string('address');
             $table->string('mobileNumber');
             $table->string('email');
+
+            $table->string('faculty');
+            $table->string('department');
+
             $table->string('degreeName');
             $table->string('regNum');
             $table->string('indexNum');

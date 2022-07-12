@@ -17,6 +17,7 @@ class StudentRegistrationExport implements FromView
 //        return StudentRegistration::all();
 //    }
 
+
     public function view(): View
     {
         return view('studentRegistration.table', [

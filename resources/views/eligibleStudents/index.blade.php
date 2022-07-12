@@ -166,23 +166,53 @@
                 </div>
             </div>
 {{--======================--}}
+            <div class="row">
             <form method="GET" action="{{route('export')}}" enctype="multipart/form-data">
                 @csrf
 
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-success btn-user float-right mb-3">Export Registered Students</button>
+                    <button type="submit" class="btn btn-success btn-user float-right mb-3">Export All Registered Students</button>
                     {{--                    <a class="btn btn-primary float-right mr-3 mb-3" href="{{ route('users.index') }}">Cancel</a>--}}
                 </div>
             </form>
 
-            {{--            <div class="row" style="margin-bottom: 10px">--}}
-{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
-{{--                    <div class="pull-right">--}}
-{{--                        <a class="btn btn-info" href="{{ route('eligibleStudents.show') }}">Registered student List</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            </div>
+
+            <div class="row">
+
+
+                <form method="GET" action="{{route('exportbyfaculty')}}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                <div class="form-group">
+                                    <strong>Faculty:</strong>
+
+                                    <select required name="faculty" class="custom-select" id="inputGroupSelect01" >
+                                        <option selected>Choose...</option>
+                                        {{--                                                <option value="Graduate Studies">Graduate Studies</option>--}}
+                                        <option value="Agricultural Sciences">Agricultural Sciences</option>
+                                        <option value="Applied Sciences">Applied Sciences</option>
+                                        <option value="Geomatics">Geomatics</option>
+                                        <option value="Management Studies">Management Studies</option>
+                                        <option value="Medicine">Medicine</option>
+                                        <option value="Social Sciences & Languages">Social Sciences & Languages</option>
+                                        <option value="Technology">Technology</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2" style="display: inline-flex;justify-content: center">
+                                <button type="submit" class="btn btn-success btn-user float-right mb-3">Export Registered Students by Faculty</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
 
         @endif
 
@@ -213,7 +243,7 @@
 
             @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
 {{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 20px">
                     <div>
                         <select required name="attendance" class="form-control" id="frm_duration">
 {{--                            <option selected>Choose</option>--}}

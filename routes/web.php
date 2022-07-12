@@ -60,6 +60,7 @@ Route::get('/import-users', [\App\Http\Controllers\EligibleStudentsController::c
 Route::post('/upload-users', [\App\Http\Controllers\EligibleStudentsController::class, 'uploadstudents'])->name('uploadstudents');
 
 Route::get('/export', [\App\Http\Controllers\StudentRegistrationController::class, 'export'])->name('export');;
+Route::get('/exportbyfaculty', [\App\Http\Controllers\StudentRegistrationController::class, 'exportbyfaculty'])->name('exportbyfaculty');;
 
 Route::get('/forget-password', '\App\Http\Controllers\Auth\ForgotPasswordController@getEmail');
 Route::post('/forget-password', '\App\Http\Controllers\Auth\ForgotPasswordController@postEmail');

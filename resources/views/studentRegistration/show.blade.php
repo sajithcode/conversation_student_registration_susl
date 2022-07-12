@@ -72,6 +72,20 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Faculty:</strong>
+                {{ $studentRegistration->faculty }}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Department:</strong>
+                {{ $studentRegistration->department }}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Name of the degree to be conferred:</strong>
                 {{ $studentRegistration->degreeName }}
             </div>

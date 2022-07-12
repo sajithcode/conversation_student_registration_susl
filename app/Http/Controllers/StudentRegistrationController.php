@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\StudentRegistrationExport;
+use App\Exports\StudentRegistrationExportByFaculty;
 use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
@@ -54,6 +55,9 @@ class StudentRegistrationController extends Controller
         $pro->address = $request->address;
         $pro->mobileNumber = $request->mobileNumber;
         $pro->email = $request->email;
+
+        $pro->faculty = $request->faculty;
+        $pro->department = $request->department;
 
         $pro->degreeName = $request->degreeName;
         $pro->regNum = $request->regNum;
@@ -134,6 +138,10 @@ class StudentRegistrationController extends Controller
                 'address'=>$request->input('address'),
                 'mobileNumber'=>$request->input('mobileNumber'),
                 'email'=>$request->input('email'),
+
+                'faculty'=>$request->input('faculty'),
+                'department'=>$request->input('department'),
+
                 'degreeName'=>$request->input('degreeName'),
                 'regNum'=>$request->input('regNum'),
                 'indexNum'=>$request->input('indexNum'),
@@ -184,8 +192,21 @@ class StudentRegistrationController extends Controller
     }
 
     public function export()
+
     {
-        return Excel::download(new StudentRegistrationExport, 'Registered.xlsx');
+        return Excel::download(new StudentRegistrationExport, 'Registered All Students.xlsx');
+    }
+
+    public function exportbyfaculty(Request $request, StudentRegistration $studentRegistration)
+
+    {
+//        $filename= 'Registered in '+$request->input('faculty')+'.xlsx';
+
+//        print $request->input('faculty');
+
+        return (new StudentRegistrationExportByFaculty($request->input('faculty')))->download('Registered in Faculty.xlsx');
+
+//        return Excel::download(new StudentRegistrationExport, 'Registered Students.xlsx');
     }
 
 }
