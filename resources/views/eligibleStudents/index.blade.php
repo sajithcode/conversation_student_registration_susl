@@ -165,8 +165,18 @@
                     </div>
                 </div>
             </div>
+{{--======================--}}
+            <form method="GET" action="{{route('export')}}" enctype="multipart/form-data">
+                @csrf
 
-{{--            <div class="row" style="margin-bottom: 10px">--}}
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success btn-user float-right mb-3">Export Registered Students</button>
+                    {{--                    <a class="btn btn-primary float-right mr-3 mb-3" href="{{ route('users.index') }}">Cancel</a>--}}
+                </div>
+            </form>
+
+            {{--            <div class="row" style="margin-bottom: 10px">--}}
 {{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
 {{--                    <div class="pull-right">--}}
 {{--                        <a class="btn btn-info" href="{{ route('eligibleStudents.show') }}">Registered student List</a>--}}

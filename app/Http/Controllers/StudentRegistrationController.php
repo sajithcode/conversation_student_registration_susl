@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\StudentRegistrationExport;
 use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentRegistrationController extends Controller
 {
@@ -180,4 +182,10 @@ class StudentRegistrationController extends Controller
     {
         //
     }
+
+    public function export()
+    {
+        return Excel::download(new StudentRegistrationExport, 'Registered.xlsx');
+    }
+
 }

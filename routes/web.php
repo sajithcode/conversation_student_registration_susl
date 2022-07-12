@@ -59,6 +59,8 @@ Route::get('delete/{id}','App\Http\Controllers\UserDetailsController@destroy');
 Route::get('/import-users', [\App\Http\Controllers\EligibleStudentsController::class, 'importstudents'])->name('importstudents');
 Route::post('/upload-users', [\App\Http\Controllers\EligibleStudentsController::class, 'uploadstudents'])->name('uploadstudents');
 
+Route::get('/export', [\App\Http\Controllers\StudentRegistrationController::class, 'export'])->name('export');;
+
 Route::get('/forget-password', '\App\Http\Controllers\Auth\ForgotPasswordController@getEmail');
 Route::post('/forget-password', '\App\Http\Controllers\Auth\ForgotPasswordController@postEmail');
 
