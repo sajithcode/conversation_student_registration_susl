@@ -54,7 +54,7 @@
                         @endif
                             @if($studentRegistration->status==='Reject')
                                 <div class="pull-left">
-                                    <h2 style="color: #ff5900; font-weight: bold">Your Registration is Registered</h2>
+                                    <h2 style="color: #ff5900; font-weight: bold">Your Registration is Rejected</h2>
                                     <p style="color:red;">{{$studentRegistration->statusMessage}}}</p>
                                 </div>
 
