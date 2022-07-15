@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col-xs-2 col-sm-2 col-md-2">
                                     <div class="pull-right">
-                                        <a class="btn btn-dark" href="{{ route('studentRegistration.create') }}">Payment</a>
+                                        <a class="btn btn-dark" target="_blank" href="{{ url('https://www.sab.ac.lk/payment-boc/') }}">Payment</a>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="pull-right">
-                                            <a class="btn btn-dark" href="{{ route('studentRegistration.create') }}">Payment</a>
+                                            <a class="btn btn-dark" target="_blank" href="{{ url('https://www.sab.ac.lk/payment-boc/') }}">Payment</a>
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@
                         </div>
                         <div class="col-xs-2 col-sm-2 col-md-2">
                             <div class="pull-right">
-                                <a class="btn btn-dark" href="{{ route('studentRegistration.create') }}">Payment</a>
+                                <a class="btn btn-dark" target="_blank" href="{{ url('https://www.sab.ac.lk/payment-boc/') }}">Payment</a>
                             </div>
                         </div>
                     </div>
