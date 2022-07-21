@@ -300,7 +300,7 @@
                 <th>Department</th>
                 <th>Degree Name</th>
                 @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
-                <th width="280px">Action</th>
+                <th >Action</th>
                 @endif
             </tr>
             @php
@@ -335,11 +335,15 @@
 
                             @foreach ($studentRegistrations as $studentRegistration)
                                 @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim($eligibleStudent->regNum)))
-                                    <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registered</a>
+                                    <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registration {{$studentRegistration->status}}</a>
+{{--                                    <a>{{$studentRegistration->status}}</a>--}}
                                 @endif
                             @endforeach
 
                         </form>
+                    </td>
+                    <td>
+
                     </td>
                     @endif
                 </tr>
@@ -359,7 +363,7 @@
                     <th>Department</th>
                     <th>Degree Name</th>
                     @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
-                        <th width="280px">Action</th>
+                        <th>Action</th>
                     @endif
                 </tr>
                 @php
@@ -399,8 +403,8 @@
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     @endif
 
-                                                    <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registered</a>
-
+                                        <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registration {{$studentRegistration->status}}</a>
+                                        {{--                                    <a>{{$studentRegistration->status}}</a>--}}
 
                                 </form>
                             </td>
