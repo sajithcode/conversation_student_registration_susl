@@ -150,6 +150,14 @@
 
     <div style="margin: 50px">
         @if(checkPermission(['examinationBranch']))
+
+            <div class="row" style="margin-bottom: 10px">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="pull-right">
+                        <a class="btn btn-danger" href="{{ route('report.index') }}">Reports</a>
+                    </div>
+                </div>
+            </div>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="pull-right">

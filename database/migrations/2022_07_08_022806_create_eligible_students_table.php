@@ -22,6 +22,10 @@ class CreateEligibleStudentsTable extends Migration
             $table->string('department');
             $table->string('degreeName');
 
+            $table->string('email');
+
+            $table->string('status')->default('Pending');
+
             $table->timestamps();
         });
     }

@@ -8,7 +8,7 @@
                     <h2>Edit Registration</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('eligibleStudents.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('eligibleStd') }}"> Back</a>
                 </div>
             </div>
         </div>

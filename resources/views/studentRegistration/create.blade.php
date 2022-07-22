@@ -18,7 +18,7 @@
                     <h2>Registration</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('eligibleStudents.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('eligibleStd') }}"> Back</a>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
     <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST" enctype="multipart/form-data">
         @csrf
         @foreach ($eligibleStudents as $eligibleStudent)
-            @if ($eligibleStudent->regNum === Auth::user()->regNum)
+            @if ($eligibleStudent->email === $stdEmail)
                 <div style="margin: 60px" class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">

@@ -28,10 +28,26 @@ class StudentRegistrationController extends Controller
      */
     public function create()
     {
+        session_start();
+
+        $stdEmail = $_SESSION["email"];
+
         $eligibleStudents = EligibleStudent::all();
-        return view('studentRegistration.create',compact('eligibleStudents'));
+        return view('studentRegistration.create',compact('eligibleStudents','stdEmail'));
     }
 
+
+    public function eligibleStd()
+    {
+        session_start();
+
+        $stdEmail = $_SESSION["email"];
+
+        $studentRegistrations = StudentRegistration::all();
+        $eligibleStudents = EligibleStudent::all();
+        return view('eligibleStd',compact('eligibleStudents','studentRegistrations','stdEmail'));
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -85,7 +101,7 @@ class StudentRegistrationController extends Controller
 
 
 //        StudentRegistration::create($request->all());
-        return redirect()->route('eligibleStudents.index')
+        return redirect()->route('eligibleStd')
             ->with('success','Registration successfully.');
     }
 
@@ -176,7 +192,7 @@ class StudentRegistrationController extends Controller
 
 
 
-        return redirect()->route('eligibleStudents.index')
+        return redirect()->route('eligibleStd')
             ->with('success','Registration updated successfully');
     }
 

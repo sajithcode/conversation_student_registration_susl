@@ -24,6 +24,7 @@ class StudentsImport implements ToModel, WithHeadingRow
             "faculty" => $row['faculty'],
             "department" => $row['department'],
             "degreeName" => $row['degree_name'],
+            "email" => $row['email'],
 
         ]);
 

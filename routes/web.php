@@ -1,8 +1,12 @@
 <?php
 
 use App\Models\eligible_students;
+use App\Models\EligibleStudent;
+use App\Models\StudentRegistration;
 use App\Models\VCorRegComment;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +22,58 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('/eligibleStd', function () {
+//    session_start();
+//
+//    $stdEmail = $_SESSION["email"];
+//
+//    $studentRegistrations = StudentRegistration::all();
+//    $eligibleStudents = EligibleStudent::all();
+//    return view('eligibleStd',compact('eligibleStudents','studentRegistrations','stdEmail'));
+//
+//});
+
+Route::get('/eligibleStd',[App\Http\Controllers\StudentRegistrationController::class, 'eligibleStd'])->name('eligibleStd');;
+Route::get('/checkData',[App\Http\Controllers\MailController::class, 'checkData'])->name('checkData');;
+
+
+Route::get('/check', function () {
+    return view('check');
+});
+
+Route::get('/completeEmailVerify', function () {
+    return view('completeEmailVerify');
+});
+
+Route::get('/emailSentView', function () {
+    return view('emailSentView');
+});
+
+Route::get('/verifyEmail', function () {
+    return view('verifyEmail');
+});
+
+Route::get('/checkedData', function () {
+    return view('checkedData');
+});
+
+
+Route::post('emailGet/{email}', [App\Http\Controllers\EligibleStudentsController::class, 'emailGet'])->name('emailGet');
+
+
+
+
+Route::get('/mail',[MailController::class, 'sendMail'])->name('mail');;
+Route::post('/sendConfirmedMail',[MailController::class, 'sendConfirmedMail'])->name('sendConfirmedMail');;
+Route::put('/statusConfirm',[App\Http\Controllers\EligibleStudentsController::class, 'statusConfirm'])->name('statusConfirm');;
+
+
+
+Route::get('/completeEmailVerification',[App\Http\Controllers\EligibleStudentsController::class, 'completeEmailVerification'])->name('completeEmailVerification');;
+Route::get('/getByEmail',[App\Http\Controllers\EligibleStudentsController::class, 'getByEmail'])->name('getByEmail');;
+Route::get('/getByRegNum',[App\Http\Controllers\EligibleStudentsController::class, 'getByRegNum'])->name('getByRegNum');;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,6 +94,7 @@ Route::get('/home', [App\Http\Controllers\EligibleStudentsController::class, 'in
 
 Route::resource('eligibleStudents', \App\Http\Controllers\EligibleStudentsController::class);
 Route::resource('studentRegistration', \App\Http\Controllers\StudentRegistrationController::class);
+Route::resource('report', \App\Http\Controllers\ReportController::class);
 
 
 //Route::get('/getPDF', [App\Http\Controllers\PDFController::class, 'download']);

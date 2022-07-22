@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
+use App\Models\VerifiedEmail;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
 use App\Imports\StudentsImport;
@@ -17,10 +18,13 @@ class EligibleStudentsController extends Controller
      */
     public function index()
     {
+        session_start();
+
+        $stdEmail = $_SESSION["email"];
 
         $studentRegistrations = StudentRegistration::all();
         $eligibleStudents = EligibleStudent::all();
-        return view('eligibleStudents.index',compact('eligibleStudents','studentRegistrations'));
+        return view('eligibleStudents.index',compact('eligibleStudents','studentRegistrations','stdEmail'));
         //
     }
 
@@ -86,24 +90,38 @@ class EligibleStudentsController extends Controller
      */
     public function update(Request $request, EligibleStudent $eligibleStudent)
     {
-        $eligibleStudent->update([
-            'nameWithInitials'=>$request->input('nameWithInitials'),
-            'regNum'=>$request->input('regNum'),
-            'indexNum'=>$request->input('indexNum'),
-            'faculty'=>$request->input('faculty'),
-            'department'=>$request->input('department'),
-            'degreeName'=>$request->input('degreeName'),
-        ]);
+        if($request->input('regNum')) {
+            $eligibleStudent->update([
+                'nameWithInitials' => $request->input('nameWithInitials'),
+                'regNum' => $request->input('regNum'),
+                'indexNum' => $request->input('indexNum'),
+                'faculty' => $request->input('faculty'),
+                'department' => $request->input('department'),
+                'degreeName' => $request->input('degreeName'),
+            ]);
 
-        return redirect()->route('eligibleStudents.index')
-            ->with('success','Product updated successfully');
+            return redirect()->route('eligibleStudents.index')
+                ->with('success', 'Product updated successfully');
+        }else{
+            $eligibleStudent->update([
+                'status'=>'Confirmed',
+            ]);
+            return redirect()->route('eligibleStd')
+                ->with('success', 'Product updated successfully');
+//            $studentRegistrations = StudentRegistration::all();
+//            $eligibleStudents = EligibleStudent::all();
+//            return view('eligibleStudents.index',compact('eligibleStudents','studentRegistrations'));
+
+//            return view('verifyDone');
+
+        }
 
     }
 
-    public function updateStatus(Request $request, EligibleStudent $eligibleStudent)
+    public function statusConfirm(Request $request, EligibleStudent $eligibleStudent)
     {
         $eligibleStudent->update([
-            'faculty'=>'123',
+            'status'=>'Confirmed',
         ]);
 
     }
@@ -132,4 +150,52 @@ class EligibleStudentsController extends Controller
 
         return redirect()->route('eligibleStudents.index')->with('success', 'User Imported Successfully');
     }
+
+    public function getByEmail(Request $request)
+    {
+        $studentRegistrations = StudentRegistration::all();
+        $eligibleStudents = EligibleStudent::all();
+        $student = EligibleStudent::where(
+            'email', $request->email)->get();
+        return view('checkedData',compact('student','studentRegistrations','eligibleStudents'));
+
+    }
+
+
+    public function completeEmailVerification(Request $request, EligibleStudent $eligibleStudent)
+    {
+//        $eligibleStudent->update([
+//            'status'=>'Verified',
+//        ]);
+
+        $data=new VerifiedEmail();
+        $data->email = $request->email;
+        $data->save();
+
+
+        $studentRegistrations = StudentRegistration::all();
+        $eligibleStudents = EligibleStudent::all();
+        $student = EligibleStudent::where(
+            'email', $request->email)->get();
+        return view('checkedData',compact('student','studentRegistrations','eligibleStudents'));
+
+    }
+
+
+    public function getByRegNum(Request $request)
+    {
+        $studentRegistrations = StudentRegistration::all();
+        $eligibleStudents = EligibleStudent::all();
+        $student = EligibleStudent::where(
+            'regNum', $request->regNum)->get();
+        return view('checkedData',compact('student','studentRegistrations','eligibleStudents'));
+
+    }
+
+    public function emailGet(Request $request, $email){
+
+        echo $email;
+    }
+
+
 }

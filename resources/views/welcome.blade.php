@@ -34,25 +34,69 @@
             @if (Route::has('login'))
                 <div class="fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
+                        <a style="color: #e2e8f0" href="{{ url('/verifyEmail') }}" class="welcomebutton ml-4 text-sm text-gray-700 dark:text-gray-500">Student for Convocation</a>
+
                         <a style="color: #e2e8f0" href="{{ route('eligibleStudents.index') }}" class="welcomebutton text-sm text-gray-700 dark:text-gray-500">Home</a>
                     @else
-                            <a style="color: #e2e8f0" href="{{ route('login') }}" class="welcomebutton text-sm text-gray-700 dark:text-gray-500">Log in</a>
+{{--                            <a style="color: #e2e8f0" href="{{ route('mail') }}" class="welcomebutton text-sm text-gray-700 dark:text-gray-500">Mail</a>--}}
+                        <a style="color: #e2e8f0" href="{{ url('/verifyEmail') }}" class="welcomebutton ml-4 text-sm text-gray-700 dark:text-gray-500">Student for Convocation</a>
+
+                        <a style="color: #e2e8f0" href="{{ route('login') }}" class="welcomebutton text-sm text-gray-700 dark:text-gray-500">Log in</a>
 
 
                         @if (Route::has('register'))
-                            <a style="color: #e2e8f0" href="{{ route('register') }}" class="welcomebutton ml-4 text-sm text-gray-700 dark:text-gray-500">Register</a>
+{{--                            <a style="color: #e2e8f0" href="{{ url('/verifyEmail') }}" class="welcomebutton ml-4 text-sm text-gray-700 dark:text-gray-500">Student for Convocation</a>--}}
+
+                            {{--                            <a style="color: #e2e8f0" href="{{ route('register') }}" class="welcomebutton ml-4 text-sm text-gray-700 dark:text-gray-500">Register</a>--}}
                         @endif
                     @endauth
                 </div>
             @endif
 {{--                <div class="welcomebgimage">--}}
+
                     <div class="mycenter">
                         <div class="wecomebox" style="background: #800f0f">
                             <h1 style="font-weight: bold">Welcome To</h1>
                             <h2>Convocation Student Registration System</h2>
                             <h5>Sabaragamuwa University of Sri Lanka</h5>
+{{--<!--                            --><?php--}}
+{{--                            session_start();--}}
+{{--                            $id = 10;--}}
+{{--                            $_SESSION["user_id"] = $id;--}}
+{{--                            echo $_SESSION["user_id"];--}}
+{{--                            ?>--}}
+{{--                            <h5>{{$_SESSION['sessionEmail']}}</h5>--}}
                         </div>
                     </div>
+
+
+{{--                <form  method="POST" action="{{ route('getByEmail') }}" enctype="multipart/form-data">--}}
+{{--                    @csrf--}}
+{{--                    @method('POST')--}}
+
+{{--                    <div style="margin: 60px" class="row">--}}
+
+{{--                        <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <strong>Email Address:</strong>--}}
+{{--                                <input required type="text" name="email" class="form-control" placeholder="Email">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">--}}
+{{--                            <button type="submit" class="btn btn-primary">Check</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+{{--                </form>--}}
+
+
+
+{{--        @if ($student->email)--}}
+
+{{--            {{$student->email}}--}}
+{{--        @endif--}}
+
 {{--            <img src="/images/img.jpeg">--}}
 
 {{--                </div>--}}
