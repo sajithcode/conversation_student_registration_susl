@@ -81,11 +81,7 @@ class EligibleStudentsController extends Controller
 
     }
 
-    public function reportedEdit(EligibleStudent $eligibleStudent)
-    {
-        return view('eligibleStudents.reportedEdit',compact('eligibleStudent'));
 
-    }
 
     /**
      * Update the specified resource in storage.

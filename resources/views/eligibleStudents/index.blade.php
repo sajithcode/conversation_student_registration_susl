@@ -154,7 +154,7 @@
     </div>
 
     <div style="margin: 50px">
-        @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+        @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
 
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -254,7 +254,7 @@
                 });
             </script>
 
-            @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+            @if(checkPermission(['Admin','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
 {{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
                 <div class="form-group" style="margin-top: 20px">
                     <div>
@@ -302,6 +302,11 @@
             </table>
             @endif
 
+
+
+{{--==========================================================--}}
+
+
 {{--            =================all eligible students=============--}}
         <table id="divFrmAll" style="display:none" class="table table-bordered form-duration-div">
             <tr>
@@ -309,7 +314,7 @@
                 <th>Name</th>
                 <th>Register Number</th>
                 <th>Index Number</th>
-                @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+                @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                 <th>Faculty</th>
                 <th>Department</th>
                 <th>Degree Name</th>
@@ -327,13 +332,71 @@
             @endphp
             @foreach ($eligibleStudents as $eligibleStudent)
                 <tr>
-                    <td>{{ ++$a }}</td>
-                    <td>{{ $eligibleStudent->nameWithInitials }}</td>
-                    <td>{{ $eligibleStudent->regNum }}</td>
-                    <td>{{ $eligibleStudent->indexNum }}</td>
 
+                    @if(checkPermission(['Admin']))
+                        <td>{{ ++$a }}</td>
+                        @include('component.allEligibleStudentsTableComponent')
+                    @endif
+                    @if(checkPermission(['EBSC_Applied']))
+                        @if($eligibleStudent->faculty == 'Applied Sciences')
+                            <td>{{ ++$a }}</td>
+                            @include('component.allEligibleStudentsTableComponent')
+                        @endif
+                    @endif
+                    @if(checkPermission(['EBSC_Geo']))
+                        @if($eligibleStudent->faculty == 'Geomatics')
+                            <td>{{ ++$a }}</td>
+                            @include('component.allEligibleStudentsTableComponent')
+                        @endif
+                    @endif
+                    @if(checkPermission(['EBSC_Social']))
+                        @if($eligibleStudent->faculty == 'Social Sciences & Languages')
+                            <td>{{ ++$a }}</td>
+                            @include('component.allEligibleStudentsTableComponent')
+                        @endif
+                    @endif
+                    @if(checkPermission(['EBSC_Mana']))
+                        @if($eligibleStudent->faculty == 'Management Studies')
+                            <td>{{ ++$a }}</td>
+                            @include('component.allEligibleStudentsTableComponent')
+                        @endif
+                    @endif
+                    @if(checkPermission(['EBSC_Med']))
+                        @if($eligibleStudent->faculty == 'Medicine')
+                            <td>{{ ++$a }}</td>
+                            @include('component.allEligibleStudentsTableComponent')
+                        @endif
+                    @endif
+                    @if(checkPermission(['EBSC_Agri']))
+                        @if($eligibleStudent->faculty == 'Agricultural Sciences')
+                            <td>{{ ++$a }}</td>
+                            @include('component.allEligibleStudentsTableComponent')
+                        @endif
+                    @endif
+                    @if(checkPermission(['EBSC_Tech']))
+                        @if($eligibleStudent->faculty == 'Technology')
+                            <td>{{ ++$a }}</td>
+                            @include('component.allEligibleStudentsTableComponent')
+                        @endif
+                    @endif
+                    @if(checkPermission(['EBSC_GS']))
+                        @if($eligibleStudent->faculty == 'Graduate Studies')
+                            <td>{{ ++$a }}</td>
+                            @include('component.allEligibleStudentsTableComponent')
+                        @endif
+                    @endif
+
+{{--                    @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))--}}
+
+{{--                        --}}
+
+{{--                    @endif--}}
 
                     @if(checkPermission(['mainStoreClark']))
+                            <td>{{ ++$a }}</td>
+                            <td>{{ $eligibleStudent->nameWithInitials }}</td>
+                            <td>{{ $eligibleStudent->regNum }}</td>
+                            <td>{{ $eligibleStudent->indexNum }}</td>
                         <form action="{{ route('eligibleStudents.update',$eligibleStudent->id) }}" method="POST">
                             @csrf
                             @method('PUT')
@@ -443,41 +506,7 @@
                     @endif
 
 
-                    @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
-                    <td>{{ $eligibleStudent->faculty }}</td>
-                    <td>{{ $eligibleStudent->department }}</td>
-                    <td>{{ $eligibleStudent->degreeName }}</td>
 
-
-                    <td>
-                        <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
-
-
-
-
-
-                            @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
-                            <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
-
-                            @csrf
-                            @method('DELETE')
-
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                            @endif
-
-                            @foreach ($studentRegistrations as $studentRegistration)
-                                @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim($eligibleStudent->regNum)))
-                                    <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registration {{$studentRegistration->status}}</a>
-{{--                                    <a>{{$studentRegistration->status}}</a>--}}
-                                @endif
-                            @endforeach
-
-                        </form>
-                    </td>
-                    <td>
-
-                    </td>
-                    @endif
                 </tr>
             @endforeach
         </table>
@@ -491,7 +520,7 @@
                     <th>Name</th>
                     <th>Register Number</th>
                     <th>Index Number</th>
-                    @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+                    @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                     <th>Faculty</th>
                     <th>Department</th>
                     <th>Degree Name</th>
@@ -512,16 +541,73 @@
                         @foreach ($studentRegistrations as $studentRegistration)
                             @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim($eligibleStudent->regNum)))
 
-{{--                                @php--}}
-{{--                                    return 0--}}
-{{--                                @endphp--}}
-                            {{--                        ==--}}
-                        <td>{{ ++$a }}</td>
-                        <td>{{ $eligibleStudent->nameWithInitials }}</td>
-                        <td>{{ $eligibleStudent->regNum }}</td>
-                        <td>{{ $eligibleStudent->indexNum }}</td>
+
+                                @if(checkPermission(['Admin']))
+                                    <td>{{ ++$a }}</td>
+                                    @include('component.registeredStudentsTableComponent')
+                                @endif
+                                @if(checkPermission(['EBSC_Applied']))
+                                    @if($eligibleStudent->faculty == 'Applied Sciences')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.registeredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Geo']))
+                                    @if($eligibleStudent->faculty == 'Geomatics')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.registeredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Social']))
+                                    @if($eligibleStudent->faculty == 'Social Sciences & Languages')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.allEligibleStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Mana']))
+                                    @if($report->faculty == 'Management Studies')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.registeredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Med']))
+                                    @if($eligibleStudent->faculty == 'Medicine')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.registeredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Agri']))
+                                    @if($eligibleStudent->faculty == 'Agricultural Sciences')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.registeredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Tech']))
+                                    @if($report->faculty == 'Technology')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.registeredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_GS']))
+                                    @if($eligibleStudent->faculty == 'Graduate Studies')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.registeredStudentsTableComponent')
+                                    @endif
+                                @endif
+
+
+{{--                                @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))--}}
+{{--                                   --}}
+
+{{--                                @endif--}}
+
+
 
                                 @if(checkPermission(['mainStoreClark']))
+                                    <td>{{ ++$a }}</td>
+                                    <td>{{ $eligibleStudent->nameWithInitials }}</td>
+                                    <td>{{ $eligibleStudent->regNum }}</td>
+                                    <td>{{ $eligibleStudent->indexNum }}</td>
                                     <form action="{{ route('eligibleStudents.update',$eligibleStudent->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
@@ -630,34 +716,7 @@
                                     </form>
                                 @endif
 
-                                @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
-                        <td>{{ $eligibleStudent->faculty }}</td>
-                        <td>{{ $eligibleStudent->department }}</td>
-                                <td>{{ $eligibleStudent->degreeName }}</td>
 
-
-                            <td>
-                                <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
-
-
-
-
-
-                                    @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
-                                        <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
-
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    @endif
-
-                                        <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registration {{$studentRegistration->status}}</a>
-                                        {{--                                    <a>{{$studentRegistration->status}}</a>--}}
-
-                                </form>
-                            </td>
-                        @endif
 
 
                         @endif
@@ -673,15 +732,25 @@
 
             <table id="divFrmNotRegistered" style="display:none" class="table table-bordered form-duration-div">
                 <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Register Number</th>
-                    <th>Index Number</th>
-                    <th>Faculty</th>
-                    <th>Department</th>
-                    <th>Degree Name</th>
-                    @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
-                        <th width="280px">Action</th>
+                    @if(checkPermission(['mainStoreClark']))
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Register Number</th>
+                        <th>Index Number</th>
+                        <th>Faculty</th>
+                        <th>Department</th>
+                        <th>Degree Name</th>
+                    @endif
+
+                    @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Register Number</th>
+                            <th>Index Number</th>
+                            <th>Faculty</th>
+                            <th>Department</th>
+                            <th>Degree Name</th>
+                            <th width="280px">Action</th>
                     @endif
                 </tr>
                 @php
@@ -704,37 +773,72 @@
                         @endforeach
                         {{--                        ==--}}
                         @if($x===0)
-                            <td>{{ ++$a }}</td>
-                            <td>{{ $eligibleStudent->nameWithInitials }}</td>
-                            <td>{{ $eligibleStudent->regNum }}</td>
-                            <td>{{ $eligibleStudent->indexNum }}</td>
-                            <td>{{ $eligibleStudent->faculty }}</td>
-                            <td>{{ $eligibleStudent->department }}</td>
-                            <td>{{ $eligibleStudent->degreeName }}</td>
-
-                        @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
-                                <td>
-                                    <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
-
-
-
-
-
-                                        @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
-                                            <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
-
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        @endif
-
-{{--                                        <a class="btn btn-info" href="{{ route('studentRegistration.show',$studentRegistration->id) }}">Registered</a>--}}
-
-
-                                    </form>
-                                </td>
+                            @if(checkPermission(['mainStoreClark']))
+                                <td>{{ ++$a }}</td>
+                                <td>{{ $eligibleStudent->nameWithInitials }}</td>
+                                <td>{{ $eligibleStudent->regNum }}</td>
+                                <td>{{ $eligibleStudent->indexNum }}</td>
+                                <td>{{ $eligibleStudent->faculty }}</td>
+                                <td>{{ $eligibleStudent->department }}</td>
+                                <td>{{ $eligibleStudent->degreeName }}</td>
                             @endif
+
+                                @if(checkPermission(['Admin']))
+                                    <td>{{ ++$a }}</td>
+                                    @include('component.notRegisteredStudentsTableComponent')
+                                @endif
+                                @if(checkPermission(['EBSC_Applied']))
+                                    @if($eligibleStudent->faculty == 'Applied Sciences')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.notRegisteredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Geo']))
+                                    @if($eligibleStudent->faculty == 'Geomatics')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.notRegisteredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Social']))
+                                    @if($eligibleStudent->faculty == 'Social Sciences & Languages')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.notRegisteredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Mana']))
+                                    @if($report->faculty == 'Management Studies')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.notRegisteredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Med']))
+                                    @if($eligibleStudent->faculty == 'Medicine')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.notRegisteredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Agri']))
+                                    @if($eligibleStudent->faculty == 'Agricultural Sciences')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.notRegisteredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_Tech']))
+                                    @if($report->faculty == 'Technology')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.notRegisteredStudentsTableComponent')
+                                    @endif
+                                @endif
+                                @if(checkPermission(['EBSC_GS']))
+                                    @if($eligibleStudent->faculty == 'Graduate Studies')
+                                        <td>{{ ++$a }}</td>
+                                        @include('component.notRegisteredStudentsTableComponent')
+                                    @endif
+                                @endif
+{{--                                @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))--}}
+{{--                                    --}}
+{{--                                @endif--}}
+
 
                         @endif
                     </tr>

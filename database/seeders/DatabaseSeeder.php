@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $user = [
             [
-                'name'=>'Examination Branch',
+                'name'=>'Admin',
                 'regNum'=>'none',
-                'email'=>'eb@gmail.com',
+                'email'=>'admin@gmail.com',
                 'is_permission'=>'1',
                 'password'=> bcrypt('123456'),
             ],

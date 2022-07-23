@@ -16,7 +16,7 @@ function getMyPermission($id)
 {
     switch ($id) {
         case 1:
-            return 'examinationBranch';
+            return 'Admin';
             break;
         case 11:
             return 'EBSC_Applied';

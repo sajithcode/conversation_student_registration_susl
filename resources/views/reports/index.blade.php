@@ -71,46 +71,55 @@
             @foreach ($reports as $report)
                 <tr>
                     @if ($report->reportStatus == 'Reported')
-                        @if(checkPermission(['examinationBranch']))
+                        @if(checkPermission(['Admin']))
+                            <td>{{ ++$a }}</td>
                             @include('component.reportTableComponent')
                         @endif
                             @if(checkPermission(['EBSC_Applied']))
                                 @if($report->faculty == 'Applied Sciences')
+                                    <td>{{ ++$a }}</td>
                                     @include('component.reportTableComponent')
                                 @endif
                             @endif
                             @if(checkPermission(['EBSC_Geo']))
                                 @if($report->faculty == 'Geomatics')
+                                    <td>{{ ++$a }}</td>
                                     @include('component.reportTableComponent')
                                 @endif
                             @endif
                             @if(checkPermission(['EBSC_Social']))
                                 @if($report->faculty == 'Social Sciences & Languages')
+                                    <td>{{ ++$a }}</td>
                                     @include('component.reportTableComponent')
                                 @endif
                             @endif
                             @if(checkPermission(['EBSC_Mana']))
                                 @if($report->faculty == 'Management Studies')
+                                    <td>{{ ++$a }}</td>
                                     @include('component.reportTableComponent')
                                 @endif
                             @endif
                             @if(checkPermission(['EBSC_Med']))
                                 @if($report->faculty == 'Medicine')
+                                    <td>{{ ++$a }}</td>
                                     @include('component.reportTableComponent')
                                 @endif
                             @endif
                             @if(checkPermission(['EBSC_Agri']))
                                 @if($report->faculty == 'Agricultural Sciences')
+                                    <td>{{ ++$a }}</td>
                                     @include('component.reportTableComponent')
                                 @endif
                             @endif
                             @if(checkPermission(['EBSC_Tech']))
                                 @if($report->faculty == 'Technology')
+                                    <td>{{ ++$a }}</td>
                                     @include('component.reportTableComponent')
                                 @endif
                             @endif
                             @if(checkPermission(['EBSC_GS']))
                                 @if($report->faculty == 'Graduate Studies')
+                                    <td>{{ ++$a }}</td>
                                     @include('component.reportTableComponent')
                                 @endif
                             @endif
@@ -140,7 +149,7 @@
             @foreach ($reports as $report)
                 <tr>
                     @if ($report->reportStatus == 'Fixed')
-                        @if(checkPermission(['examinationBranch']))
+                        @if(checkPermission(['Admin']))
                             @include('component.reportTableComponent')
                         @endif
                         @if(checkPermission(['EBSC_Applied']))
