@@ -1,1 +1,1 @@
-Your report updated
+Your report {{$status}}

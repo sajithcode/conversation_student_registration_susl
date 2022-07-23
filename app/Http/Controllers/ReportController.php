@@ -84,7 +84,7 @@ class ReportController extends Controller
             'reportStatus'=>$request->input('reportStatus'),
         ]);
 
-        Mail:: to($request->email)->send(new ReportUpdate());
+        Mail:: to($request->email)->send(new ReportUpdate($request->input('reportStatus')));
 
         return redirect()->route('report.index')
             ->with('success', 'Report updated successfully');

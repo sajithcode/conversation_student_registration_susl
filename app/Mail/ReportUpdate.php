@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class ReportUpdate extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $status;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($status)
     {
-        //
+        $this->status = $status;
     }
 
     /**
