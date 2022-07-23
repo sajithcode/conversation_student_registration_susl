@@ -95,11 +95,18 @@ class EligibleStudentsController extends Controller
         if($request->input('regNum')) {
             $eligibleStudent->update([
                 'nameWithInitials' => $request->input('nameWithInitials'),
+                'fullNameInEnglishBlock' => $request->input('fullNameInEnglishBlock'),
+                'fullNameInSinhala' => $request->input('fullNameInSinhala'),
+                'gender' => $request->input('gender'),
+                'email' => $request->input('email'),
+                'degreeName' => $request->input('degreeName'),
                 'regNum' => $request->input('regNum'),
                 'indexNum' => $request->input('indexNum'),
+                'monthAndYearExamination' => $request->input('monthAndYearExamination'),
+                'degreeClass' => $request->input('degreeClass'),
                 'faculty' => $request->input('faculty'),
                 'department' => $request->input('department'),
-                'degreeName' => $request->input('degreeName'),
+
             ]);
 
             return redirect()->route('eligibleStudents.edit',$eligibleStudent->id)
