@@ -1,4 +1,4 @@
-Confirm {{$name}}
+{{--Confirm {{$name}}--}}
 
 {{--<form action="{{ route('eligibleStudents.update',2) }}" method="POST">--}}
 {{--    @csrf--}}
@@ -13,5 +13,5 @@ Confirm {{$name}}
 {{--</form>--}}
 
 {{--<a class="nav-link" href="{{ route('eligibleStudents.update',2) }}" >Verify</a>--}}
-<a class="nav-link" href="{{ url('/completeEmailVerify',) }}" >Verify</a>
+<a class="nav-link" href="{{ url('/completeEmailVerify',) }}" >Click here to verify</a>
 

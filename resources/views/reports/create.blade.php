@@ -43,7 +43,24 @@
                     <input required type="text" name="email" class="form-control" placeholder="Email">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Faculty:</strong>
 
+                    <select required name="faculty" class="custom-select" id="inputGroupSelect01" >
+                        <option selected>Choose...</option>
+                        {{--                                                <option value="Graduate Studies">Graduate Studies</option>--}}
+                        <option value="Agricultural Sciences">Agricultural Sciences</option>
+                        <option value="Applied Sciences">Applied Sciences</option>
+                        <option value="Geomatics">Geomatics</option>
+                        <option value="Management Studies">Management Studies</option>
+                        <option value="Medicine">Medicine</option>
+                        <option value="Social Sciences & Languages">Social Sciences & Languages</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Graduate Studies">Graduate Studies</option>
+                    </select>
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Description:</strong>

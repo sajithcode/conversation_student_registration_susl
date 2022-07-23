@@ -154,7 +154,7 @@
     </div>
 
     <div style="margin: 50px">
-        @if(checkPermission(['examinationBranch']))
+        @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
 
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -254,7 +254,7 @@
                 });
             </script>
 
-            @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
+            @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
 {{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
                 <div class="form-group" style="margin-top: 20px">
                     <div>
@@ -309,7 +309,7 @@
                 <th>Name</th>
                 <th>Register Number</th>
                 <th>Index Number</th>
-                @if(checkPermission(['examinationBranch','viceChancellor']))
+                @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                 <th>Faculty</th>
                 <th>Department</th>
                 <th>Degree Name</th>
@@ -443,7 +443,7 @@
                     @endif
 
 
-                    @if(checkPermission(['examinationBranch','viceChancellor']))
+                    @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                     <td>{{ $eligibleStudent->faculty }}</td>
                     <td>{{ $eligibleStudent->department }}</td>
                     <td>{{ $eligibleStudent->degreeName }}</td>
@@ -456,7 +456,7 @@
 
 
 
-                            @if(checkPermission(['examinationBranch']))
+                            @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                             <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
 
                             @csrf
@@ -491,7 +491,7 @@
                     <th>Name</th>
                     <th>Register Number</th>
                     <th>Index Number</th>
-                    @if(checkPermission(['examinationBranch','viceChancellor']))
+                    @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                     <th>Faculty</th>
                     <th>Department</th>
                     <th>Degree Name</th>
@@ -630,7 +630,7 @@
                                     </form>
                                 @endif
 
-                                @if(checkPermission(['examinationBranch','viceChancellor']))
+                                @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                         <td>{{ $eligibleStudent->faculty }}</td>
                         <td>{{ $eligibleStudent->department }}</td>
                                 <td>{{ $eligibleStudent->degreeName }}</td>
@@ -643,7 +643,7 @@
 
 
 
-                                    @if(checkPermission(['examinationBranch']))
+                                    @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                                         <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
 
                                         @csrf
@@ -680,7 +680,7 @@
                     <th>Faculty</th>
                     <th>Department</th>
                     <th>Degree Name</th>
-                    @if(checkPermission(['examinationBranch']))
+                    @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                         <th width="280px">Action</th>
                     @endif
                 </tr>
@@ -712,7 +712,7 @@
                             <td>{{ $eligibleStudent->department }}</td>
                             <td>{{ $eligibleStudent->degreeName }}</td>
 
-                        @if(checkPermission(['examinationBranch']))
+                        @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                                 <td>
                                     <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
 
@@ -720,7 +720,7 @@
 
 
 
-                                        @if(checkPermission(['examinationBranch']))
+                                        @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                                             <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
 
                                             @csrf

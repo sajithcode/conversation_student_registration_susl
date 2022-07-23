@@ -13,6 +13,7 @@ class Report extends Model
 
         'email',
         'reportStatus',
+        'faculty',
         'description'
 
     ];

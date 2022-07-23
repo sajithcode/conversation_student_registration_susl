@@ -74,6 +74,42 @@
                         {{$std->nameWithInitials}}
                     </div>
                 </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Name In English Block Capital:</strong>
+                        {{$std->fullNameInEnglishBlock}}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Full Name In Sinhala:</strong>
+                        {{$std->fullNameInSinhala}}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Gender:</strong>
+                        {{$std->gender}}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Email:</strong>
+                        {{$std->email}}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Degree Name:</strong>
+                        {{$std->degreeName}}
+                    </div>
+                </div>
+
                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Registration Number:</strong>
@@ -86,7 +122,22 @@
                         {{$std->indexNum}}
                     </div>
                 </div>
-               <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Month And Year of Examination:</strong>
+                        {{$std->monthAndYearExamination}}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Degree class:</strong>
+                        {{$std->degreeClass}}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Faculty:</strong>
                         {{$std->faculty}}
@@ -98,12 +149,7 @@
                         {{$std->department}}
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Degree Name:</strong>
-                        {{$std->degreeName}}
-                    </div>
-                </div>
+
 
 
 

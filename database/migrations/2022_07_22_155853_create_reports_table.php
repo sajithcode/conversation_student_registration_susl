@@ -18,6 +18,7 @@ class CreateReportsTable extends Migration
             $table->string('email');
             $table->string('reportStatus')->default('Reported');;
             $table->string('description');
+            $table->string('faculty');
             $table->timestamps();
         });
     }

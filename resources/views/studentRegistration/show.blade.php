@@ -175,7 +175,7 @@
 
 
 
-        @if(checkPermission(['examinationBranch']))
+        @if(checkPermission(['examinationBranch','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
 
         <form action="{{ route('studentRegistration.update',$studentRegistration->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
