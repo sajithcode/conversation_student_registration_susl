@@ -228,6 +228,7 @@
                 </div>
 
 
+                <input style="display: none" value={{$studentRegistration->email}}  type="text" name="email" class="form-control" placeholder="Email">
 
 
 

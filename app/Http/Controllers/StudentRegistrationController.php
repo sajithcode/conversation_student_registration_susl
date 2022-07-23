@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Exports\StudentRegistrationExport;
 use App\Exports\StudentRegistrationExportByFaculty;
+use App\Mail\RegistrationUpdate;
 use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StudentRegistrationController extends Controller
@@ -181,11 +183,15 @@ class StudentRegistrationController extends Controller
                 'statusMessage' => 'none',
             ]);
         }else{
-            $studentRegistration->update([
 
+            $studentRegistration->update([
                 'status' => $request->input('status'),
                 'statusMessage' => $request->input('statusMessage'),
             ]);
+            Mail:: to($request->email)->send(new RegistrationUpdate($request->input('status')));
+
+            return redirect()->route('eligibleStudents.index')
+                ->with('success','Registration updated successfully');
         }
 
 

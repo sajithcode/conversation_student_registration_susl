@@ -43,15 +43,15 @@ class MailController extends Controller
 
 
 
-        $validator = Validator::make($request->all(), [
-            'email' => ['required', 'string', 'email', 'max:255','regex:/sab.ac.lk/'],
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('verifyEmail')
-                ->withErrors($validator)
-                ->withInput();
-        }
+//        $validator = Validator::make($request->all(), [
+//            'email' => ['required', 'string', 'email', 'max:255','regex:/sab.ac.lk/'],
+//        ]);
+//
+//        if ($validator->fails()) {
+//            return redirect('verifyEmail')
+//                ->withErrors($validator)
+//                ->withInput();
+//        }
 
 
         session_start();
