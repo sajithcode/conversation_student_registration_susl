@@ -20,11 +20,11 @@ class EligibleStudentsController extends Controller
     {
         session_start();
 
-        $stdEmail = $_SESSION["email"];
+//        $stdEmail = $_SESSION["email"];
 
         $studentRegistrations = StudentRegistration::all();
         $eligibleStudents = EligibleStudent::all();
-        return view('eligibleStudents.index',compact('eligibleStudents','studentRegistrations','stdEmail'));
+        return view('eligibleStudents.index',compact('eligibleStudents','studentRegistrations'));
         //
     }
 
@@ -81,6 +81,12 @@ class EligibleStudentsController extends Controller
 
     }
 
+    public function reportedEdit(EligibleStudent $eligibleStudent)
+    {
+        return view('eligibleStudents.reportedEdit',compact('eligibleStudent'));
+
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -100,14 +106,26 @@ class EligibleStudentsController extends Controller
                 'degreeName' => $request->input('degreeName'),
             ]);
 
+            return redirect()->route('eligibleStudents.edit',$eligibleStudent->id)
+                ->with('success', 'Successfully updated');
+
+        }elseif (($request->input('cloakIssueDate'))){
+            $eligibleStudent->update([
+                'cloakIssueDate' => $request->input('cloakIssueDate'),
+                'cloakReturnDate' => $request->input('cloakReturnDate'),
+                'garlandReturnDate' => $request->input('garlandReturnDate'),
+            ]);
+
             return redirect()->route('eligibleStudents.index')
-                ->with('success', 'Product updated successfully');
-        }else{
+                ->with('success', 'Successfully updated');
+        }
+
+        else{
             $eligibleStudent->update([
                 'status'=>'Confirmed',
             ]);
             return redirect()->route('eligibleStd')
-                ->with('success', 'Product updated successfully');
+                ->with('success', 'Your data successfully confirmed');
 //            $studentRegistrations = StudentRegistration::all();
 //            $eligibleStudents = EligibleStudent::all();
 //            return view('eligibleStudents.index',compact('eligibleStudents','studentRegistrations'));
@@ -173,12 +191,13 @@ class EligibleStudentsController extends Controller
         $data->save();
 
 
-        $studentRegistrations = StudentRegistration::all();
-        $eligibleStudents = EligibleStudent::all();
-        $student = EligibleStudent::where(
-            'email', $request->email)->get();
-        return view('checkedData',compact('student','studentRegistrations','eligibleStudents'));
-
+//        $studentRegistrations = StudentRegistration::all();
+//        $eligibleStudents = EligibleStudent::all();
+//        $student = EligibleStudent::where(
+//            'email', $request->email)->get();
+//        return view('checkedData',compact('student','studentRegistrations','eligibleStudents'));
+        return redirect()->route('checkData')
+            ->with('success','You already complete the email verification.');
     }
 
 

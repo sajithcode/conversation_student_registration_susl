@@ -25,7 +25,13 @@
                 {{ $report->description }}
             </div>
         </div>
-
+        @foreach ($eligibleStudents as $eligibleStudent)
+            @if($eligibleStudent->email==$report->email)
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                <a class="btn btn-success" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit Details</a>
+                </div>
+            @endif
+        @endforeach
 
         @if(checkPermission(['examinationBranch']))
 

@@ -10,6 +10,7 @@ use App\Models\StudentRegistration;
 use App\Models\VerifiedEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class MailController extends Controller
 {
@@ -39,6 +40,19 @@ class MailController extends Controller
     }
 
     public function sendConfirmedMail(Request $request){
+
+
+        $validator = Validator::make($request->all(), [
+            'email' => ['required', 'string', 'email', 'max:255','regex:/sab.ac.lk/'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('verifyEmail')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+
         session_start();
         $id = 10;
         $_SESSION["user_id"] = $id;
@@ -65,7 +79,7 @@ class MailController extends Controller
                     }
                     if(($std->email==$request->email)&&($std->status=='Pending')){
                         return redirect()->route('checkData')
-                            ->with('success','Student add successfully.');
+                            ->with('success','You already complete the email verification.');
                     }
 
 //                    else{

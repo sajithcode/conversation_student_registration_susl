@@ -16,13 +16,22 @@ class CreateEligibleStudentsTable extends Migration
         Schema::create('eligible_students', function (Blueprint $table) {
             $table->id();
             $table->string('nameWithInitials');
+            $table->string('fullNameInEnglishBlock');
+            $table->string('fullNameInSinhala');
+            $table->string('gender');
+            $table->string('email');
+            $table->string('degreeName');
             $table->string('regNum');
             $table->string('indexNum');
-            $table->string('faculty');
-            $table->string('department');
-            $table->string('degreeName');
+            $table->string('monthAndYearExamination');
+            $table->string('degreeClass');
 
-            $table->string('email');
+            $table->string('faculty');
+            $table->string('department')->default('Null');
+
+            $table->string('cloakIssueDate')->default('Not Yet');
+            $table->string('cloakReturnDate')->default('Not Yet');
+            $table->string('garlandReturnDate')->default('Not Yet');
 
             $table->string('status')->default('Pending');
 

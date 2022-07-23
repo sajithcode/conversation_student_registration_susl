@@ -72,7 +72,9 @@ Route::put('/statusConfirm',[App\Http\Controllers\EligibleStudentsController::cl
 
 Route::get('/completeEmailVerification',[App\Http\Controllers\EligibleStudentsController::class, 'completeEmailVerification'])->name('completeEmailVerification');;
 Route::get('/getByEmail',[App\Http\Controllers\EligibleStudentsController::class, 'getByEmail'])->name('getByEmail');;
-Route::get('/getByRegNum',[App\Http\Controllers\EligibleStudentsController::class, 'getByRegNum'])->name('getByRegNum');;
+Route::get('/getByRegNum',[App\Http\Controllers\EligibleStudentsController::class, 'getByRegNum'])->name('getByRegNum');
+
+Route::put('/reportedEdit',[App\Http\Controllers\EligibleStudentsController::class, 'reportedEdit'])->name('reportedEdit');;
 
 
 Route::get('/', function () {

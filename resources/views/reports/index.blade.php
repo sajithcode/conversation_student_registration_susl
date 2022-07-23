@@ -32,8 +32,17 @@
                     <td>{{ $report->email }}</td>
                     <td>{{ $report->reportStatus }}</td>
 
+
+
                     <td>
                                         <a class="btn btn-info" href="{{ route('report.show',$report->id) }}">Show</a>
+
+{{--                        @foreach ($eligibleStudents as $eligibleStudent)--}}
+{{--                            @if($eligibleStudent->email==$report->email)--}}
+{{--                                <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>--}}
+{{--                            @endif--}}
+{{--                        @endforeach--}}
+
                     </td>
 
                 </tr>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EligibleStudent;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class ReportController extends Controller
     public function index()
     {
         $reports = Report::all();
-        return view('reports.index',compact('reports',));
+        $eligibleStudents = EligibleStudent::all();
+        return view('reports.index',compact('reports','eligibleStudents'));
 
     }
 
@@ -39,7 +41,7 @@ class ReportController extends Controller
     {
         Report::create($request->all());
         return redirect()->route('checkData')
-            ->with('success','Student add successfully.');
+            ->with('success','Reported successfully.');
 //
     }
 
@@ -51,7 +53,8 @@ class ReportController extends Controller
      */
     public function show(Report $report)
     {
-        return view('reports.show',compact('report'));
+        $eligibleStudents = EligibleStudent::all();
+        return view('reports.show',compact('report','eligibleStudents'));
 
     }
 
@@ -79,7 +82,7 @@ class ReportController extends Controller
             'reportStatus'=>$request->input('reportStatus'),
         ]);
         return redirect()->route('report.index')
-            ->with('success', 'Product updated successfully');
+            ->with('success', 'Report updated successfully');
     }
 
     /**

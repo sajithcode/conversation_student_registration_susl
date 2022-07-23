@@ -3,6 +3,11 @@
 @section('content')
 
     <div style="margin: 60px" class="row">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
         @php
             $i = 1
         @endphp

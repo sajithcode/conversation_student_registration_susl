@@ -75,7 +75,7 @@
 {{--                            @endif--}}
 
 {{--                            <li class="nav-item dropdown">--}}
-                                <a style="color: #a8a8a8" class="dropdown-item" href="#" aria-expanded="false" v-pre>
+                                <a href="{{ route('eligibleStudents.index') }}"  style="color: #a8a8a8" class="dropdown-item" href="#" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 

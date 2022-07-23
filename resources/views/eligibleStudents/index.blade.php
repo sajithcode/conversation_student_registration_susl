@@ -3,6 +3,7 @@
 
 @section('content')
     <div style="margin: 50px"  class="">
+        <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
 
         @if(checkPermission(['student']))
 
@@ -142,7 +143,11 @@
                     <h2>Eligible Student List</h2>
                 </div>
             </div>
-
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
         </div>
 
 
@@ -304,11 +309,17 @@
                 <th>Name</th>
                 <th>Register Number</th>
                 <th>Index Number</th>
+                @if(checkPermission(['examinationBranch','viceChancellor']))
                 <th>Faculty</th>
                 <th>Department</th>
                 <th>Degree Name</th>
-                @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
                 <th >Action</th>
+                @endif
+                @if(checkPermission(['mainStoreClark']))
+                    <th>Cloak Issue</th>
+                    <th>Cloak Return</th>
+                    <th>Garland Return</th>
+                    <th >Update</th>
                 @endif
             </tr>
             @php
@@ -320,11 +331,124 @@
                     <td>{{ $eligibleStudent->nameWithInitials }}</td>
                     <td>{{ $eligibleStudent->regNum }}</td>
                     <td>{{ $eligibleStudent->indexNum }}</td>
+
+
+                    @if(checkPermission(['mainStoreClark']))
+                        <form action="{{ route('eligibleStudents.update',$eligibleStudent->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <td>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker1').datepicker({
+                                            format: "mm/dd/yyyy",
+                                            weekStart: 0,
+                                            calendarWeeks: true,
+                                            autoclose: true,
+                                            todayHighlight: true,
+                                            orientation: "auto",
+
+                                        });
+                                    });
+                                </script>
+
+
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <input required value="{{ $eligibleStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+
+                                    {{--                                    <div class="form-group">--}}
+{{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
+{{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
+{{--                                            <span class="input-group-addon">--}}
+{{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--                        </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker2').datepicker({
+                                            format: "mm/dd/yyyy",
+                                            weekStart: 0,
+                                            calendarWeeks: true,
+                                            autoclose: true,
+                                            todayHighlight: true,
+                                            orientation: "auto",
+
+                                        });
+                                    });
+                                </script>
+
+
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <input required value="{{ $eligibleStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+
+                                    {{--                                    <div class="form-group">--}}
+{{--                                        <div class='input-group date' id='datetimepicker2'>--}}
+{{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
+{{--                                            <span class="input-group-addon">--}}
+{{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--                        </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+                                </div>
+
+                            </td>
+
+
+
+{{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
+                            <td>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker3').datepicker({
+                                            format: "mm/dd/yyyy",
+                                            weekStart: 0,
+                                            calendarWeeks: true,
+                                            autoclose: true,
+                                            todayHighlight: true,
+                                            orientation: "auto",
+
+                                        });
+                                    });
+                                </script>
+
+
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <input required value="{{ $eligibleStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+
+                                    {{--                                    <div class="form-group">--}}
+{{--                                        <div class='input-group date' id='datetimepicker3'>--}}
+{{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
+{{--                                            <span class="input-group-addon">--}}
+{{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--                        </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+                                </div>
+
+                            </td>
+
+
+{{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
+                            <td>
+                                <button type="submit" class="btn btn-danger">Update</button>
+                            </td>
+                        </form>
+                    @endif
+
+
+                    @if(checkPermission(['examinationBranch','viceChancellor']))
                     <td>{{ $eligibleStudent->faculty }}</td>
                     <td>{{ $eligibleStudent->department }}</td>
                     <td>{{ $eligibleStudent->degreeName }}</td>
 
-                @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
+
                     <td>
                         <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
 
@@ -367,11 +491,17 @@
                     <th>Name</th>
                     <th>Register Number</th>
                     <th>Index Number</th>
+                    @if(checkPermission(['examinationBranch','viceChancellor']))
                     <th>Faculty</th>
                     <th>Department</th>
                     <th>Degree Name</th>
-                    @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
                         <th>Action</th>
+                    @endif
+                    @if(checkPermission(['mainStoreClark']))
+                        <th>Cloak Issue</th>
+                        <th>Cloak Return</th>
+                        <th>Garland Return</th>
+                        <th >Update</th>
                     @endif
                 </tr>
                 @php
@@ -390,11 +520,122 @@
                         <td>{{ $eligibleStudent->nameWithInitials }}</td>
                         <td>{{ $eligibleStudent->regNum }}</td>
                         <td>{{ $eligibleStudent->indexNum }}</td>
+
+                                @if(checkPermission(['mainStoreClark']))
+                                    <form action="{{ route('eligibleStudents.update',$eligibleStudent->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <td>
+                                            <script type="text/javascript">
+                                                $(function () {
+                                                    $('#datetimepicker1').datepicker({
+                                                        format: "mm/dd/yyyy",
+                                                        weekStart: 0,
+                                                        calendarWeeks: true,
+                                                        autoclose: true,
+                                                        todayHighlight: true,
+                                                        orientation: "auto",
+
+                                                    });
+                                                });
+                                            </script>
+
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <input required value="{{ $eligibleStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+
+                                                {{--                                    <div class="form-group">--}}
+                                                {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
+                                                {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
+                                                {{--                                            <span class="input-group-addon">--}}
+                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
+                                                {{--                        </span>--}}
+                                                {{--                                        </div>--}}
+                                                {{--                                    </div>--}}
+                                            </div>
+
+                                        </td>
+
+
+                                        <td>
+                                            <script type="text/javascript">
+                                                $(function () {
+                                                    $('#datetimepicker2').datepicker({
+                                                        format: "mm/dd/yyyy",
+                                                        weekStart: 0,
+                                                        calendarWeeks: true,
+                                                        autoclose: true,
+                                                        todayHighlight: true,
+                                                        orientation: "auto",
+
+                                                    });
+                                                });
+                                            </script>
+
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <input required value="{{ $eligibleStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+
+                                                {{--                                    <div class="form-group">--}}
+                                                {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
+                                                {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
+                                                {{--                                            <span class="input-group-addon">--}}
+                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
+                                                {{--                        </span>--}}
+                                                {{--                                        </div>--}}
+                                                {{--                                    </div>--}}
+                                            </div>
+
+                                        </td>
+
+
+
+                                        {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
+                                        <td>
+                                            <script type="text/javascript">
+                                                $(function () {
+                                                    $('#datetimepicker3').datepicker({
+                                                        format: "mm/dd/yyyy",
+                                                        weekStart: 0,
+                                                        calendarWeeks: true,
+                                                        autoclose: true,
+                                                        todayHighlight: true,
+                                                        orientation: "auto",
+
+                                                    });
+                                                });
+                                            </script>
+
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <input required value="{{ $eligibleStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+
+                                                {{--                                    <div class="form-group">--}}
+                                                {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
+                                                {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
+                                                {{--                                            <span class="input-group-addon">--}}
+                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
+                                                {{--                        </span>--}}
+                                                {{--                                        </div>--}}
+                                                {{--                                    </div>--}}
+                                            </div>
+
+                                        </td>
+
+
+                                        {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
+                                        <td>
+                                            <button type="submit" class="btn btn-danger">Update</button>
+                                        </td>
+                                    </form>
+                                @endif
+
+                                @if(checkPermission(['examinationBranch','viceChancellor']))
                         <td>{{ $eligibleStudent->faculty }}</td>
                         <td>{{ $eligibleStudent->department }}</td>
                                 <td>{{ $eligibleStudent->degreeName }}</td>
 
-                            @if(checkPermission(['examinationBranch','mainStoreClark','viceChancellor']))
+
                             <td>
                                 <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
 

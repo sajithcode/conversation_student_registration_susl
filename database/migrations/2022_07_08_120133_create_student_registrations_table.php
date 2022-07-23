@@ -26,7 +26,7 @@ class CreateStudentRegistrationsTable extends Migration
             $table->string('email');
 
             $table->string('faculty');
-            $table->string('department');
+            $table->string('department')->default('Null');
 
             $table->string('degreeName');
             $table->string('regNum');

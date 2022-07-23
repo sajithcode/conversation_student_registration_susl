@@ -17,7 +17,13 @@
 
                 <div class="form-group">
                     <strong>Email Address:</strong>
-                    <input required type="text" name="email" class="form-control" placeholder="Email">
+{{--                    <input required type="text" name="email" class="form-control" placeholder="Email">--}}
+                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                 </div>
             </div>
 

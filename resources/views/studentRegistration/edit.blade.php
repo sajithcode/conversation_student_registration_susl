@@ -41,31 +41,32 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Name with initials:</strong>
-                        <input required value="{{ $studentRegistration->nameWithInitial }}" type="text" name="nameWithInitial" class="form-control" placeholder="Name with initials">
+                        <input readonly value="{{ $studentRegistration->nameWithInitials }}" required type="text" name="nameWithInitial" class="form-control" placeholder="Name with initials">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Full name in English block letters:</strong>
-                        <input required value="{{ $studentRegistration->fullNameInEnglishBlock }}" type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
+                        <input readonly value="{{ $studentRegistration->fullNameInEnglishBlock }}" type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Full name in Sinhala:</strong>
-                        <input required value="{{ $studentRegistration->fullNameInSinhala }}" type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
+                        <input readonly value="{{ $studentRegistration->fullNameInSinhala }}" type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Gender:</strong>
+                        <input readonly value="{{ $studentRegistration->gender }}" type="text" name="gender" class="form-control" placeholder="Gender">
 
-                        <select required name="gender" class="custom-select" id="inputGroupSelect01" >
-                            <option selected>{{ $studentRegistration->gender }}</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
+{{--                        <select required name="gender" class="custom-select" id="inputGroupSelect01" >--}}
+{{--                            <option selected>{{ $studentRegistration->gender }}</option>--}}
+{{--                            <option value="Male">Male</option>--}}
+{{--                            <option value="Female">Female</option>--}}
+{{--                        </select>--}}
                     </div>
                 </div>
 
@@ -93,7 +94,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Email:</strong>
-                        <input required value="{{ $studentRegistration->email }}" type="text" name="email" class="form-control" placeholder="Email">
+                        <input readonly value="{{ $studentRegistration->email }}" type="text" name="email" class="form-control" placeholder="Email">
                     </div>
                 </div>
 
@@ -152,12 +153,14 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Month and Year of the Degree Examination: </strong>
-                        <div class='input-group date' id='datetimepicker2'>
-                            <input required value="{{ $studentRegistration->monthAndYearExamination }}" placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />
-                            <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                        </div>
+                        <input readonly value="{{ $studentRegistration->monthAndYearExamination }}" required type="text" name="monthAndYearExamination" class="form-control" placeholder="Month and year of examination">
+
+                        {{--                        <div class='input-group date' id='datetimepicker2'>--}}
+{{--                            <input required value="{{ $studentRegistration->monthAndYearExamination }}" placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />--}}
+{{--                            <span class="input-group-addon">--}}
+{{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--                        </span>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
 {{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
@@ -178,25 +181,27 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Mark the relevant one:</strong>
-                        <div class="row">
-                            <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
-                                <strong style="margin-right:10px">1st Class:</strong>
-                                <input {{ ($studentRegistration->degreeClass == "1st Class") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="1st Class" >
-                            </div>
-                            <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
-                                <strong style="margin-right:10px">2nd Upper:</strong>
-                                <input {{ ($studentRegistration->degreeClass == "2nd Upper") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="2nd Upper" >
-                            </div>
-                            <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
-                                <strong style="margin-right:10px">2nd Lower:</strong>
-                                <input {{ ($studentRegistration->degreeClass == "2nd Lower") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="2nd Lower" >
-                            </div>
-                            <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">
-                                <strong style="margin-right:10px">Ordinary Pass:</strong>
-                                <input {{ ($studentRegistration->degreeClass == "Ordinary Pass") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="Ordinary Pass" >
-                            </div>
+                        <input readonly value="{{ $studentRegistration->degreeClass }}" required type="text" name="degreeClass" class="form-control" placeholder="Degree Class">
 
-                        </div>
+                        {{--                        <div class="row">--}}
+{{--                            <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">--}}
+{{--                                <strong style="margin-right:10px">1st Class:</strong>--}}
+{{--                                <input {{ ($studentRegistration->degreeClass == "1st Class") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="1st Class" >--}}
+{{--                            </div>--}}
+{{--                            <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">--}}
+{{--                                <strong style="margin-right:10px">2nd Upper:</strong>--}}
+{{--                                <input {{ ($studentRegistration->degreeClass == "2nd Upper") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="2nd Upper" >--}}
+{{--                            </div>--}}
+{{--                            <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">--}}
+{{--                                <strong style="margin-right:10px">2nd Lower:</strong>--}}
+{{--                                <input {{ ($studentRegistration->degreeClass == "2nd Lower") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="2nd Lower" >--}}
+{{--                            </div>--}}
+{{--                            <div style="display: inline-flex; justify-content: center; margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-3">--}}
+{{--                                <strong style="margin-right:10px">Ordinary Pass:</strong>--}}
+{{--                                <input {{ ($studentRegistration->degreeClass == "Ordinary Pass") ? 'checked' : ''}} style="margin-top: 5px" type="radio" class="flat" name="degreeClass" value="Ordinary Pass" >--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
 
                     </div>
                 </div>
@@ -319,22 +324,31 @@
                     </div>
                 </div>
 
-                <div>
-                    I do solemnly declare that I shall faithfully observe the statutes, by - laws and regulations and rules of the Sabaragamuwa University of Sri Lanka in so far as they may apply to me and that I shall not make use of the privileges to be presently conferred on me in any manners so as bring the University into disrepute.
+                <div class="row">
+                    <div style="display: inline-flex; justify-content: center" class="col-xs-1 col-sm-1 col-md-1">
+                        <input style="margin-top: 14px" required type="checkbox" name="vehicle" value="Bike">
+                    </div>
+                    <div class="col-xs-11 col-sm-11 col-md-11">
+                        <div>
+                            I do solemnly declare that I shall faithfully observe the statutes, by - laws and regulations and rules of the Sabaragamuwa University of Sri Lanka in so far as they may apply to me and that I shall not make use of the privileges to be presently conferred on me in any manners so as bring the University into disrepute.
+                        </div>
+                    </div>
                 </div>
                 <div class="row" style="margin-top: 30px">
                     <div class="col-xs-1 col-sm-1 col-md-1" style="margin-top: 8px">
                         <strong>Date: </strong>
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3">
-                        <div class="form-group">
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input required value="{{ $studentRegistration->signedDate }}" name="signedDate" type='text' class="form-control" />
-                                <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                            </div>
-                        </div>
+                        <input readonly value="{{Carbon\Carbon::now()->toDateString()}}" type="text" name="signedDate" class="form-control" placeholder="Date">
+
+                        {{--                        <div class="form-group">--}}
+{{--                            <div class='input-group date' id='datetimepicker1'>--}}
+{{--                                <input required value="{{ $studentRegistration->signedDate }}" name="signedDate" type='text' class="form-control" />--}}
+{{--                                <span class="input-group-addon">--}}
+{{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--                        </span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
 
