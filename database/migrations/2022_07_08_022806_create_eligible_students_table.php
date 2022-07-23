@@ -27,7 +27,8 @@ class CreateEligibleStudentsTable extends Migration
             $table->string('degreeClass');
 
             $table->string('faculty');
-            $table->string('department')->default('Null');
+
+            $table->string('department')->default('Never');
 
             $table->string('cloakIssueDate')->default('Not Yet');
             $table->string('cloakReturnDate')->default('Not Yet');

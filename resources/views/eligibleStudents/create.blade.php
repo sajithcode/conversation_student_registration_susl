@@ -175,7 +175,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Department:</strong>
-                    <input type="text" name="department" class="form-control"
+                    <input value="Never" type="text" name="department" class="form-control"
                            placeholder="Department">
                 </div>
             </div>

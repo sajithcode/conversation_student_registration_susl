@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    <?php
+    session_start();
+//    echo $_SESSION["user_id"]
+    //    $_SESSION["user_id"] = $id;
+
+    ?>
     <div style="margin: 50px">
         <div class="row">
             @if ($message = Session::get('success'))
@@ -13,7 +19,14 @@
                     <h2>Edit Student</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="javascript:history.back()"> Back</a>
+                    @if($_SESSION["user_id"]!=0)
+                        <a class="btn btn-primary" href="{{ route('report.show',$_SESSION["user_id"]) }}"> Back</a>
+{{--                                            <a class="btn btn-primary" href="javascript:history.back()"> Back</a>--}}
+                    @endif
+                        @if($_SESSION["user_id"]==0)
+                            <a class="btn btn-primary" href="{{ route('eligibleStudents.index') }}"> Back</a>
+                            {{--                                            <a class="btn btn-primary" href="javascript:history.back()"> Back</a>--}}
+                        @endif
                 </div>
             </div>
         </div>

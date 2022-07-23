@@ -2,6 +2,12 @@
 
 
 @section('content')
+    <?php
+//    session_start();
+    $id = 0;
+    $_SESSION["user_id"] = $id;
+
+    ?>
     <div style="margin: 50px"  class="">
         <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
 

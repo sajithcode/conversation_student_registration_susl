@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="row" style="margin: 50px">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -27,6 +28,11 @@
         </div>
         @foreach ($eligibleStudents as $eligibleStudent)
             @if($eligibleStudent->email==$report->email)
+                @php
+                    session_start();
+               $_SESSION["user_id"] = $report->id;
+                @endphp
+
                 <div class="col-xs-12 col-sm-12 col-md-12">
                 <a class="btn btn-success" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit Details</a>
                 </div>
