@@ -71,17 +71,51 @@
             @foreach ($reports as $report)
                 <tr>
                     @if ($report->reportStatus == 'Reported')
-                    <td>{{ ++$a }}</td>
-                    <td>{{ $report->email }}</td>
-                    <td>{{ $report->faculty }}</td>
-                    <td>{{ $report->reportStatus }}</td>
-
-
-
-                    <td>
-                        <a class="btn btn-info" href="{{ route('report.show',$report->id) }}">Show</a>
-                    </td>
+                        @if(checkPermission(['examinationBranch']))
+                            @include('component.reportTableComponent')
+                        @endif
+                            @if(checkPermission(['EBSC_Applied']))
+                                @if($report->faculty == 'Applied Sciences')
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
+                            @if(checkPermission(['EBSC_Geo']))
+                                @if($report->faculty == 'Geomatics')
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
+                            @if(checkPermission(['EBSC_Social']))
+                                @if($report->faculty == 'Social Sciences & Languages')
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
+                            @if(checkPermission(['EBSC_Mana']))
+                                @if($report->faculty == 'Management Studies')
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
+                            @if(checkPermission(['EBSC_Med']))
+                                @if($report->faculty == 'Medicine')
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
+                            @if(checkPermission(['EBSC_Agri']))
+                                @if($report->faculty == 'Agricultural Sciences')
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
+                            @if(checkPermission(['EBSC_Tech']))
+                                @if($report->faculty == 'Technology')
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
+                            @if(checkPermission(['EBSC_GS']))
+                                @if($report->faculty == 'Graduate Studies')
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
                     @endif
+
                 </tr>
             @endforeach
 
@@ -106,15 +140,50 @@
             @foreach ($reports as $report)
                 <tr>
                     @if ($report->reportStatus == 'Fixed')
-                        <td>{{ ++$a }}</td>
-                        <td>{{ $report->email }}</td>
-                        <td>{{ $report->faculty }}</td>
-                        <td>{{ $report->reportStatus }}</td>
+                        @if(checkPermission(['examinationBranch']))
+                            @include('component.reportTableComponent')
+                        @endif
+                        @if(checkPermission(['EBSC_Applied']))
+                            @if($report->faculty == 'Applied Sciences')
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
+                        @if(checkPermission(['EBSC_Geo']))
+                            @if($report->faculty == 'Geomatics')
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
+                        @if(checkPermission(['EBSC_Social']))
+                            @if($report->faculty == 'Social Sciences & Languages')
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
+                        @if(checkPermission(['EBSC_Mana']))
+                            @if($report->faculty == 'Management Studies')
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
+                        @if(checkPermission(['EBSC_Med']))
+                            @if($report->faculty == 'Medicine')
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
+                        @if(checkPermission(['EBSC_Agri']))
+                            @if($report->faculty == 'Agricultural Sciences')
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
+                        @if(checkPermission(['EBSC_Tech']))
+                            @if($report->faculty == 'Technology')
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
+                        @if(checkPermission(['EBSC_GS']))
+                            @if($report->faculty == 'Graduate Studies')
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
 
-                        <td>
-                            <a class="btn btn-info" href="{{ route('report.show',$report->id) }}">Show</a>
-
-                        </td>
                     @endif
                 </tr>
             @endforeach
