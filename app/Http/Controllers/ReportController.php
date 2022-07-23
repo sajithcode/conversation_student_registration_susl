@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ReportUpdate;
 use App\Models\EligibleStudent;
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ReportController extends Controller
 {
@@ -81,6 +83,9 @@ class ReportController extends Controller
         $report->update([
             'reportStatus'=>$request->input('reportStatus'),
         ]);
+
+        Mail:: to($request->email)->send(new ReportUpdate());
+
         return redirect()->route('report.index')
             ->with('success', 'Report updated successfully');
     }
