@@ -76,6 +76,9 @@
                     </form>
                 </div>
             </div>
+            <div class="">{{ __('Help Desk:') }}</div>
+            <div class="">{{ __('Ishan Randika - +94 71 57 57 700') }}</div>
+            <div class="">{{ __('Lohara Chathumini - +94 71 42 24 324 ') }}</div>
 
         </div>
     </div>
