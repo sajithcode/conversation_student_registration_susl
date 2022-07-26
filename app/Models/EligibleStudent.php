@@ -10,14 +10,14 @@ class EligibleStudent extends Model
     use HasFactory;
     protected $fillable = [
         'nameWithInitials',
-        'fullNameInEnglishBlock',
-        'fullNameInSinhala',
+//        'fullNameInEnglishBlock',
+//        'fullNameInSinhala',
         'gender',
-        'email',
+//        'email',
         'degreeName',
         'regNum',
         'indexNum',
-        'monthAndYearExamination',
+//        'monthAndYearExamination',
         'degreeClass',
         'faculty',
         'department',

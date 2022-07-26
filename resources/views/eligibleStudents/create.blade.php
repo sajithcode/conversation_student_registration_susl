@@ -44,19 +44,19 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Full name in English block letters:</strong>
-                    <input required type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
-                </div>
-            </div>
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Full name in English block letters:</strong>--}}
+{{--                    <input required type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Full name in Sinhala:</strong>
-                    <input required type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
-                </div>
-            </div>
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Full name in Sinhala:</strong>--}}
+{{--                    <input required type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -68,12 +68,12 @@
                     </select>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Email:</strong>
-                    <input required type="text" name="email" class="form-control" placeholder="Email">
-                </div>
-            </div>
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Email:</strong>--}}
+{{--                    <input required type="text" name="email" class="form-control" placeholder="Email">--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name of the degree to be conferred:</strong>
@@ -113,17 +113,17 @@
             <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
 
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Month and Year of the Degree Examination: </strong>
-                    <div class='input-group date' id='datetimepicker2'>
-                        <input placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />
-                        <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </span>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Month and Year of the Degree Examination: </strong>--}}
+{{--                    <div class='input-group date' id='datetimepicker2'>--}}
+{{--                        <input placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />--}}
+{{--                        <span class="input-group-addon">--}}
+{{--                                                <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--                                            </span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Mark the relevant cage:</strong>

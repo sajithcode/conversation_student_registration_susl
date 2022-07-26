@@ -18,7 +18,7 @@
                 @endphp
                 @foreach (($eligibleStudents) as $eligibleStudent)
 
-                    @if (strtoupper(trim($eligibleStudent->email)) === strtoupper(trim($stdEmail)))
+                    @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))
                         @php
                             $i = 2
                         @endphp
@@ -29,7 +29,7 @@
                 {{--            1--}}
 
                 @foreach ($studentRegistrations as $studentRegistration)
-                    @if (strtoupper(trim($studentRegistration->email)) === strtoupper(trim($stdEmail)))
+                    @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim(Auth::user()->regNum)))
                         @php
                             $i = 3
                         @endphp
@@ -96,6 +96,11 @@
                     <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
                         <div class="pull-left">
                             <h2 style="color: #00a95a; font-weight: bold">Congratulation! You are Eligible  For Convocation</h2>
+                            <h6 style="color: #030000; font-weight: bold">Please do the necessary payment first and then register to the convocation</h6>
+                            <h6 style="color: #030000; ">Presence - 2,000.00 LKR</h6>
+                            <h6 style="color: #030000; ">Absence - 1,000.00 LKR</h6>
+                            <h6 style="color: #030000; ">Online payments and bank deposits are available</h6>
+                            <h6 style="color: #030000; font-weight: bold">When registering to the system, upload the image version of the payment slip</h6>
 {{--                            <h2 style="color: #00a95a; font-weight: bold">{{$stdEmail}}</h2>--}}
                         </div>
                         <div class="row">

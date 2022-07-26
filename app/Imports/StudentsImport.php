@@ -19,14 +19,14 @@ class StudentsImport implements ToModel, WithHeadingRow
     {
         $eligibleStudent = new EligibleStudent([
             "nameWithInitials" => $row['name_with_initials'],
-            "fullNameInEnglishBlock" => $row['name_in_english_block'],
-            "fullNameInSinhala" => $row['name_in_sinhala'],
+//            "fullNameInEnglishBlock" => $row['name_in_english_block'],
+//            "fullNameInSinhala" => $row['name_in_sinhala'],
             "gender" => $row['gender'],
-            "email" => $row['email'],
+//            "email" => $row['email'],
             "degreeName" => $row['degree_name'],
             "regNum" => $row['reg_number'],
             "indexNum" => $row['index_number'],
-            "monthAndYearExamination" => $row['month_and_year_of_examination'],
+//            "monthAndYearExamination" => $row['month_and_year_of_examination'],
             "degreeClass" => $row['degree_class'],
 
 

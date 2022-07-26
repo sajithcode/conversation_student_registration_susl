@@ -13,5 +13,6 @@
 {{--</form>--}}
 
 {{--<a class="nav-link" href="{{ route('eligibleStudents.update',2) }}" >Verify</a>--}}
-<a class="nav-link" href="{{ url('/completeEmailVerify',) }}" >Click here to verify</a>
+{{--<a class="nav-link" href="{{ url('/completeEmailVerify',) }}" >Click here to verify</a>--}}
 
+Successfully registered to the Sabaragamuwa University of Sri Lanka Convocation System

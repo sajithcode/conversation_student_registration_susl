@@ -7,6 +7,7 @@ use App\Mail\SignUp;
 use App\Models\EligibleStudent;
 use App\Models\Report;
 use App\Models\StudentRegistration;
+use App\Models\User;
 use App\Models\VerifiedEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -34,17 +35,33 @@ class MailController extends Controller
         $eligibleStudents = EligibleStudent::all();
         $reports = Report::all();
         $student = EligibleStudent::where(
-            'email', $_SESSION["email"])->get();
+            'regNum', strtoupper(trim($_SESSION["regNum"])))->get();
         return view('checkedData',compact('student','studentRegistrations','eligibleStudents','reports'));
 
     }
+
+    public function loginfilter(Request $request)
+    {
+//        session_start();
+        $studentRegistrations = StudentRegistration::all();
+        $eligibleStudents = EligibleStudent::all();
+        $reports = Report::all();
+        $student = EligibleStudent::where(
+            'email', $_SESSION["email"])->get();
+
+        return view('loginFilter',compact('eligibleStudents','student','reports','studentRegistrations'));
+
+    }
+
+
+
 
     public function sendConfirmedMail(Request $request){
 
 
 
 //        $validator = Validator::make($request->all(), [
-//            'email' => ['required', 'string', 'email', 'max:255','regex:/sab.ac.lk/'],
+//            'regNum' => ['required', 'string', 'max:255'],
 //        ]);
 //
 //        if ($validator->fails()) {
@@ -59,18 +76,23 @@ class MailController extends Controller
         $_SESSION["user_id"] = $id;
 //        $id = 14;
 //        $_SESSION["user_id"] = $id;
-        $_SESSION["email"] = $request->email;
-        $stdEmail = $request->email;
+        $_SESSION["regNum"] = $request->regNum;
+//        $stdEmail = $request->email;
 
 
         $verifiedEmails = VerifiedEmail::all();
+
+//        $users = User::all();
+
+//        foreach ($verifiedEmails as $mail){
+//            if($mail->email==$request->email){
+
+//        if((strtoupper(trim($_SESSION["user_reg"]))==strtoupper(trim($request->regNum))){
+//
+//        }
         $eligibleStudents = EligibleStudent::all();
-
-        foreach ($verifiedEmails as $mail){
-            if($mail->email==$request->email){
-
                 foreach ($eligibleStudents as $std){
-                    if(($std->email==$request->email)&&($std->status=='Confirmed')){
+                    if((strtoupper(trim($std->regNum))==strtoupper(trim($request->regNum)))&&($std->status=='Confirmed')&&(strtoupper(trim($_SESSION["user_reg"]))==strtoupper(trim($request->regNum)))){
                         return redirect()->route('eligibleStd')
                             ->with('success', 'You already confirmed the details');
 //                        $studentRegistrations = StudentRegistration::all();
@@ -78,9 +100,9 @@ class MailController extends Controller
 //                        return view('eligibleStd',compact('eligibleStudents','studentRegistrations','stdEmail'));
 
                     }
-                    if(($std->email==$request->email)&&($std->status=='Pending')){
+                    if((strtoupper(trim($std->regNum))==strtoupper(trim($request->regNum)))&&($std->status=='Pending')&&(strtoupper(trim($_SESSION["user_reg"]))==strtoupper(trim($request->regNum)))){
                         return redirect()->route('checkData')
-                            ->with('success','You already complete the email verification.');
+                            ->with('success','Confirm your details to continue');
                     }
 
 //                    else{
@@ -97,8 +119,8 @@ class MailController extends Controller
 
 
 
-            }
-        }
+//            }
+//        }
 
 
 //        if($a===1){
@@ -108,15 +130,15 @@ class MailController extends Controller
 
 //        session_start();
 
-            $name = $request->email;
+//            $name = $request->email;
 
 //        $_SESSION['sessionEmail'] = $request->email;
 
-            Mail:: to($request->email)->send(new Confirm($name));
+//            Mail:: to('jishanrandika@gmail.com')->send(new Confirm($name));
 
 
 
-            return view('emailSentView');
+            return view('wrongRegistrationNumber');
 //        }
 
     }

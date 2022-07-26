@@ -37,7 +37,7 @@
     <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST" enctype="multipart/form-data">
         @csrf
         @foreach ($eligibleStudents as $eligibleStudent)
-            @if ($eligibleStudent->email === $stdEmail)
+            @if ($eligibleStudent->regNum === Auth::user()->regNum)
                 <div style="margin: 60px" class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -48,13 +48,13 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Full name in English block letters:</strong>
-                            <input readonly value="{{ $eligibleStudent->fullNameInEnglishBlock }}" type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
+                            <input required type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Full name in Sinhala:</strong>
-                            <input readonly value="{{ $eligibleStudent->fullNameInSinhala }}" type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
+                            <input required type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
                         </div>
                     </div>
 
@@ -95,7 +95,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Email:</strong>
-                            <input readonly value="{{ $eligibleStudent->email }}" type="text" name="email" class="form-control" placeholder="Email">
+                            <input required type="text" name="email" class="form-control" placeholder="Email">
                         </div>
                     </div>
 
@@ -156,14 +156,14 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Month and Year of the Degree Examination: </strong>
-                            <input readonly value="{{ $eligibleStudent->monthAndYearExamination }}" required type="text" name="monthAndYearExamination" class="form-control" placeholder="Month and year of examination">
+{{--                            <input readonly value="{{ $eligibleStudent->monthAndYearExamination }}" required type="text" name="monthAndYearExamination" class="form-control" placeholder="Month and year of examination">--}}
 
-                            {{--                            <div class='input-group date' id='datetimepicker2'>--}}
-{{--                                <input placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />--}}
-{{--                                <span class="input-group-addon">--}}
-{{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-{{--                        </span>--}}
-{{--                            </div>--}}
+                                                        <div class='input-group date' id='datetimepicker2'>
+                                <input placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />
+                                <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                            </div>
                         </div>
                     </div>
 

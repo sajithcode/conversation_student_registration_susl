@@ -9,6 +9,7 @@ use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StudentRegistrationController extends Controller
@@ -32,10 +33,10 @@ class StudentRegistrationController extends Controller
     {
         session_start();
 
-        $stdEmail = $_SESSION["email"];
+//        $stdEmail = $_SESSION["email"];
 
         $eligibleStudents = EligibleStudent::all();
-        return view('studentRegistration.create',compact('eligibleStudents','stdEmail'));
+        return view('studentRegistration.create',compact('eligibleStudents',));
     }
 
 
@@ -43,11 +44,11 @@ class StudentRegistrationController extends Controller
     {
         session_start();
 
-        $stdEmail = $_SESSION["email"];
+//        $stdEmail = $_SESSION["email"];
 
         $studentRegistrations = StudentRegistration::all();
         $eligibleStudents = EligibleStudent::all();
-        return view('eligibleStd',compact('eligibleStudents','studentRegistrations','stdEmail'));
+        return view('eligibleStd',compact('eligibleStudents','studentRegistrations'));
 
     }
     /**
@@ -101,10 +102,14 @@ class StudentRegistrationController extends Controller
 
         $pro->save();
 
+//        Redirect::away('https://employability-study.sociologicalnotes.com/student_form.php');
+//        redirect('https://employability-study.sociologicalnotes.com/student_form.php');
+
+        return redirect('https://employability-study.sociologicalnotes.com/student_form.php');
 
 //        StudentRegistration::create($request->all());
-        return redirect()->route('eligibleStd')
-            ->with('success','Registration successfully.');
+//        return redirect()->route('eligibleStd')
+//            ->with('success','Registration successfully.');
     }
 
     /**

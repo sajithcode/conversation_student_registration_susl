@@ -16,14 +16,14 @@ class CreateEligibleStudentsTable extends Migration
         Schema::create('eligible_students', function (Blueprint $table) {
             $table->id();
             $table->string('nameWithInitials');
-            $table->string('fullNameInEnglishBlock');
-            $table->string('fullNameInSinhala');
+//            $table->string('fullNameInEnglishBlock');
+//            $table->string('fullNameInSinhala');
             $table->string('gender');
-            $table->string('email');
+//            $table->string('email');
             $table->string('degreeName');
             $table->string('regNum');
             $table->string('indexNum');
-            $table->string('monthAndYearExamination');
+//            $table->string('monthAndYearExamination');
             $table->string('degreeClass');
 
             $table->string('faculty');

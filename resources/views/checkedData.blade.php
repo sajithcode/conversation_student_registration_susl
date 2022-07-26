@@ -17,7 +17,9 @@
                 $i++
             @endphp
         <div class="col-xs-12 col-sm-12 col-md-12">
-
+            <div class="pull-right" style="margin-bottom: 50px">
+                <a class="btn btn-primary" href="{{ url('/verifyEmail') }}"> Back</a>
+            </div>
             <div>
 
                 @php
@@ -25,7 +27,7 @@
                 @endphp
 
                 @foreach ($reports as $report)
-                    @if ($report->email==$std->email)
+                    @if ($report->email==Auth::user()->email)
                         @php
                             $q = 2
                         @endphp
@@ -75,19 +77,19 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Name In English Block Capital:</strong>
-                        {{$std->fullNameInEnglishBlock}}
-                    </div>
-                </div>
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <strong>Name In English Block Capital:</strong>--}}
+{{--                        {{$std->fullNameInEnglishBlock}}--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Full Name In Sinhala:</strong>
-                        {{$std->fullNameInSinhala}}
-                    </div>
-                </div>
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <strong>Full Name In Sinhala:</strong>--}}
+{{--                        {{$std->fullNameInSinhala}}--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -96,12 +98,12 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Email:</strong>
-                        {{$std->email}}
-                    </div>
-                </div>
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <strong>Email:</strong>--}}
+{{--                        {{$std->email}}--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -123,12 +125,12 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Month And Year of Examination:</strong>
-                        {{$std->monthAndYearExamination}}
-                    </div>
-                </div>
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <strong>Month And Year of Examination:</strong>--}}
+{{--                        {{$std->monthAndYearExamination}}--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -171,7 +173,7 @@
                         @method('PUT')
 
 
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <div class="col-xs-6 col-sm-6 col-md-6" style="margin-bottom: 10px">
                             <button type="submit" class="btn btn-primary">Confirm the above data</button>
                         </div>
 

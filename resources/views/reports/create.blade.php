@@ -37,10 +37,16 @@
     <form action="{{ route('report.store') }}" id="selectform" method="POST">
         @csrf
         <div style="margin: 20px" class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div style="display: none" class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Registration Number:</strong>
+                    <input value={{Auth::user()->regNum}} required type="text" name="regNum" class="form-control" placeholder="regNum">
+                </div>
+            </div>
+            <div style="display: none" class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Email:</strong>
-                    <input required type="text" name="email" class="form-control" placeholder="Email">
+                    <input value={{Auth::user()->email}} required type="text" name="email" class="form-control" placeholder="email">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

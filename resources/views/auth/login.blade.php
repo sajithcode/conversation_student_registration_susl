@@ -4,12 +4,21 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 m-5">
-            <div class="card" style="margin-bottom: 100px">
+            <div class="">
+                <div class="wecomebox" style="background: #800f0f">
+                    <h2>Convocation Student Registration System</h2>
+                    <h5>Sabaragamuwa University of Sri Lanka</h5>
+
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 50px">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('E-Mail Address') }}</label>
@@ -67,6 +76,7 @@
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

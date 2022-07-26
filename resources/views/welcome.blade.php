@@ -47,7 +47,7 @@
                         @if (Route::has('register'))
 {{--                            <a style="color: #e2e8f0" href="{{ url('/verifyEmail') }}" class="welcomebutton ml-4 text-sm text-gray-700 dark:text-gray-500">Student for Convocation</a>--}}
 
-                            {{--                            <a style="color: #e2e8f0" href="{{ route('register') }}" class="welcomebutton ml-4 text-sm text-gray-700 dark:text-gray-500">Register</a>--}}
+                                                        <a style="color: #e2e8f0" href="{{ route('register') }}" class="welcomebutton ml-4 text-sm text-gray-700 dark:text-gray-500">Register</a>
                         @endif
                     @endauth
                 </div>

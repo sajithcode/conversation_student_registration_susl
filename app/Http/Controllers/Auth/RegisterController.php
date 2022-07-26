@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Confirm;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -52,7 +54,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'regNum' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255','regex:/^([^0-9$.#@!=^&*(){}+-]*)$/'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users','regex:/sab.ac.lk/'],
+//            'email' => ['required', 'string', 'email', 'max:255', 'unique:users','regex:/sab.ac.lk/'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -65,11 +68,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        Mail:: to($data['email'])->send(new Confirm('a'));
+
         return User::create([
-            'regNum' => $data['regNum'],
+            'regNum' => strtoupper(trim($data['regNum'])),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+
+
     }
 }

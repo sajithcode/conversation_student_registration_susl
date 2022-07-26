@@ -20,8 +20,12 @@ use App\Http\Controllers\MailController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Route::get('/', function () {
+    return view('auth.login');
+})->name('welcome');
 
 //Route::get('/eligibleStd', function () {
 //    session_start();
@@ -42,12 +46,20 @@ Route::get('/check', function () {
     return view('check');
 });
 
+Route::get('/loginFilter', function () {
+    return view('loginFilter');
+});
+
 Route::get('/completeEmailVerify', function () {
     return view('completeEmailVerify');
 });
 
 Route::get('/emailSentView', function () {
     return view('emailSentView');
+});
+
+Route::get('/wrongRegistrationNumber', function () {
+    return view('wrongRegistrationNumber');
 });
 
 Route::get('/verifyEmail', function () {
@@ -66,6 +78,8 @@ Route::post('emailGet/{email}', [App\Http\Controllers\EligibleStudentsController
 
 Route::get('/mail',[MailController::class, 'sendMail'])->name('mail');;
 Route::post('/sendConfirmedMail',[MailController::class, 'sendConfirmedMail'])->name('sendConfirmedMail');;
+Route::get('/loginfilter',[MailController::class, 'loginfilter'])->name('loginfilter');;
+
 Route::put('/statusConfirm',[App\Http\Controllers\EligibleStudentsController::class, 'statusConfirm'])->name('statusConfirm');;
 
 
@@ -76,13 +90,12 @@ Route::get('/getByRegNum',[App\Http\Controllers\EligibleStudentsController::clas
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\EligibleStudentsController::class, 'index'])->name('home');
+//Route::get('/home',[MailController::class, 'sendConfirmedMail'])->name('sendConfirmedMail');
 
 
 

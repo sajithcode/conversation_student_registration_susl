@@ -31,7 +31,9 @@ class HomeController extends Controller
 
         $eligibleStudents = eligible_students::latest()->paginate(10);;
         return view('eligibleStudents.index',compact('eligibleStudents'));
+//        return view('sendConfirmedMail');
     }
+
 
 
     /**

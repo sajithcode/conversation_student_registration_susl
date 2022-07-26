@@ -54,18 +54,18 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Full name in English block letters:</strong>
-                        <input required value="{{ $eligibleStudent->fullNameInEnglishBlock }}" type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Full name in Sinhala:</strong>
-                        <input required value="{{ $eligibleStudent->fullNameInSinhala }}" type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">
-                    </div>
-                </div>
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <strong>Full name in English block letters:</strong>--}}
+{{--                        <input required value="{{ $eligibleStudent->fullNameInEnglishBlock }}" type="text" name="fullNameInEnglishBlock" class="form-control" placeholder="Full name in English block letters">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <strong>Full name in Sinhala:</strong>--}}
+{{--                        <input required value="{{ $eligibleStudent->fullNameInSinhala }}" type="text" name="fullNameInSinhala" class="form-control" placeholder="Full name in Sinhala">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -79,12 +79,12 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Email:</strong>
-                        <input required value="{{ $eligibleStudent->email }}" type="text" name="email" class="form-control" placeholder="Email">
-                    </div>
-                </div>
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <strong>Email:</strong>--}}
+{{--                        <input required value="{{ $eligibleStudent->email }}" type="text" name="email" class="form-control" placeholder="Email">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -124,19 +124,19 @@
                 </script>
 
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Month and Year of the Degree Examination: </strong>
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <strong>Month and Year of the Degree Examination: </strong>--}}
 
 
-                                                <div class='input-group date' id='datetimepicker2'>
-                                                    <input required value="{{ $eligibleStudent->monthAndYearExamination }}" placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />
-                                                    <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>
-                                                </div>
-                    </div>
-                </div>
+{{--                                                <div class='input-group date' id='datetimepicker2'>--}}
+{{--                                                    <input required value="{{ $eligibleStudent->monthAndYearExamination }}" placeholder="MM/YYYY" required name="monthAndYearExamination" type='text' class="form-control" />--}}
+{{--                                                    <span class="input-group-addon">--}}
+{{--                                                    <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--                                                </span>--}}
+{{--                                                </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">

@@ -16,6 +16,7 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->string('email');
+            $table->string('regNum');
             $table->string('reportStatus')->default('Reported');;
             $table->string('description');
             $table->string('faculty');

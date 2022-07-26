@@ -136,6 +136,7 @@
         <table style="display:none" id="divFrmFixed"  class="table table-bordered form-duration-div">
             <tr>
                 <th>No</th>
+                <th>Registration Number</th>
                 <th>Email</th>
                 <th>Faculty</th>
                 <th>Report Status</th>
@@ -151,25 +152,30 @@
                 <tr>
                     @if ($report->reportStatus == 'Fixed')
                         @if(checkPermission(['Admin']))
+                            <td>{{ ++$a }}</td>
                             @include('component.reportTableComponent')
                         @endif
                         @if(checkPermission(['EBSC_Applied']))
                             @if($report->faculty == 'Applied Sciences')
+                                    <td>{{ ++$a }}</td>
                                 @include('component.reportTableComponent')
                             @endif
                         @endif
                         @if(checkPermission(['EBSC_Geo']))
                             @if($report->faculty == 'Geomatics')
+                                    <td>{{ ++$a }}</td>
                                 @include('component.reportTableComponent')
                             @endif
                         @endif
                         @if(checkPermission(['EBSC_Social']))
                             @if($report->faculty == 'Social Sciences & Languages')
+                                    <td>{{ ++$a }}</td>
                                 @include('component.reportTableComponent')
                             @endif
                         @endif
                         @if(checkPermission(['EBSC_Mana']))
                             @if($report->faculty == 'Management Studies')
+                                    <td>{{ ++$a }}</td>
                                 @include('component.reportTableComponent')
                             @endif
                         @endif
@@ -180,16 +186,19 @@
                         @endif
                         @if(checkPermission(['EBSC_Agri']))
                             @if($report->faculty == 'Agricultural Sciences')
+                                    <td>{{ ++$a }}</td>
                                 @include('component.reportTableComponent')
                             @endif
                         @endif
                         @if(checkPermission(['EBSC_Tech']))
                             @if($report->faculty == 'Technology')
+                                    <td>{{ ++$a }}</td>
                                 @include('component.reportTableComponent')
                             @endif
                         @endif
                         @if(checkPermission(['EBSC_GS']))
                             @if($report->faculty == 'Graduate Studies')
+                                    <td>{{ ++$a }}</td>
                                 @include('component.reportTableComponent')
                             @endif
                         @endif

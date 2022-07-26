@@ -1,3 +1,4 @@
+<td>{{ $report->regNum }}</td>
 <td>{{ $report->email }}</td>
 <td>{{ $report->faculty }}</td>
 <td>{{ $report->reportStatus }}</td>

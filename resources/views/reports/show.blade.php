@@ -5,7 +5,7 @@
     <div class="row" style="margin: 50px">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Reported by  {{ $report->email }}</h2>
+                <h2> Reported by  {{ $report->regNum }}</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('report.index') }}"> Back</a>
@@ -27,7 +27,7 @@
             </div>
         </div>
         @foreach ($eligibleStudents as $eligibleStudent)
-            @if($eligibleStudent->email==$report->email)
+            @if(strtoupper(trim($eligibleStudent->regNum))==strtoupper(trim($report->regNum)))
                 @php
                     session_start();
                $_SESSION["user_id"] = $report->id;

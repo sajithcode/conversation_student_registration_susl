@@ -16,10 +16,29 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
 
                 <div class="form-group">
-                    <strong>Email Address:</strong>
+
+                    <?php
+                    session_start();
+                    //            $id = 10;
+                    //            $_SESSION["user_id"] = $id;
+                    //
+                    //                           session_start();
+                    //            echo $_SESSION["user_id"];
+                    //            echo $_SESSION["email"];
+                    $_SESSION["user_reg"]=strtoupper(trim(Auth::user()->regNum));
+//                    echo $_SESSION["user_reg"];
+
+                    //            session_destroy();
+                    ?>
+
+                    <strong>Registration Number:</strong>
 {{--                    <input required type="text" name="email" class="form-control" placeholder="Email">--}}
-                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                    <input id="regNum" type="text" class="form-control @error('regNum') is-invalid @enderror" name="regNum" value="{{ old('regNum') }}" required autocomplete="regNum" autofocus placeholder="Registration Number">
+{{--                    <input id="regNum" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Registration Number">--}}
                     @error('email')
+
+
+
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -28,10 +47,23 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Verify</button>
+                <button style="width: 10%" type="submit" class="btn btn-primary">Go</button>
             </div>
 
-
+            <div class="" style="margin-top: 20px">
+                <div class="wecomebox" style="background: #800f0f">
+                    <h1 style="font-weight: bold">Welcome To</h1>
+                    <h2>Convocation Student Registration System</h2>
+                    <h5>Sabaragamuwa University of Sri Lanka</h5>
+                    {{--<!--                            --><?php--}}
+                    {{--                            session_start();--}}
+                    {{--                            $id = 10;--}}
+                    {{--                            $_SESSION["user_id"] = $id;--}}
+                    {{--                            echo $_SESSION["user_id"];--}}
+                    {{--                            ?>--}}
+                    {{--                            <h5>{{$_SESSION['sessionEmail']}}</h5>--}}
+                </div>
+            </div>
         </div>
 
     </form>

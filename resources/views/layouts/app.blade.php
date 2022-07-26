@@ -33,10 +33,18 @@
     <div id="app">
         <nav style="background-color: #800f0f" class="navbar navbar-expand-md navbar-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('welcome') }}">
-{{--                    {{ config('app.name', 'Laravel') }}--}}
-                    SUSL
-                </a>
+
+                @guest
+                    <a class="navbar-brand">
+                        {{--                    {{ config('app.name', 'Laravel') }}--}}
+                        SUSL
+                    </a>
+                @else
+                    <a href="{{ url('/verifyEmail') }}" class="navbar-brand">
+                        {{--                    {{ config('app.name', 'Laravel') }}--}}
+                        SUSL
+                    </a>
+                @endguest
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -59,9 +67,9 @@
 
 
                             @if (Route::has('register'))
-{{--                                <li class="nav-item">--}}
-{{--                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
-{{--                                </li>--}}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
                             @endif
 
 
@@ -75,9 +83,16 @@
 {{--                            @endif--}}
 
 {{--                            <li class="nav-item dropdown">--}}
-                                <a href="{{ route('eligibleStudents.index') }}"  style="color: #a8a8a8" class="dropdown-item" href="#" aria-expanded="false" v-pre>
+                                <a style="color: #a8a8a8" class="dropdown-item" href="#" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
+
+                            @if(checkPermission(['mainStoreClark','viceChancellor','Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+
+                                <a href="{{ route('eligibleStudents.index') }}" style="color: #a8a8a8" class="dropdown-item" href="#" aria-expanded="false" v-pre>
+                                    Dashboard
+                                </a>
+                            @endif
 
 {{--                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
                                     <a style="color: #a8a8a8" class="dropdown-item" href="{{ route('logout') }}"
@@ -86,9 +101,11 @@
                                         {{ __('Logout') }}
                                     </a>
 
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
 {{--                                </div>--}}
 {{--                            </li>--}}
                         @endguest
