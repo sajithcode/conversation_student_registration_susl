@@ -100,6 +100,9 @@ class StudentRegistrationController extends Controller
 
         }
 
+        session_start();
+        $_SESSION["regStatus"]='Yes';
+
         $pro->save();
 
 //        Redirect::away('https://employability-study.sociologicalnotes.com/student_form.php');

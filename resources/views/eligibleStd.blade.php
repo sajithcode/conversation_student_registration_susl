@@ -10,7 +10,12 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
+                <?php
+//                session_start();
 
+                $_SESSION["regStatus"]='Not';
+
+                ?>
             <div class="row">
 
                 @php
