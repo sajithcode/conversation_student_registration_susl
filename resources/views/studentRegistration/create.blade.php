@@ -35,6 +35,7 @@
         </div>
     @endif
 
+
     <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST" enctype="multipart/form-data">
         @csrf
         @foreach ($eligibleStudents as $eligibleStudent)

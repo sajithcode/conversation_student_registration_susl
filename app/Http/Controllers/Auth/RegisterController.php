@@ -72,7 +72,8 @@ class RegisterController extends Controller
 
         return User::create([
 //            'regNum' => strtoupper(trim($data['regNum'])),
-            'regNum' => strtoupper(trim(str_replace(' ', '', $data['regNum']))),
+//            'regNum' => strtoupper(trim(str_replace(' ', '', $data['regNum']))),
+            'regNum' => strtoupper(trim(str_replace(' ', '', str_replace('/', '', $data['regNum'])))),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

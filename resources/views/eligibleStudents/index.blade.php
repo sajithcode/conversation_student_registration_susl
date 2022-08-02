@@ -36,6 +36,7 @@
 
 {{--            1--}}
 
+
             @foreach ($studentRegistrations as $studentRegistration)
                 @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim(Auth::user()->regNum)))
                     @php

@@ -36,7 +36,8 @@ class MailController extends Controller
         $reports = Report::all();
         $student = EligibleStudent::where(
 //            'regNum', strtoupper(trim($_SESSION["regNum"])))->get();
-            'regNum', strtoupper(trim(str_replace(' ', '', $_SESSION["regNum"]))))->get();
+//            'regNum', strtoupper(trim(str_replace(' ', '', $_SESSION["regNum"]))))->get();
+            'regNum', strtoupper(trim(str_replace(' ', '', str_replace('/', '', $_SESSION["regNum"])))))->get();
         return view('checkedData',compact('student','studentRegistrations','eligibleStudents','reports'));
 
     }
@@ -77,7 +78,8 @@ class MailController extends Controller
         $_SESSION["user_id"] = $id;
 //        $id = 14;
 //        $_SESSION["user_id"] = $id;
-        $_SESSION["regNum"] = $request->regNum;
+//        $_SESSION["regNum"] = $request->regNum;
+        $_SESSION["regNum"] = strtoupper(trim(str_replace(' ', '', str_replace('/', '', $request->regNum))));
 //        $stdEmail = $request->email;
 
 
