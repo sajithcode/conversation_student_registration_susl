@@ -71,7 +71,8 @@ class RegisterController extends Controller
         Mail:: to($data['email'])->send(new Confirm('a'));
 
         return User::create([
-            'regNum' => strtoupper(trim($data['regNum'])),
+//            'regNum' => strtoupper(trim($data['regNum'])),
+            'regNum' => strtoupper(trim(str_replace(' ', '', $data['regNum']))),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

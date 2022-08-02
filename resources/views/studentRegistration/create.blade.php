@@ -38,7 +38,8 @@
     <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST" enctype="multipart/form-data">
         @csrf
         @foreach ($eligibleStudents as $eligibleStudent)
-            @if ($eligibleStudent->regNum === Auth::user()->regNum)
+{{--            @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
+            @if (strtoupper(trim(str_replace(' ', '', $eligibleStudent->regNum))) === strtoupper(trim(str_replace(' ', '', Auth::user()->regNum))))
                 <div style="margin: 60px" class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">

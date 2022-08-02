@@ -679,7 +679,7 @@
                                     @endif
                                 @endif
                                 @if(checkPermission(['EBSC_Mana']))
-                                    @if($report->faculty == 'Management Studies')
+                                    @if($eligibleStudent->faculty == 'Management Studies')
                                         <td>{{ ++$a }}</td>
                                         @include('component.registeredStudentsTableComponent')
                                     @endif
@@ -697,7 +697,7 @@
                                     @endif
                                 @endif
                                 @if(checkPermission(['EBSC_Tech']))
-                                    @if($report->faculty == 'Technology')
+                                    @if($eligibleStudent->faculty == 'Technology')
                                         <td>{{ ++$a }}</td>
                                         @include('component.registeredStudentsTableComponent')
                                     @endif
@@ -1027,7 +1027,7 @@
                                     @endif
                                 @endif
                                 @if(checkPermission(['EBSC_Mana']))
-                                    @if($report->faculty == 'Management Studies')
+                                    @if($eligibleStudent->faculty == 'Management Studies')
                                         <td>{{ ++$a }}</td>
                                         @include('component.notRegisteredStudentsTableComponent')
                                     @endif
@@ -1045,7 +1045,7 @@
                                     @endif
                                 @endif
                                 @if(checkPermission(['EBSC_Tech']))
-                                    @if($report->faculty == 'Technology')
+                                    @if($eligibleStudent->faculty == 'Technology')
                                         <td>{{ ++$a }}</td>
                                         @include('component.notRegisteredStudentsTableComponent')
                                     @endif

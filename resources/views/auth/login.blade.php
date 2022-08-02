@@ -76,9 +76,14 @@
                     </form>
                 </div>
             </div>
-            <div class="">{{ __('Help Desk:') }}</div>
-            <div class="">{{ __('Ishan Randika - +94 71 57 57 700') }}</div>
-            <div class="">{{ __('Lohara Chathumini - +94 71 42 24 324 ') }}</div>
+            <a target="_blank" style="font-weight: bold" href="https://drive.google.com/drive/folders/1aiQIPxoFe-E3EzZ_axrltyMXSG-Wgguq?usp=sharing">Download The Guide</a>
+            <div style="font-weight: bold" class="">{{ __('Help Desk:') }}</div>
+            <div style="font-weight: bold" class="">{{ __('Please download the guide and read it before calling us 🙏') }}</div>
+            <div class="">{{ __('If you have any question about Registration:') }}</div>
+            <div class="">{{ __('📱 Ishan Randika - +94 71 57 57 700') }}</div>
+            <div class="">{{ __('📱 Lohara Chathumini - +94 71 42 24 324 ') }}</div>
+            <div class="">{{ __('If you have any question about Employability Survey:') }}</div>
+            <div class="">{{ __('📱 Sameera: +94 71 43 87 876') }}</div>
 
         </div>
     </div>

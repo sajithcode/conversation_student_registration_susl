@@ -73,7 +73,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>NIC Number:</strong>
-                        <input required value="{{ $studentRegistration->indexNum }}" type="text" name="nic" class="form-control" placeholder="NIC Number">
+                        <input required value="{{ $studentRegistration->nic }}" type="text" name="nic" class="form-control" placeholder="NIC Number">
                     </div>
                 </div>
 
@@ -148,6 +148,7 @@
                         });
                     });
                 </script>
+
 
 
                 <div class="col-xs-12 col-sm-12 col-md-12">

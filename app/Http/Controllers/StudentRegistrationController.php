@@ -108,7 +108,9 @@ class StudentRegistrationController extends Controller
 //        Redirect::away('https://employability-study.sociologicalnotes.com/student_form.php');
 //        redirect('https://employability-study.sociologicalnotes.com/student_form.php');
 
-        return redirect('https://employability-study.sociologicalnotes.com/student_form.php');
+//        return redirect('https://employability-study.sociologicalnotes.com/student_form.php');
+
+        return redirect('http://employability-study.sociologicalnotes.com/');
 
 //        StudentRegistration::create($request->all());
 //        return redirect()->route('eligibleStd')
