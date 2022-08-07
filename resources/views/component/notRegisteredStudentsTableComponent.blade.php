@@ -1,15 +1,15 @@
 
-<td>{{ $eligibleStudent->nameWithInitials }}</td>
-<td>{{ $eligibleStudent->regNum }}</td>
-<td>{{ $eligibleStudent->indexNum }}</td>
-<td>{{ $eligibleStudent->faculty }}</td>
-<td>{{ $eligibleStudent->department }}</td>
-<td>{{ $eligibleStudent->degreeName }}</td>
+<td>{{ $notRegisteredStudent->nameWithInitials}}</td>
+<td>{{ $notRegisteredStudent->regNum }}</td>
+<td>{{ $notRegisteredStudent->indexNum }}</td>
+<td>{{ $notRegisteredStudent->faculty }}</td>
+<td>{{ $notRegisteredStudent->department }}</td>
+<td>{{ $notRegisteredStudent->degreeName }}</td>
 <td>
-    <form action="{{ route('eligibleStudents.destroy',$eligibleStudent->id) }}" method="POST">
+    <form action="{{ route('eligibleStudents.destroy',$notRegisteredStudent->id) }}" method="POST">
 
         @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
-            <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$eligibleStudent->id) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$notRegisteredStudent->id) }}">Edit</a>
 
             @csrf
             @method('DELETE')

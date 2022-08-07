@@ -10,6 +10,7 @@ use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StudentRegistrationController extends Controller
@@ -60,7 +61,15 @@ class StudentRegistrationController extends Controller
     public function store(Request $request)
     {
 
+        $validator = Validator::make($request->all(), [
+            'regNum' => ['required', 'string', 'max:255','unique:student_registrations'],
+        ]);
 
+        if ($validator->fails()) {
+            return redirect('eligibleStd')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
 
 

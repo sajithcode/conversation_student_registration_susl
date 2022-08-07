@@ -161,7 +161,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Payment Receipt:</strong>
-                <img src="{{ asset('/images/'.$studentRegistration->image) }}">
+                <img width="50%" src="{{ asset('/images/'.$studentRegistration->image) }}">
             </div>
         </div>
 

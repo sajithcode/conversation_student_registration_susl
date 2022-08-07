@@ -320,8 +320,9 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Payment Receipt:</strong>
+                        <strong>Payment Receipt: <span style="color: red">(Please upload an image less than 2MB. Don't upload PDF.)</span></strong>
                         <input required value="{{ $studentRegistration->image }}" type="file" name="image" class="form-control" placeholder="image" id="image">
+                        <img width="50%" src="{{ asset('/images/'.$studentRegistration->image) }}">
                     </div>
                 </div>
 

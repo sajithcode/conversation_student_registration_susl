@@ -6,6 +6,7 @@ use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
 use App\Models\VerifiedEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Excel;
 use App\Imports\StudentsImport;
 
@@ -21,10 +22,125 @@ class EligibleStudentsController extends Controller
         session_start();
 
 //        $stdEmail = $_SESSION["email"];
+        $allEligibleStudents = DB::select('
+SELECT
+eligible_students.id,
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
 
-        $studentRegistrations = StudentRegistration::all();
-        $eligibleStudents = EligibleStudent::all();
-        return view('eligibleStudents.index',compact('eligibleStudents','studentRegistrations'));
+FROM eligible_students
+LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+');
+
+        $registeredStudents = DB::select('
+SELECT
+student_registrations.id "sid",
+eligible_students.id "eid",
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+');
+
+        $registeredPendingStudents = DB::select('
+SELECT
+student_registrations.id "sid",
+eligible_students.id "eid",
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+WHERE student_registrations.status IN ("Pending")
+');
+
+        $registeredRejectStudents = DB::select('
+SELECT
+student_registrations.id "sid",
+eligible_students.id "eid",
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+WHERE student_registrations.status IN ("Reject")');
+
+        $registeredAcceptStudents = DB::select('
+SELECT
+student_registrations.id "sid",
+eligible_students.id "eid",
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+WHERE student_registrations.status IN ("Accept")');
+
+
+
+        $notRegisteredStudents = DB::select('
+SELECT
+eligible_students.id,
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate
+
+FROM eligible_students
+LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+WHERE student_registrations.regNum IS NULL
+');
+
+//        $studentRegistrations = StudentRegistration::all();
+//        $eligibleStudents = EligibleStudent::all();
+
+        return view('eligibleStudents.index',compact('registeredStudents','registeredPendingStudents','registeredRejectStudents','registeredAcceptStudents','notRegisteredStudents','allEligibleStudents'));
         //
     }
 
