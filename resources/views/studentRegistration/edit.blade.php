@@ -326,6 +326,25 @@
                     </div>
                 </div>
 
+{{--                <div id="pspdfkit" style="height: 50vh"></div>--}}
+
+{{--                <script src="/assets/dist/pspdfkit.js"></script>--}}
+
+{{--                <script>--}}
+{{--                    PSPDFKit.load({--}}
+{{--                        // disableWebAssemblyStreaming: true,--}}
+{{--                        container: "#pspdfkit",--}}
+{{--                        document: "{{ asset('/images/'.$studentRegistration->image) }}", // Add the path to your document here.--}}
+{{--                    })--}}
+{{--                        .then(function(instance) {--}}
+{{--                            console.log("PSPDFKit loaded", instance);--}}
+{{--                        })--}}
+{{--                        .catch(function(error) {--}}
+{{--                            console.error(error.message);--}}
+{{--                        });--}}
+{{--                </script>--}}
+
+
                 <div class="row">
                     <div style="display: inline-flex; justify-content: center" class="col-xs-1 col-sm-1 col-md-1">
                         <input style="margin-top: 14px" required type="checkbox" name="vehicle" value="Bike">
