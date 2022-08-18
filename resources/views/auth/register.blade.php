@@ -4,6 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 m-5">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -14,7 +20,9 @@
                         <div class="row mb-3">
                             <label for="regNum" class="col-md-4 col-form-label text-md-end">{{ __('Registration Number') }}</label>
 
+
                             <div class="col-md-6">
+                                <a style="color: red">Enter the registration number using English Block capital letters without spaces and symbols</a>
                                 <input id="regNum" type="text" class="form-control @error('regNum') is-invalid @enderror" name="regNum" value="{{ old('regNum') }}" required autocomplete="regNum" autofocus>
 
                                 @error('regNum')

@@ -35,8 +35,8 @@ return [
     'host' => env('MAIL_HOST', 'smtp.gmail.com'),
     'port' => env('MAIL_PORT', 587),
 //    'password' => env('MAIL_PASSWORD','mtloptegkjujlzcm'),
-    'password' => env('MAIL_PASSWORD','xncuakgzrociyvrn'),
-    'username' => env('MAIL_USERNAME','jishanrandika@gmail.com'),
+    'password' => env('MAIL_PASSWORD','kyjzramvbuofsjrt'),
+    'username' => env('MAIL_USERNAME','convocation.susl@gmail.com'),
 //    'from' => ['address' => 'myusername@gmail.com', 'name' => 'hawle'],
     'mailers' => [
         'smtp' => [
@@ -44,9 +44,9 @@ return [
             'host' => env('MAIL_HOST', 'smtp.gmail.com'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME','jishanrandika@gmail.com'),
+            'username' => env('MAIL_USERNAME','convocation.susl@gmail.com'),
 //            'password' => env('MAIL_PASSWORD','mtloptegkjujlzcm'),
-            'password' => env('MAIL_PASSWORD','xncuakgzrociyvrn'),
+            'password' => env('MAIL_PASSWORD','kyjzramvbuofsjrt'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -98,7 +98,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'jishanrandika@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'convocation.susl@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'Convocation Registration System - Sabaragamuwa University of Sri Lanka'),
     ],
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),

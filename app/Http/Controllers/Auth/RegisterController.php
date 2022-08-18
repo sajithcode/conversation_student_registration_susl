@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\Confirm;
+use App\Models\EligibleStudent;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -51,13 +52,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
-            'regNum' => ['required', 'string', 'max:255'],
+//            strtoupper(trim(str_replace(' ', '', str_replace('/', '', $data['regNum'])))) => ['required', 'string', 'max:255','exists:eligible_students,regNum', 'unique:users'],
+            'regNum' => ['required', 'string', 'max:255','exists:eligible_students,regNum', 'unique:users'],
             'name' => ['required', 'string', 'max:255','regex:/^([^0-9$.#@!=^&*(){}+-]*)$/'],
 //            'email' => ['required', 'string', 'email', 'max:255', 'unique:users','regex:/sab.ac.lk/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
     }
 
     /**
@@ -68,16 +72,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        Mail:: to($data['email'])->send(new Confirm('a'));
 
-        return User::create([
+
+            Mail:: to($data['email'])->send(new Confirm('a'));
+
+            return User::create([
 //            'regNum' => strtoupper(trim($data['regNum'])),
 //            'regNum' => strtoupper(trim(str_replace(' ', '', $data['regNum']))),
-            'regNum' => strtoupper(trim(str_replace(' ', '', str_replace('/', '', $data['regNum'])))),
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+                'regNum' => strtoupper(trim(str_replace(' ', '', str_replace('/', '', $data['regNum'])))),
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
 
 
 

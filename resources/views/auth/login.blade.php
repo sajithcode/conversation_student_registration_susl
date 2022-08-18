@@ -47,6 +47,17 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="">
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('If you did not register to the system,') }}
+                                    </label>
+                                    <a class="form-check-label" href="{{ route('register') }}">{{ __('Click here Register to the system') }}</a>
+
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
@@ -73,9 +84,12 @@
                                 @endif
                             </div>
                         </div>
+
                     </form>
                 </div>
+
             </div>
+
             <a target="_blank" style="font-weight: bold" href="https://drive.google.com/drive/folders/1aiQIPxoFe-E3EzZ_axrltyMXSG-Wgguq?usp=sharing">Download The Guide</a>
             <div style="font-weight: bold" class="">{{ __('Help Desk:') }}</div>
             <div style="font-weight: bold" class="">{{ __('Please download the guide and read it before calling us 🙏') }}</div>

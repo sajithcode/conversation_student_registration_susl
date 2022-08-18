@@ -14,7 +14,7 @@
 
 
     <div style="margin: 50px">
-        @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+        @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
 
                 <div class="pull-left">
                     <h2>Eligible Student List</h2>
@@ -25,7 +25,16 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
+            @if(checkPermission([ 'Admin' ]))
 
+            <div class="row" style="margin-bottom: 10px">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="pull-right">
+                        <a target="_blank" class="btn btn-dark" href="{{ route('faculty.index') }}">Faculty</a>
+                    </div>
+                </div>
+            </div>
+            @endif
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="pull-right">
@@ -258,7 +267,11 @@
         <table id="divFrmAll" style="display:none" class="table table-bordered form-duration-div">
             <tr>
                             <th>No</th>
+                @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+
                 <th>Registration status</th>
+
+                @endif
                 <th>Name</th>
                 <th>Register Number</th>
                 <th>Index Number</th>
@@ -272,8 +285,7 @@
                     <th>Cloak Issue</th>
                     <th>Cloak Return</th>
                     <th>Garland Return</th>
-                    <th >Update</th>
-                @endif
+                 @endif
             </tr>
             @php
                 $a = 0
@@ -340,112 +352,56 @@
 
 {{--                    @endif--}}
                         @if(checkPermission(['Admin']))
-                            <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <td>
-                                    <script type="text/javascript">
-                                        $(function () {
-                                            $('#datetimepicker1').datepicker({
-                                                format: "mm/dd/yyyy",
-                                                weekStart: 0,
-                                                calendarWeeks: true,
-                                                autoclose: true,
-                                                todayHighlight: true,
-                                                orientation: "auto",
-
-                                            });
-                                        });
-                                    </script>
+                            <td>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
 
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <input required value="{{ $allEligibleStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                        <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                        <button type="submit" class="btn btn-success">Update</button>
+                                    </form>
+                                </div>
 
-                                        {{--                                    <div class="form-group">--}}
-                                        {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-                                        {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-                                        {{--                                            <span class="input-group-addon">--}}
-                                        {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                        {{--                        </span>--}}
-                                        {{--                                        </div>--}}
-                                        {{--                                    </div>--}}
-                                    </div>
-
-                                </td>
+                            </td>
 
 
-                                <td>
-                                    <script type="text/javascript">
-                                        $(function () {
-                                            $('#datetimepicker2').datepicker({
-                                                format: "mm/dd/yyyy",
-                                                weekStart: 0,
-                                                calendarWeeks: true,
-                                                autoclose: true,
-                                                todayHighlight: true,
-                                                orientation: "auto",
+                            <td>
 
-                                            });
-                                        });
-                                    </script>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
 
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <input required value="{{ $allEligibleStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                        <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                        <button type="submit" class="btn btn-info">Update</button>
+                                    </form>
+                                </div>
 
-                                        {{--                                    <div class="form-group">--}}
-                                        {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-                                        {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-                                        {{--                                            <span class="input-group-addon">--}}
-                                        {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                        {{--                        </span>--}}
-                                        {{--                                        </div>--}}
-                                        {{--                                    </div>--}}
-                                    </div>
+                            </td>
 
-                                </td>
+                            <td>
 
-
-
-                                {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
-                                <td>
-                                    <script type="text/javascript">
-                                        $(function () {
-                                            $('#datetimepicker3').datepicker({
-                                                format: "mm/dd/yyyy",
-                                                weekStart: 0,
-                                                calendarWeeks: true,
-                                                autoclose: true,
-                                                todayHighlight: true,
-                                                orientation: "auto",
-
-                                            });
-                                        });
-                                    </script>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
 
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <input required value="{{ $allEligibleStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                        <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                        <button type="submit" class="btn btn-danger">Update</button>
+                                    </form>
+                                </div>
 
-                                        {{--                                    <div class="form-group">--}}
-                                        {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-                                        {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-                                        {{--                                            <span class="input-group-addon">--}}
-                                        {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                        {{--                        </span>--}}
-                                        {{--                                        </div>--}}
-                                        {{--                                    </div>--}}
-                                    </div>
-
-                                </td>
-
-
-                                {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                                <td>
-                                    <button type="submit" class="btn btn-danger">Update</button>
-                                </td>
-                            </form>
+                            </td>
                         @endif
                     @if(checkPermission(['mainStoreClark']))
                             <td>{{ ++$a }}</td>
@@ -453,112 +409,61 @@
                             <td>{{ $allEligibleStudent->regNum }}</td>
                             <td>{{ $allEligibleStudent->indexNum }}</td>
 
-                        <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
                             <td>
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('#datetimepicker1').datepicker({
-                                            format: "mm/dd/yyyy",
-                                            weekStart: 0,
-                                            calendarWeeks: true,
-                                            autoclose: true,
-                                            todayHighlight: true,
-                                            orientation: "auto",
-
-                                        });
-                                    });
-                                </script>
-
-
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <input required value="{{ $allEligibleStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
-                                    {{--                                    <div class="form-group">--}}
-{{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-{{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-{{--                                            <span class="input-group-addon">--}}
-{{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-{{--                        </span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+
+                                        <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                        <button type="submit" class="btn btn-success">Update</button>
+                                    </form>
                                 </div>
 
                             </td>
 
 
                             <td>
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('#datetimepicker2').datepicker({
-                                            format: "mm/dd/yyyy",
-                                            weekStart: 0,
-                                            calendarWeeks: true,
-                                            autoclose: true,
-                                            todayHighlight: true,
-                                            orientation: "auto",
-
-                                        });
-                                    });
-                                </script>
-
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <input required value="{{ $allEligibleStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
-                                    {{--                                    <div class="form-group">--}}
-{{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-{{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-{{--                                            <span class="input-group-addon">--}}
-{{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-{{--                        </span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+
+                                        <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                        <button type="submit" class="btn btn-info">Update</button>
+                                    </form>
                                 </div>
 
                             </td>
 
-
-
-{{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
                             <td>
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('#datetimepicker3').datepicker({
-                                            format: "mm/dd/yyyy",
-                                            weekStart: 0,
-                                            calendarWeeks: true,
-                                            autoclose: true,
-                                            todayHighlight: true,
-                                            orientation: "auto",
-
-                                        });
-                                    });
-                                </script>
-
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <input required value="{{ $allEligibleStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                    <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
-                                    {{--                                    <div class="form-group">--}}
-{{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-{{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-{{--                                            <span class="input-group-addon">--}}
-{{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-{{--                        </span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+
+                                    <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                        <button type="submit" class="btn btn-danger">Update</button>
+                                    </form>
                                 </div>
 
                             </td>
 
 
 {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                            <td>
-                                <button type="submit" class="btn btn-danger">Update</button>
-                            </td>
-                        </form>
+
+
                     @endif
 
 
@@ -586,7 +491,7 @@
                         <th>Cloak Issue</th>
                         <th>Cloak Return</th>
                         <th>Garland Return</th>
-                        <th >Update</th>
+
                     @endif
                 </tr>
                 @php
@@ -655,112 +560,56 @@
 {{--                                @endif--}}
 
                                     @if(checkPermission(['Admin']))
-                                        <form action="{{ route('eligibleStudents.update',$registeredStudent->eid) }}" method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                            <td>
-                                                <script type="text/javascript">
-                                                    $(function () {
-                                                        $('#datetimepicker1').datepicker({
-                                                            format: "mm/dd/yyyy",
-                                                            weekStart: 0,
-                                                            calendarWeeks: true,
-                                                            autoclose: true,
-                                                            todayHighlight: true,
-                                                            orientation: "auto",
-
-                                                        });
-                                                    });
-                                                </script>
+                                        <td>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
 
-                                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <input required value="{{ $registeredStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                                    <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
+                                            </div>
 
-                                                    {{--                                    <div class="form-group">--}}
-                                                    {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-                                                    {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-                                                    {{--                                            <span class="input-group-addon">--}}
-                                                    {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                    {{--                        </span>--}}
-                                                    {{--                                        </div>--}}
-                                                    {{--                                    </div>--}}
-                                                </div>
-
-                                            </td>
+                                        </td>
 
 
-                                            <td>
-                                                <script type="text/javascript">
-                                                    $(function () {
-                                                        $('#datetimepicker2').datepicker({
-                                                            format: "mm/dd/yyyy",
-                                                            weekStart: 0,
-                                                            calendarWeeks: true,
-                                                            autoclose: true,
-                                                            todayHighlight: true,
-                                                            orientation: "auto",
+                                        <td>
 
-                                                        });
-                                                    });
-                                                </script>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
 
-                                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <input required value="{{ $registeredStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                                    <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </form>
+                                            </div>
 
-                                                    {{--                                    <div class="form-group">--}}
-                                                    {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-                                                    {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-                                                    {{--                                            <span class="input-group-addon">--}}
-                                                    {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                    {{--                        </span>--}}
-                                                    {{--                                        </div>--}}
-                                                    {{--                                    </div>--}}
-                                                </div>
+                                        </td>
 
-                                            </td>
+                                        <td>
 
-
-
-                                            {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
-                                            <td>
-                                                <script type="text/javascript">
-                                                    $(function () {
-                                                        $('#datetimepicker3').datepicker({
-                                                            format: "mm/dd/yyyy",
-                                                            weekStart: 0,
-                                                            calendarWeeks: true,
-                                                            autoclose: true,
-                                                            todayHighlight: true,
-                                                            orientation: "auto",
-
-                                                        });
-                                                    });
-                                                </script>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
 
-                                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <input required value="{{ $registeredStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                                    <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-danger">Update</button>
+                                                </form>
+                                            </div>
 
-                                                    {{--                                    <div class="form-group">--}}
-                                                    {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-                                                    {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-                                                    {{--                                            <span class="input-group-addon">--}}
-                                                    {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                    {{--                        </span>--}}
-                                                    {{--                                        </div>--}}
-                                                    {{--                                    </div>--}}
-                                                </div>
-
-                                            </td>
-
-
-                                            {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                                            <td>
-                                                <button type="submit" class="btn btn-danger">Update</button>
-                                            </td>
-                                        </form>
+                                        </td>
                                     @endif
 
                                 @if(checkPermission(['mainStoreClark']))
@@ -768,112 +617,56 @@
                                     <td>{{ $registeredStudent->nameWithInitials }}</td>
                                     <td>{{ $registeredStudent->regNum }}</td>
                                     <td>{{ $registeredStudent->indexNum }}</td>
-                                    <form action="{{ route('eligibleStudents.update',$registeredStudent->eid) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker1').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
-
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
 
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker2').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
-
-
-                                        {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker3').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-danger">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
-
-
-                                        {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                                        <td>
-                                            <button type="submit" class="btn btn-danger">Update</button>
-                                        </td>
-                                    </form>
                                 @endif
 
 
@@ -902,7 +695,7 @@
                         <th>Cloak Issue</th>
                         <th>Cloak Return</th>
                         <th>Garland Return</th>
-                        <th >Update</th>
+
                     @endif
                 </tr>
                 @php
@@ -972,112 +765,56 @@
                                 {{--                                @endif--}}
 
                                 @if(checkPermission(['Admin']))
-                                    <form action="{{ route('eligibleStudents.update',$registeredPendingStudent->eid) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker1').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
-
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredPendingStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
 
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker2').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredPendingStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
-
-
-                                        {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker3').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredPendingStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-danger">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
-
-
-                                        {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                                        <td>
-                                            <button type="submit" class="btn btn-danger">Update</button>
-                                        </td>
-                                    </form>
                                 @endif
 
                                 @if(checkPermission(['mainStoreClark']))
@@ -1085,112 +822,56 @@
                                     <td>{{ $registeredPendingStudent->nameWithInitials }}</td>
                                     <td>{{ $registeredPendingStudent->regNum }}</td>
                                     <td>{{ $registeredPendingStudent->indexNum }}</td>
-                                    <form action="{{ route('eligibleStudents.update',$registeredPendingStudent->eid) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker1').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
-
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredPendingStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
 
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker2').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredPendingStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
-
-
-                                        {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker3').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredPendingStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-danger">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
-
-
-                                        {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                                        <td>
-                                            <button type="submit" class="btn btn-danger">Update</button>
-                                        </td>
-                                    </form>
                                 @endif
 
 
@@ -1222,7 +903,7 @@
                         <th>Cloak Issue</th>
                         <th>Cloak Return</th>
                         <th>Garland Return</th>
-                        <th >Update</th>
+
                     @endif
                 </tr>
                 @php
@@ -1291,112 +972,56 @@
                                 {{--                                @endif--}}
 
                                 @if(checkPermission(['Admin']))
-                                    <form action="{{ route('eligibleStudents.update',$registeredRejectStudent->eid) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker1').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
-
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredRejectStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
 
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker2').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredRejectStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
-
-
-                                        {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker3').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredRejectStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-danger">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
-
-
-                                        {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                                        <td>
-                                            <button type="submit" class="btn btn-danger">Update</button>
-                                        </td>
-                                    </form>
                                 @endif
 
                                 @if(checkPermission(['mainStoreClark']))
@@ -1404,112 +1029,56 @@
                                     <td>{{ $registeredRejectStudent->nameWithInitials }}</td>
                                     <td>{{ $registeredRejectStudent->regNum }}</td>
                                     <td>{{ $registeredRejectStudent->indexNum }}</td>
-                                    <form action="{{ route('eligibleStudents.update',$registeredRejectStudent->eid) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker1').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
-
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredRejectStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
 
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker2').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredRejectStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
-
-
-                                        {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker3').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredRejectStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-danger">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
-
-
-                                        {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                                        <td>
-                                            <button type="submit" class="btn btn-danger">Update</button>
-                                        </td>
-                                    </form>
                                 @endif
 
 
@@ -1537,7 +1106,7 @@
                         <th>Cloak Issue</th>
                         <th>Cloak Return</th>
                         <th>Garland Return</th>
-                        <th >Update</th>
+
                     @endif
                 </tr>
                 @php
@@ -1607,112 +1176,56 @@
                                 {{--                                @endif--}}
 
                                 @if(checkPermission(['Admin']))
-                                    <form action="{{ route('eligibleStudents.update',$registeredAcceptStudent->eid) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker1').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
-
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredAcceptStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
 
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker2').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredAcceptStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
-
-
-                                        {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker3').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredAcceptStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-danger">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
-
-
-                                        {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                                        <td>
-                                            <button type="submit" class="btn btn-danger">Update</button>
-                                        </td>
-                                    </form>
                                 @endif
 
                                 @if(checkPermission(['mainStoreClark']))
@@ -1720,112 +1233,56 @@
                                     <td>{{ $registeredAcceptStudent->nameWithInitials }}</td>
                                     <td>{{ $registeredAcceptStudent->regNum }}</td>
                                     <td>{{ $registeredAcceptStudent->indexNum }}</td>
-                                    <form action="{{ route('eligibleStudents.update',$registeredAcceptStudent->eid) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker1').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
-
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredAcceptStudent->cloakIssueDate }}" type="text" name="cloakIssueDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker1+{{$eligibleStudent->id}}'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakIssueDate }}" placeholder="MM/DD/YYYY" required name="cloakIssueDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
 
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker2').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredAcceptStudent->cloakReturnDate }}" type="text" name="cloakReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker2'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->cloakReturnDate }}" placeholder="MM/DD/YYYY" required name="cloakReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
 
-
-
-                                        {{--                            <td>{{ $eligibleStudent->cloakReturnDate }}</td>--}}
                                         <td>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker3').datepicker({
-                                                        format: "mm/dd/yyyy",
-                                                        weekStart: 0,
-                                                        calendarWeeks: true,
-                                                        autoclose: true,
-                                                        todayHighlight: true,
-                                                        orientation: "auto",
-
-                                                    });
-                                                });
-                                            </script>
-
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <input required value="{{ $registeredAcceptStudent->garlandReturnDate }}" type="text" name="garlandReturnDate" class="form-control" placeholder="Index Number">
+                                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" value="Not Yet" name="garlandReturnDate">
+                                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
 
-                                                {{--                                    <div class="form-group">--}}
-                                                {{--                                        <div class='input-group date' id='datetimepicker3'>--}}
-                                                {{--                                            <input value="{{ $eligibleStudent->garlandReturnDate }}" placeholder="MM/DD/YYYY" required name="garlandReturnDate" type='text' class="form-control" />--}}
-                                                {{--                                            <span class="input-group-addon">--}}
-                                                {{--                            <span class="glyphicon glyphicon-calendar"></span>--}}
-                                                {{--                        </span>--}}
-                                                {{--                                        </div>--}}
-                                                {{--                                    </div>--}}
+
+                                                    <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
+                                                    <button type="submit" class="btn btn-danger">Update</button>
+                                                </form>
                                             </div>
 
                                         </td>
-
-
-                                        {{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-                                        <td>
-                                            <button type="submit" class="btn btn-danger">Update</button>
-                                        </td>
-                                    </form>
                                 @endif
 
 

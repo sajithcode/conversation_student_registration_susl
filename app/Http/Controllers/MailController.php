@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\Confirm;
 use App\Mail\SignUp;
 use App\Models\EligibleStudent;
+use App\Models\Faculty;
 use App\Models\Report;
 use App\Models\StudentRegistration;
 use App\Models\User;
@@ -34,11 +35,12 @@ class MailController extends Controller
         $studentRegistrations = StudentRegistration::all();
         $eligibleStudents = EligibleStudent::all();
         $reports = Report::all();
+        $faculties = Faculty::all();
         $student = EligibleStudent::where(
 //            'regNum', strtoupper(trim($_SESSION["regNum"])))->get();
 //            'regNum', strtoupper(trim(str_replace(' ', '', $_SESSION["regNum"]))))->get();
             'regNum', strtoupper(trim(str_replace(' ', '', str_replace('/', '', $_SESSION["regNum"])))))->get();
-        return view('checkedData',compact('student','studentRegistrations','eligibleStudents','reports'));
+        return view('checkedData',compact('student','studentRegistrations','eligibleStudents','reports','faculties'));
 
     }
 

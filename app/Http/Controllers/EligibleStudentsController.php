@@ -231,7 +231,21 @@ WHERE student_registrations.regNum IS NULL
         }elseif (($request->input('cloakIssueDate'))){
             $eligibleStudent->update([
                 'cloakIssueDate' => $request->input('cloakIssueDate'),
+            ]);
+
+            return redirect()->route('eligibleStudents.index')
+                ->with('success', 'Successfully updated');
+        }
+        elseif (($request->input('cloakReturnDate'))){
+            $eligibleStudent->update([
                 'cloakReturnDate' => $request->input('cloakReturnDate'),
+            ]);
+
+            return redirect()->route('eligibleStudents.index')
+                ->with('success', 'Successfully updated');
+        }
+        elseif (($request->input('garlandReturnDate'))){
+            $eligibleStudent->update([
                 'garlandReturnDate' => $request->input('garlandReturnDate'),
             ]);
 

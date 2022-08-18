@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Faculty;
 use App\Models\User;
 use App\Models\Status;
 
@@ -16,6 +17,31 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $faculty = [
+            [
+                'faculty' => 'Agricultural Sciences',
+                'status' => 'Open'
+            ],[
+                'faculty' => 'Applied Sciences',
+                'status' => 'Open'
+            ],[
+                'faculty' => 'Geomatics',
+                'status' => 'Open'
+            ],[
+                'faculty' => 'Management Studies',
+                'status' => 'Open'
+            ],[
+                'faculty' => 'Social Sciences & Languages',
+                'status' => 'Open'
+            ],[
+                'faculty' => 'Technology',
+                'status' => 'Open'
+            ],[
+                'faculty' => 'Graduate Studies',
+                'status' => 'Open'
+            ],
+
+        ];
         $user = [
             [
                 'name'=>'Admin',
@@ -122,6 +148,9 @@ class DatabaseSeeder extends Seeder
 
         foreach ($user as $key => $value) {
             User::create($value);
+        }
+        foreach ($faculty as $key => $value) {
+            Faculty::create($value);
         }
 
 //        foreach ($status as $key => $value) {

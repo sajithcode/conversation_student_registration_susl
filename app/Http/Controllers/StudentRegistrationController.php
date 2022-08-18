@@ -6,6 +6,7 @@ use App\Exports\StudentRegistrationExport;
 use App\Exports\StudentRegistrationExportByFaculty;
 use App\Mail\RegistrationUpdate;
 use App\Models\EligibleStudent;
+use App\Models\Faculty;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -35,9 +36,9 @@ class StudentRegistrationController extends Controller
         session_start();
 
 //        $stdEmail = $_SESSION["email"];
-
+        $faculties = Faculty::all();
         $eligibleStudents = EligibleStudent::all();
-        return view('studentRegistration.create',compact('eligibleStudents',));
+        return view('studentRegistration.create',compact('eligibleStudents','faculties'));
     }
 
 
