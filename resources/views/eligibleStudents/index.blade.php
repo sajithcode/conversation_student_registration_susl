@@ -94,6 +94,7 @@
                                         <option value="Medicine">Medicine</option>
                                         <option value="Social Sciences & Languages">Social Sciences & Languages</option>
                                         <option value="Technology">Technology</option>
+                                        <option value="Graduate Studies">Graduate Studies</option>
                                     </select>
                                 </div>
                             </div>
