@@ -46,7 +46,7 @@
                                 <div class="pull-left" style="margin-bottom: 4px">
                                     <h2 style="color: #00ffe1; font-weight: bold">Your Registration is Pending</h2>
                                     <a><strong>If you didn't fill the Employability Survey,</strong></a>
-                                    <a target="_blank" href="http://employability-study.sociologicalnotes.com/"><strong>Click Here</strong></a>
+                                    <a target="_blank" href="surveyView"><strong>Click Here</strong></a>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-2 col-sm-2 col-md-2">
