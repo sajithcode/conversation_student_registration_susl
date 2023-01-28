@@ -46,8 +46,8 @@
 
 
 
-{{--    <form action="{{ route('eligibleStudents.store') }}" id="selectform" method="POST">--}}
-    <form  id="selectform" method="POST">
+    <form action="{{ route('survey.store') }}" id="selectSurveyForm" method="POST">
+{{--    <form  id="selectform" method="POST">--}}
         @csrf
         <div style="margin: 20px" class="row">
             <strong>01. Contact Details:</strong>
@@ -306,13 +306,13 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>12. Your computer literacy (Mark with an “ √ ” to all that applies):</strong>
-                    <label><input required style="margin-right: 50px" type="checkbox" name="computerLiteracy" value="Have not used a computer at all">Have not used a computer at all</label><br>
-                    <label><input required style="margin-right: 50px" type="checkbox" name="computerLiteracy" value="Familiar with browsing the web">Familiar with browsing the web</label><br>
-                    <label><input required style="margin-right: 50px" type="checkbox" name="computerLiteracy" value="Use email regularly">Use email regularly</label><br>
-                    <label><input required style="margin-right: 50px" type="checkbox" name="computerLiteracy" value="Ability to use MicrosoftOffice package(Word, Excel,...)">Ability to use MicrosoftOffice package(Word, Excel,...)</label><br>
-                    <label><input required style="margin-right: 50px" type="checkbox" name="computerLiteracy" value="Used the computer to search for jobs">Used the computer to search for jobs</label><br>
-                    <label><input required style="margin-right: 50px" type="checkbox" name="computerLiteracy" value="Ability write computer programs">Ability write computer programs</label>
+                    <strong>12. Your computer literacy (Mark with an “ √ ” to all that applies):</strong><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Have not used a computer at all">Have not used a computer at all</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Familiar with browsing the web">Familiar with browsing the web</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Use email regularly">Use email regularly</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Ability to use MicrosoftOffice package(Word, Excel,...)">Ability to use MicrosoftOffice package(Word, Excel,...)</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Used the computer to search for jobs">Used the computer to search for jobs</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Ability write computer programs">Ability write computer programs</label>
                 </div>
             </div>
 
@@ -689,16 +689,16 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>21. Which of the following describes your situation after your university education?(Mark with an “ √ ” to all that applies)</strong><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I have a temporary job">I have a temporary job</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I am employed now">I am employed now</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I have not looked for a job">I have not looked for a job</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I have looked for a job, but have not found one yet">I have looked for a job, but have not found one yet</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I have a better job now">I have a better job now</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I received a promotion">I received a promotion</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I'm continuing with the same job that I had during the university years">I'm continuing with the same job that I had during the university years</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I'm continuing with further studies">I'm continuing with further studies</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I'm self-employed">I'm self-employed</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction" value="I'm employed now but am looking for a better job">I'm employed now but am looking for a better job</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I have a temporary job">I have a temporary job</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I am employed now">I am employed now</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I have not looked for a job">I have not looked for a job</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I have looked for a job, but have not found one yet">I have looked for a job, but have not found one yet</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I have a better job now">I have a better job now</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I received a promotion">I received a promotion</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I'm continuing with the same job that I had during the university years">I'm continuing with the same job that I had during the university years</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I'm continuing with further studies">I'm continuing with further studies</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I'm self-employed">I'm self-employed</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I'm employed now but am looking for a better job">I'm employed now but am looking for a better job</label><br>
                 </div>
             </div>
 
@@ -735,13 +735,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>23. Which sector(s) are you willing to be employed in? (Mark to all that applies)</strong><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee" value="Private Sector">Private Sector</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee" value="Public Sector, teaching">Public Sector, teaching</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee" value="Public Sector, other">Public Sector, other</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee" value="Self-Employed">Self-Employed</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee" value="Semi Government Sector">Semi Government Sector</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee" value="University Staff">University Staff</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee" value="Other">Other</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Private Sector">Private Sector</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Public Sector, teaching">Public Sector, teaching</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Public Sector, other">Public Sector, other</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Self-Employed">Self-Employed</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Semi Government Sector">Semi Government Sector</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="University Staff">University Staff</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Other">Other</label><br>
                 </div>
             </div>
 
@@ -798,7 +798,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>25. What is your current employment status?</strong>
-                    <select required name="employedAfterLastExam" class="custom-select" id="inputGroupSelect21" >
+                    <select required name="currentEmploymentStatus" class="custom-select" id="inputGroupSelect21" >
                         <option selected>Choose...</option>
                         <option value="Permanent Employment">Permanent Employment</option>
                         <option value="Temporary/Contract Employment">Temporary/Contract Employment</option>
@@ -936,18 +936,18 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>33. What do you think were the most important aspects in getting this job? (Check all that applies)</strong><Br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Degree">Degree</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Class of degree">Class of degree</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Reputation of university">Reputation of university</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Field of study">Field of study</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Research experience">Research experience</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Personal contacts">Personal <contacts></contacts></label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Previous work experience">Previous work experience</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="English proficiency">English proficiency</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Other professional qualifications">Other professional qualifications</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Your personality">Your personality</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Computer Literacy">Computer Literacy</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob" value="Other">Other</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Degree">Degree</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Class of degree">Class of degree</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Reputation of university">Reputation of university</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Field of study">Field of study</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Research experience">Research experience</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Personal contacts">Personal <contacts></contacts></label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Previous work experience">Previous work experience</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="English proficiency">English proficiency</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Other professional qualifications">Other professional qualifications</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Your personality">Your personality</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Computer Literacy">Computer Literacy</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Other">Other</label><br>
                 </div>
             </div>
 
@@ -969,7 +969,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>35. When did you find your current job?</strong>
-                    <select name="jobRelatedDegree" class="custom-select" id="inputGroupSelect28" >
+                    <select name="whenFIndCurrentJob" class="custom-select" id="inputGroupSelect28" >
                         <option selected>Choose...</option>
                         <option value="During the University">During the University</option>
                         <option value="After sitting the final exam">After sitting the final exam</option>
@@ -982,7 +982,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>36. How satisfied are you with your current job?</strong>
-                    <select name="jobRelatedDegree" class="custom-select" id="inputGroupSelect28" >
+                    <select name="satisfiedCurrentJob" class="custom-select" id="inputGroupSelect28" >
                         <option selected>Choose...</option>
                         <option value="Very Satisfied">Very Satisfied</option>
                         <option value="Somewhat Satisfied">Somewhat Satisfied</option>
@@ -997,7 +997,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>37. How long have you been waited to get this job since the effecive date of your degree?</strong>
-                    <select required name="jobRelatedDegree" class="custom-select" id="inputGroupSelect29" >
+                    <select required name="howLongWaitedToGetJob" class="custom-select" id="inputGroupSelect29" >
                         <option selected>Choose...</option>
                         <option value="Less than 3 months">Less than 3 months</option>
                         <option value="3-6 months">3-6 months</option>
@@ -1072,11 +1072,11 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>41. What are the career goals for the next two years? (Mark with to all that applies)</strong><Br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears" value="Find a better job">Find a better job</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears" value="Migration">Migration</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears" value="Further studies">Further studies</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears" value="Find a job">Find a job</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears" value="Other">Other</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Find a better job">Find a better job</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Migration">Migration</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Further studies">Further studies</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Find a job">Find a job</label><br>
+                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Other">Other</label><br>
                 </div>
             </div>
 
