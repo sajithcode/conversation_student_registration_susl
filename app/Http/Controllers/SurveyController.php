@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Survey;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class SurveyController extends Controller
@@ -25,6 +26,13 @@ class SurveyController extends Controller
     public function create()
     {
         //
+    }
+
+    public function surveyView()
+    {
+
+        return view('survey.create');
+
     }
 
     /**
@@ -127,8 +135,19 @@ class SurveyController extends Controller
         $pro->universityEducation = $request->universityEducation;
         $pro->employmentAfterGraduation = $request->employmentAfterGraduation;
 
-        $pro->save();
+        session_start();
+        $pro->stdName = $_SESSION["stdName"];
+        $pro->regNum = $_SESSION["user_reg"];
 
+        try {
+            $pro->save();
+        }catch (QueryException $e){
+            return redirect()->route('eligibleStd')
+                ->with('success','Survey Already Completed.');
+        }
+
+        return redirect()->route('eligibleStd')
+            ->with('success','Survey successfully Completed.');
     }
 
     /**
