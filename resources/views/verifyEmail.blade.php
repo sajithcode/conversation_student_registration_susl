@@ -26,6 +26,7 @@
                     //            echo $_SESSION["user_id"];
                     //            echo $_SESSION["email"];
                     $_SESSION["user_reg"]=strtoupper(trim(Auth::user()->regNum));
+                    $_SESSION["stdName"]=strtoupper(trim(Auth::user()->name));
 //                    echo $_SESSION["user_reg"];
 
                     //            session_destroy();
