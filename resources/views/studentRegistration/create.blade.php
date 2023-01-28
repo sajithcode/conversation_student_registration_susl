@@ -213,7 +213,7 @@
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <strong>Mark the relevant cage:</strong>
+                                        <strong>Degree class:</strong>
                                         <input readonly value="{{ $eligibleStudent->degreeClass }}" required type="text" name="degreeClass" class="form-control" placeholder="Degree Class">
 
                                         {{--                            <div class="row">--}}
