@@ -11,6 +11,9 @@ class Survey extends Model
 
     protected $fillable = [
 
+        'stdName',
+        'regNum',
+
         'email',
         'contactNumber',
         'gender',
