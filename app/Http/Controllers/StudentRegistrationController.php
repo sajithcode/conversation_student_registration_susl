@@ -112,19 +112,27 @@ class StudentRegistrationController extends Controller
 
         session_start();
         $_SESSION["regStatus"]='Yes';
+        $_SESSION["nameWithInitial"]=$request->nameWithInitial;
+        $_SESSION["regNum"]=$request->regNum;
 
-        $pro->save();
+
+            $pro->save();
+
+
 
 //        Redirect::away('https://employability-study.sociologicalnotes.com/student_form.php');
 //        redirect('https://employability-study.sociologicalnotes.com/student_form.php');
 
 //        return redirect('https://employability-study.sociologicalnotes.com/student_form.php');
 
-        return redirect('http://employability-study.sociologicalnotes.com/');
+//        return redirect('http://employability-study.sociologicalnotes.com/');
+
+
+
 
 //        StudentRegistration::create($request->all());
-//        return redirect()->route('eligibleStd')
-//            ->with('success','Registration successfully.');
+        return redirect()->route('surveyView')
+            ->with('success','Registration successful.');
     }
 
     /**
