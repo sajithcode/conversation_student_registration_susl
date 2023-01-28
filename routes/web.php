@@ -27,6 +27,12 @@ Route::get('/', function () {
     return view('auth.login');
 })->name('welcome');
 
+
+//Route::get('/', function () {
+//    return view('survey.create');
+//});
+
+
 //Route::get('/eligibleStd', function () {
 //    session_start();
 //
@@ -38,7 +44,8 @@ Route::get('/', function () {
 //
 //});
 
-Route::get('/eligibleStd',[App\Http\Controllers\StudentRegistrationController::class, 'eligibleStd'])->name('eligibleStd');;
+Route::get('/eligibleStd',[App\Http\Controllers\StudentRegistrationController::class, 'eligibleStd'])->name('eligibleStd');
+Route::get('/surveyView',[App\Http\Controllers\SurveyController::class, 'surveyView'])->name('surveyView');
 Route::get('/checkData',[App\Http\Controllers\MailController::class, 'checkData'])->name('checkData');;
 
 
@@ -110,6 +117,7 @@ Route::resource('eligibleStudents', \App\Http\Controllers\EligibleStudentsContro
 Route::resource('studentRegistration', \App\Http\Controllers\StudentRegistrationController::class);
 Route::resource('report', \App\Http\Controllers\ReportController::class);
 Route::resource('faculty', \App\Http\Controllers\FacultyController::class);
+Route::resource('survey', \App\Http\Controllers\SurveyController::class);
 
 
 //Route::get('/getPDF', [App\Http\Controllers\PDFController::class, 'download']);
