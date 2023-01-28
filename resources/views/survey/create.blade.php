@@ -54,7 +54,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>a. Email:</strong>
-                    <input required type="email" name="email" class="form-control" placeholder="Email">
+                    <input  required type="email" name="email" class="form-control" placeholder="Email">
                 </div>
             </div>
 
@@ -67,10 +67,17 @@
 
 
             <div class="col-xs-12 col-sm-12 col-md-12">
+{{--                <div class="form-group">--}}
+{{--                    {{Form::label('property', 'Please Select a Property ') }}--}}
+{{--                    {{Form::select('property', ['Holiday Resort' => 'Holiday Resort', 'NEST' => 'NEST','Agri Farm Kabana' => 'Agri Farm Kabana', 'Agri Farm Dining Room' => 'Agri Farm Dining Room', 'Audio Visual Unit' => 'Audio Visual Unit'], null, ['class'=>'form-control','v-model' => 'property_type'])}}--}}
+
+{{--                </div>--}}
+
                 <div class="form-group">
+
                     <strong>02. Gender:</strong>
-                    <select required name="gender" class="custom-select" id="inputGroupSelect01" >
-                        <option selected>Choose...</option>
+                    <select required name="gender" class="custom-select" id="inputGroupSelect01"  >
+                        <option></option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -81,7 +88,7 @@
                 <div class="form-group">
                     <strong>03. GCE (A/L) Examination, District:</strong>
                     <select required name="district" class="custom-select" id="inputGroupSelect02" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Ampara">Ampara</option>
                         <option value="Anuradhapura">Anuradhapura</option>
                         <option value="Badulla">Badulla</option>
@@ -122,7 +129,7 @@
                 <div class="form-group">
                     <strong>05. Ethnicity:</strong>
                     <select required name="ethnicity" class="custom-select" id="inputGroupSelect03" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Sinhala">Sinhala</option>
                         <option value="Tamil">Tamil</option>
                         <option value="Muslim">Muslim</option>
@@ -136,7 +143,7 @@
                 <div class="form-group">
                     <strong>05. Faculty/Institution:</strong>
                     <select required name="faculty" class="custom-select" id="inputGroupSelect04" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Faculty of Agriculture Sciences">Faculty of Agriculture Sciences</option>
                         <option value="Faculty of Applied Sciences">Faculty of Applied Sciences</option>
                         <option value="Faculty of Geomatics">Faculty of Geomatics</option>
@@ -155,7 +162,7 @@
                 <div class="form-group">
                     <strong>05. Under which of the following does your degree fall?</strong>
                     <select required name="degreeFall" class="custom-select" id="inputGroupSelect05" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="External">External</option>
                         <option value="Internal">Internal</option>
                         <option value="Other">Other</option>
@@ -175,7 +182,7 @@
                 <div class="form-group">
                     <strong>08. Degree type:</strong>
                     <select required name="degreeType" class="custom-select" id="inputGroupSelect06" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="General (3 years)">General (3 years)</option>
                         <option value="General (4 years)">General (4 years)</option>
                         <option value="Special">Special</option>
@@ -196,7 +203,7 @@
                 <div class="form-group">
                     <strong>09. Medium of Instruction:</strong>
                     <select required name="medium" class="custom-select" id="inputGroupSelect07" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="English">English</option>
                         <option value="Sinhala">Sinhala</option>
                         <option value="Tamil">Tamil</option>
@@ -209,7 +216,7 @@
                 <div class="form-group">
                     <strong>10. Class received:</strong>
                     <select required name="classReceived" class="custom-select" id="inputGroupSelect08" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="First Class">First Class</option>
                         <option value="Second Upper">Second Upper</option>
                         <option value="Second Lower">Second Lower</option>
@@ -224,7 +231,7 @@
                 <div class="form-group">
                     <strong>11.1 The Grade you received for GCE(O/L) English Language:</strong>
                     <select required name="olEnglish" class="custom-select" id="inputGroupSelect09" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
@@ -239,7 +246,7 @@
                 <div class="form-group">
                     <strong>11.2 The Grade you received for GCE(A/L) General English:</strong>
                     <select required name="alEnglish" class="custom-select" id="inputGroupSelect10" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
@@ -256,7 +263,7 @@
                 <div class="form-group">
                     <strong>a. Speaking Skills:</strong>
                     <select required name="engSpeakSkill" class="custom-select" id="inputGroupSelect11" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Poor">Poor</option>
                         <option value="Average">Average</option>
                         <option value="Good">Good</option>
@@ -269,7 +276,7 @@
                 <div class="form-group">
                     <strong>b. Listening Skills:</strong>
                     <select required name="engListeningSkill" class="custom-select" id="inputGroupSelect12" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Poor">Poor</option>
                         <option value="Average">Average</option>
                         <option value="Good">Good</option>
@@ -282,7 +289,7 @@
                 <div class="form-group">
                     <strong>c. Writing Skills:</strong>
                     <select required name="engWritingSkill" class="custom-select" id="inputGroupSelect13" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Poor">Poor</option>
                         <option value="Average">Average</option>
                         <option value="Good">Good</option>
@@ -295,7 +302,7 @@
                 <div class="form-group">
                     <strong>d. Reading Skills:</strong>
                     <select required name="engReadingSkill" class="custom-select" id="inputGroupSelect14" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Poor">Poor</option>
                         <option value="Average">Average</option>
                         <option value="Good">Good</option>
@@ -373,7 +380,7 @@
                 <div class="form-group">
                     <strong>14. Which sort of area have you lived most of your life?</strong>
                     <select required name="areaLive" class="custom-select" id="inputGroupSelect15" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Urban">Urban</option>
                         <option value="Semi Urban">Semi Urban</option>
                         <option value="Rural">Rural</option>
@@ -388,7 +395,7 @@
                 <div class="form-group">
                     <strong>District:</strong>
                     <select required name="districtLife" class="custom-select" id="inputGroupSelect16" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Ampara">Ampara</option>
                         <option value="Anuradhapura">Anuradhapura</option>
                         <option value="Badulla">Badulla</option>
@@ -429,7 +436,7 @@
                 <div class="form-group">
                     <strong>16. What type of school did you go to for your GCE A/L?</strong>
                     <select required name="alSchool" class="custom-select" id="inputGroupSelect17" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="National School">National School</option>
                         <option value="Provincial School">Provincial School</option>
                         <option value="Private/semi govt.school">Private/semi govt.school</option>
@@ -442,7 +449,7 @@
                 <div class="form-group">
                     <strong>17. What is the highest level of education achieved by either your father and/or mother??</strong>
                     <select required name="edumf" class="custom-select" id="inputGroupSelect18" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Less than GCE O/L">Less than GCE O/L</option>
                         <option value="Passes GCE O/L">Passes GCE O/L</option>
                         <option value="Passes GCE A/L">Passes GCE A/L</option>
@@ -668,7 +675,7 @@
                 <div class="form-group">
                     <strong>20. How much did you expect your gross monthly salary(In Rupees) to be after your university education?</strong>
                     <select required name="monthlySalary" class="custom-select" id="inputGroupSelect19" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Less than 10,000">Less than 10,000</option>
                         <option value="10,000-14,999">10,000-14,999</option>
                         <option value="15,000-19,999">15,000-19,999</option>
@@ -749,7 +756,7 @@
                 <div class="form-group">
                     <strong>24. Were you employed at any point after your last exam?</strong>
                     <select required name="employedAfterLastExam" class="custom-select" id="inputGroupSelect20" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
@@ -799,7 +806,7 @@
                 <div class="form-group">
                     <strong>25. What is your current employment status?</strong>
                     <select required name="currentEmploymentStatus" class="custom-select" id="inputGroupSelect21" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Permanent Employment">Permanent Employment</option>
                         <option value="Temporary/Contract Employment">Temporary/Contract Employment</option>
                         <option value="Self employed">Self employed</option>
@@ -820,7 +827,7 @@
                 <div class="form-group">
                     <strong>26. Type of employment</strong>
                     <select name="typeEmployemt" class="custom-select" id="inputGroupSelect22" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Permanent Employment">Permanent Employment</option>
                         <option value="Temporary/Contract Employment">Temporary/Contract Employment</option>
                         <option value="Full-time">Full-time</option>
@@ -842,7 +849,7 @@
                 <div class="form-group">
                     <strong>28. Which sector are you employed in?</strong>
                     <select name="sectorEmployed" class="custom-select" id="inputGroupSelect23" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Public Sector">Public Sector</option>
                         <option value="Private Sector">Private Sector</option>
                         <option value="Semi Government">Semi Government</option>
@@ -856,7 +863,7 @@
                 <div class="form-group">
                     <strong>29. The position you hold currently?</strong>
                     <select name="currentPosition" class="custom-select" id="inputGroupSelect24" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Senior Management">Senior Management</option>
                         <option value="Senior Management">Senior Management</option>
                         <option value="Senior Management">Senior Management</option>
@@ -875,7 +882,7 @@
                 <div class="form-group">
                     <strong>30. To which economic sector does your current job belong to?</strong>
                     <select name="jobEconomicSector" class="custom-select" id="inputGroupSelect25" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Agriculture/Dairy">Agriculture/Dairy</option>
                         <option value="Bank Finance/Insurance">Bank Finance/Insurance</option>
                         <option value="Construction/ Engineering">Construction/ Engineering</option>
@@ -900,7 +907,7 @@
                 <div class="form-group">
                     <strong>31. What is your current gross monthly salary (In Rupees)?</strong>
                     <select name="currentGrossMonthlySalary" class="custom-select" id="inputGroupSelect26" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Less than 20,000">Less than 20,000</option>
                         <option value="20,000-29,999">20,000-29,999</option>
                         <option value="30,000-39,999">30,000-39,999</option>
@@ -917,7 +924,7 @@
                 <div class="form-group">
                     <strong>32. How did you find this job?</strong>
                     <select name="findTheJob" class="custom-select" id="inputGroupSelect27" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Newspaper">Newspaper</option>
                         <option value="Gazette">Gazette</option>
                         <option value="Online">Online</option>
@@ -956,7 +963,7 @@
                 <div class="form-group">
                     <strong>34. Is this job related to the field you studies in your degree?</strong>
                     <select name="jobRelatedDegree" class="custom-select" id="inputGroupSelect28" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Very Related">Very Related</option>
                         <option value="Somewhat related">Somewhat related</option>
                         <option value="Neither related nor unrelated">Neither related nor unrelated</option>
@@ -970,7 +977,7 @@
                 <div class="form-group">
                     <strong>35. When did you find your current job?</strong>
                     <select name="whenFIndCurrentJob" class="custom-select" id="inputGroupSelect28" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="During the University">During the University</option>
                         <option value="After sitting the final exam">After sitting the final exam</option>
                         <option value="After releasing the result">After releasing the result</option>
@@ -983,7 +990,7 @@
                 <div class="form-group">
                     <strong>36. How satisfied are you with your current job?</strong>
                     <select name="satisfiedCurrentJob" class="custom-select" id="inputGroupSelect28" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Very Satisfied">Very Satisfied</option>
                         <option value="Somewhat Satisfied">Somewhat Satisfied</option>
                         <option value="Neither Satisfied nor dissatisfied">Neither Satisfied nor dissatisfied</option>
@@ -998,7 +1005,7 @@
                 <div class="form-group">
                     <strong>37. How long have you been waited to get this job since the effecive date of your degree?</strong>
                     <select required name="howLongWaitedToGetJob" class="custom-select" id="inputGroupSelect29" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Less than 3 months">Less than 3 months</option>
                         <option value="3-6 months">3-6 months</option>
                         <option value="6-9 months">6-9 months</option>
@@ -1012,7 +1019,7 @@
                 <div class="form-group">
                     <strong>38. Are looking for employment right now?</strong>
                     <select required name="lookingNowEmployee" class="custom-select" id="inputGroupSelect30" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
@@ -1039,7 +1046,7 @@
                 <div class="form-group">
                     <strong>a. Accept a job that is not in the field you stuied at the university</strong>
                     <select required name="willingToFindJob" class="custom-select" id="inputGroupSelect30" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
@@ -1050,7 +1057,7 @@
                 <div class="form-group">
                     <strong>b. Move if a job requires it</strong>
                     <select required name="jobRequest" class="custom-select" id="inputGroupSelect31" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
@@ -1061,7 +1068,7 @@
                 <div class="form-group">
                     <strong>c. Accept a job that you are over-qualified for</strong>
                     <select required name="jobOverQualified" class="custom-select" id="inputGroupSelect32" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
@@ -1085,7 +1092,7 @@
                 <div class="form-group">
                     <strong>42. How satisfied are you with your university education?</strong>
                     <select required name="universityEducation" class="custom-select" id="inputGroupSelect33" >
-                        <option selected>Choose...</option>
+                        <option></option>
                         <option value="Very Satisfied">Very Satisfied</option>
                         <option value="Somewhat Satisfied">Somewhat Satisfied</option>
                         <option value="Neither Satisfied nor dissatisfied">Neither Satisfied nor dissatisfied</option>
@@ -1122,7 +1129,7 @@
         <div class="col-xs-11 col-sm-11 col-md-11 text-center">
         </div>
         <div  class="col-xs-1 col-sm-1 col-md-1">
-            <button class="btn btn-dark" onclick="document.getElementById('selectform').reset(); document.getElementById('from').value = null; return false;">
+            <button class="btn btn-dark" onclick="document.getElementById('selectSurveyForm').reset(); document.getElementById('from').value = null; return false;">
                 Reset
             </button>
         </div>
