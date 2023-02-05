@@ -116,7 +116,8 @@ class StudentRegistrationController extends Controller
         $_SESSION["regNum"]=$request->regNum;
 
 
-            $pro->save();
+        $_SESSION["regPro"]=$pro;
+//            $pro->save();
 
 
 
@@ -132,7 +133,7 @@ class StudentRegistrationController extends Controller
 
 //        StudentRegistration::create($request->all());
         return redirect()->route('surveyView')
-            ->with('success','Registration successful.');
+            ->with('success','Complete the Survey to Complete Registration.');
     }
 
     /**

@@ -140,6 +140,7 @@ class SurveyController extends Controller
         $pro->regNum = $_SESSION["user_reg"];
 
         try {
+            $_SESSION["regPro"]->save();
             $pro->save();
         }catch (QueryException $e){
             return redirect()->route('eligibleStd')
@@ -147,7 +148,7 @@ class SurveyController extends Controller
         }
 
         return redirect()->route('eligibleStd')
-            ->with('success','Survey successfully Completed.');
+            ->with('success','Registration successfully Completed.');
     }
 
     /**
