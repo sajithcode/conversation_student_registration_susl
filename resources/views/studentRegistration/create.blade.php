@@ -424,7 +424,7 @@
 
                                         {{--                        <button type="submit" class="btn btn-primary">Submit</button>--}}
                                     @endif
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Next</button>
                                 </div>
 
                             </div>
