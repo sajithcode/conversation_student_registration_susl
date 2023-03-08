@@ -25,7 +25,7 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        //
+        return view('faculty.create');
     }
 
     /**
@@ -36,7 +36,9 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Faculty::create($request->all());
+                return redirect()->route('faculty.index')
+                    ->with('success','New Faculty added successfully.');
     }
 
     /**
