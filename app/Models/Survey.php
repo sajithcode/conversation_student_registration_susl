@@ -97,6 +97,8 @@ class Survey extends Model
         'universityEducation',
         'employmentAfterGraduation',
 
+        'convocationName',
+
 
 
 

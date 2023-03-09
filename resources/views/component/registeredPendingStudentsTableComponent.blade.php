@@ -22,6 +22,10 @@
             <button type="submit" class="btn btn-danger">Delete</button>
         @endif
 
+{{--            <div class="visible-print text-center">--}}
+{{--                {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(100)->generate( route('studentRegistration.show',$registeredPendingStudent->sid) ); !!}--}}
+{{--                <p>Scan me to return to the original page.</p>--}}
+{{--            </div>--}}
         <a class="btn btn-info" href="{{ route('studentRegistration.show',$registeredPendingStudent->sid) }}">Registration {{$registeredPendingStudent->status}}</a>
         {{--                                    <a>{{$studentRegistration->status}}</a>--}}
 

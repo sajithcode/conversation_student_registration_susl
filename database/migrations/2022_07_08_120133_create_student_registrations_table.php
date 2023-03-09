@@ -48,6 +48,9 @@ class CreateStudentRegistrationsTable extends Migration
             $table->string('status')->default('Pending');
             $table->string('statusMessage')->default('none')->nullable();
 
+            $table->string('convocationName');
+
+
             $table->timestamps();
         });
     }

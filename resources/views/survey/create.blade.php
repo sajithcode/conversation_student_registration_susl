@@ -15,10 +15,10 @@
         <div style="margin: 20px" class="row">
             <div class="col-lg-12 margin-tb">
                 <div style="text-align: center;margin-bottom: 40px;margin-top: 20px">
-                    <h2 style="font-weight: bold">Employability Study of All Graduands 2020,2021</h2>
+                    <h2 style="font-weight: bold">Employability Study of All Graduands</h2>
                 </div>
                 <div class="pull-left">
-                    <h5 style="font-weight: bold">This is the official census form for all graduandsin the year 2020, 2021</h5>
+                    <h5 style="font-weight: bold">This is the official census form for all graduands</h5>
                 </div>
                 <div class="pull-left">
                     <h6>Please complete the survey and help improve and reform the quality of higher education in Sri Lanka. The estimated time to complete this survey is less than 5 minutes. Note that your answers are anonymous and that they will be protected by law.</h6>

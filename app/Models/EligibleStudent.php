@@ -25,6 +25,7 @@ class EligibleStudent extends Model
         'cloakIssueDate',
         'cloakReturnDate',
         'garlandReturnDate',
+        'convocationName',
 
         'status'
 

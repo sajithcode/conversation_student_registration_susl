@@ -135,9 +135,11 @@ class SurveyController extends Controller
         $pro->universityEducation = $request->universityEducation;
         $pro->employmentAfterGraduation = $request->employmentAfterGraduation;
 
+
         session_start();
         $pro->stdName = $_SESSION["stdName"];
         $pro->regNum = $_SESSION["user_reg"];
+        $pro->convocationName=$_SESSION["convocationName"];
 
         try {
             $_SESSION["regPro"]->save();

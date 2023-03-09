@@ -132,6 +132,12 @@
                         <input readonly value="{{ $studentRegistration->indexNum }}" type="text" name="indexNum" class="form-control" placeholder="Index Number">
                     </div>
                 </div>
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <strong>Convocation Name:</strong>--}}
+{{--                        <input readonly value="{{ $studentRegistration->convocationName }}" required type="text" name="convocationName" class="form-control" placeholder="Convocation Name">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <script type="text/javascript">
                     $(function () {

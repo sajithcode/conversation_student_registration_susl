@@ -26,7 +26,13 @@
                 </div>
             @endif
             @if(checkPermission([ 'Admin' ]))
-
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="pull-right">
+                            <a target="_blank" class="btn btn-dark" href="{{ route('convocation.index') }}">Convocation</a>
+                        </div>
+                    </div>
+                </div>
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="pull-right">

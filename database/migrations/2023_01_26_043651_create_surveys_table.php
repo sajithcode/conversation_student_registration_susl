@@ -99,6 +99,7 @@ class CreateSurveysTable extends Migration
             $table->string('careerGoalsNextTwoYears');
             $table->string('universityEducation');
             $table->string('employmentAfterGraduation');
+            $table->string('convocationName');
             $table->timestamps();
         });
     }

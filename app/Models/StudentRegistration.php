@@ -39,6 +39,7 @@ class StudentRegistration extends Model
         'image',
 
         'signedDate',
+        'convocationName',
 
         'status',
         'statusMessage',

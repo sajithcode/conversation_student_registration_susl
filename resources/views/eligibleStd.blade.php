@@ -27,7 +27,8 @@
 {{--                    @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
                     @if (strtoupper(trim(str_replace(' ', '', $eligibleStudent->regNum))) === strtoupper(trim(str_replace(' ', '', Auth::user()->regNum))))
                         @php
-                            $i = 2
+                            $i = 2;
+                            $_SESSION["convocationName"]=$eligibleStudent->convocationName;
                         @endphp
 
                     @endif
@@ -35,12 +36,16 @@
 
                 {{--            1--}}
 
+
+
                 @foreach ($studentRegistrations as $studentRegistration)
+
 {{--                    @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
                         @if (strtoupper(trim(str_replace(' ', '', $studentRegistration->regNum))) === strtoupper(trim(str_replace(' ', '', Auth::user()->regNum))))
                         @php
                             $i = 3
                         @endphp
+
                         <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
                             @if($studentRegistration->status==='Pending')
                                 <div class="pull-left" style="margin-bottom: 4px">
@@ -67,6 +72,7 @@
                                     <p style="color:red;">{{$studentRegistration->statusMessage}}}</p>
                                 </div>
 
+
                                 <div class="row">
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="pull-right">
@@ -89,6 +95,10 @@
                             @endif
 
                         </div>
+                        <div class="visible-print text-center">
+                            {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(100)->generate(route('studentRegistration.show',$studentRegistration->id)); !!}
+                            <p>Scan me</p>
+                        </div>
                     @endif
                 @endforeach
 
@@ -103,6 +113,7 @@
 
 
                 @if ($i===2)
+
                     <div class="col-lg-12 margin-tb" style="margin-bottom:30px;">
                         <div class="pull-left">
                             <h2 style="color: #00a95a; font-weight: bold">Congratulation! You are Eligible  For Convocation</h2>

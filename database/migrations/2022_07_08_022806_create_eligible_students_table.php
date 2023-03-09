@@ -36,6 +36,8 @@ class CreateEligibleStudentsTable extends Migration
 
             $table->string('status')->default('Pending');
 
+            $table->string('convocationName');
+
             $table->timestamps();
         });
     }

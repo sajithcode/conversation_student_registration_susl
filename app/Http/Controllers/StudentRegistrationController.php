@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\StudentRegistrationExport;
 use App\Exports\StudentRegistrationExportByFaculty;
 use App\Mail\RegistrationUpdate;
+use App\Models\Convocation;
 use App\Models\EligibleStudent;
 use App\Models\Faculty;
 use App\Models\StudentRegistration;
@@ -37,8 +38,9 @@ class StudentRegistrationController extends Controller
 
 //        $stdEmail = $_SESSION["email"];
         $faculties = Faculty::all();
+        $convocations = Convocation::all();
         $eligibleStudents = EligibleStudent::all();
-        return view('studentRegistration.create',compact('eligibleStudents','faculties'));
+        return view('studentRegistration.create',compact('eligibleStudents','faculties','convocations'));
     }
 
 
@@ -102,6 +104,7 @@ class StudentRegistrationController extends Controller
         $pro->nicVisitor2 = $request->nicVisitor2;
         $pro->signedDate = $request->signedDate;
 
+
         if($request->image){
             $file= $request->image;
             $filename= date('YmdHi').$file->getClientOriginalName();
@@ -111,6 +114,8 @@ class StudentRegistrationController extends Controller
         }
 
         session_start();
+        $pro->convocationName = $_SESSION["convocationName"];
+
         $_SESSION["regStatus"]='Yes';
         $_SESSION["nameWithInitial"]=$request->nameWithInitial;
         $_SESSION["regNum"]=$request->regNum;
@@ -174,7 +179,8 @@ class StudentRegistrationController extends Controller
             $file= $request->image;
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('/images'), $filename);
-
+            session_start();
+            $convocationName = $_SESSION["convocationName"];
 
             $studentRegistration->update([
                 'nameWithInitial'=>$request->input('nameWithInitial'),
@@ -201,6 +207,8 @@ class StudentRegistrationController extends Controller
                 'nameVisitor2'=>$request->input('nameVisitor2'),
                 'nicVisitor1'=>$request->input('nicVisitor1'),
                 'nicVisitor2'=>$request->input('nicVisitor2'),
+                'convocationName'=>$convocationName,
+
 
                 'image' => $filename,
 
