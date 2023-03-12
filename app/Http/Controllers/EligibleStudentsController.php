@@ -36,10 +36,12 @@ eligible_students.degreeName,
 eligible_students.cloakIssueDate,
 eligible_students.cloakReturnDate,
 eligible_students.garlandReturnDate,
-student_registrations.status
+student_registrations.status,
+surveys.id as "svid"
 
 FROM eligible_students
-LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+LEFT JOIN student_registrations ON eligible_students.regNum = student_registrations.regNum
+LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
 ');
 
 
@@ -98,7 +100,7 @@ LEFT JOIN student_registrations ON eligible_students.regNum=student_registration
 
     public function getESByFormRequest(Request $request)
     {
-
+        $convo = Convocation::all()->pluck('convocation', 'id');
         $studentRegEligible = $request->input('studentRegEligible');
         $faculty = $request->input('faculty');
 
@@ -119,10 +121,12 @@ eligible_students.degreeName,
 eligible_students.cloakIssueDate,
 eligible_students.cloakReturnDate,
 eligible_students.garlandReturnDate,
-student_registrations.status
+student_registrations.status,
+surveys.id as "svid"
 
 FROM eligible_students
-LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
 '))->where('faculty', '=', $faculty);
             }else{
                 $students = collect(DB::select('
@@ -139,13 +143,15 @@ eligible_students.degreeName,
 eligible_students.cloakIssueDate,
 eligible_students.cloakReturnDate,
 eligible_students.garlandReturnDate,
-student_registrations.status
+student_registrations.status,
+surveys.id as "svid"
 
 FROM eligible_students
-LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
 '));
             }
-     return view('eligibleStudents.index',compact('students'));
+     return view('eligibleStudents.index',compact('students','convo'));
 
         }
 
@@ -166,10 +172,12 @@ eligible_students.degreeName,
 eligible_students.cloakIssueDate,
 eligible_students.cloakReturnDate,
 eligible_students.garlandReturnDate,
-student_registrations.status
+student_registrations.status,
+surveys.id as "svid"
 
 FROM eligible_students
-INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
 '))->where('faculty', '=', $faculty);
             }else{
                 $students = collect(DB::select('
@@ -186,13 +194,15 @@ eligible_students.degreeName,
 eligible_students.cloakIssueDate,
 eligible_students.cloakReturnDate,
 eligible_students.garlandReturnDate,
-student_registrations.status
+student_registrations.status,
+surveys.id as "svid"
 
 FROM eligible_students
-INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
 '));
             }
-            return view('eligibleStudents.index',compact('students'));
+            return view('eligibleStudents.index',compact('students','convo'));
         }
 
         elseif ($request->input('studentRegEligible')=="NotRegistered"){
@@ -236,7 +246,7 @@ LEFT JOIN student_registrations ON eligible_students.regNum=student_registration
 WHERE student_registrations.regNum IS NULL
 '));
             }
-            return view('eligibleStudents.index',compact('students'));
+            return view('eligibleStudents.index',compact('students','convo'));
         }
 
 
@@ -256,13 +266,16 @@ WHERE student_registrations.regNum IS NULL
         eligible_students.cloakIssueDate,
         eligible_students.cloakReturnDate,
         eligible_students.garlandReturnDate,
-        student_registrations.status
+        student_registrations.status,
+        surveys.id as "svid"
         FROM eligible_students
-        INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum'))
+        INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+        LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
+'))
                     ->where('status', '=', $studentRegEligible)
                     ->where('faculty', '=', $faculty);
 
-                return view('eligibleStudents.index',compact('students'));
+                return view('eligibleStudents.index',compact('students','convo'));
 
             }
         }
