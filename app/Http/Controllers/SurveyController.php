@@ -15,7 +15,8 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        //
+        $surveys = Survey::all();
+        return view('survey.index',compact('surveys',));
     }
 
     /**
