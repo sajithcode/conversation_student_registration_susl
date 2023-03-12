@@ -2,8 +2,10 @@
 
 namespace App\Exports;
 
+use App\Models\Convocation;
 use App\Models\StudentRegistration;
 use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromView;
 
@@ -16,12 +18,24 @@ class StudentRegistrationExport implements FromView
 //    {
 //        return StudentRegistration::all();
 //    }
+    use Exportable;
 
+    public function __construct(string $convocationName)
+    {
+        $this->convocationName = $convocationName;
+    }
 
     public function view(): View
     {
+//
+//        return view('studentRegistration.table', [
+//            'studentRegistrations' => StudentRegistration::all()
+//        ]);
+
         return view('studentRegistration.table', [
-            'studentRegistrations' => StudentRegistration::all()
+            'studentRegistrations' => StudentRegistration::query()
+                ->where('convocationName',$this->convocationName)
+                ->get()
         ]);
     }
 }
