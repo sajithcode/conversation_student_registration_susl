@@ -20,10 +20,6 @@
 <td>
     <form action="{{ route('eligibleStudents.destroy',$allEligibleStudent->id) }}" method="POST">
 
-
-
-
-
         @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
             <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$allEligibleStudent->id) }}">Edit</a>
 
@@ -31,13 +27,10 @@
             @method('DELETE')
 
             <button type="submit" class="btn btn-danger">Delete</button>
+            @if($allEligibleStudent->status=="Pending"||$allEligibleStudent->status=="Reject"||$allEligibleStudent->status=="Accept")
+                <a class="btn btn-info" href="{{ route('studentRegistration.show',$allEligibleStudent->sid) }}">Registration {{$allEligibleStudent->status}}</a>
+
+            @endif
         @endif
-
-{{--        @foreach ($studentRegistrations as $studentRegistration)--}}
-{{--            @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim($eligibleStudent->regNum)))--}}
-                {{--                                    <a>{{$studentRegistration->status}}</a>--}}
-{{--            @endif--}}
-{{--        @endforeach--}}
-
     </form>
 </td>
