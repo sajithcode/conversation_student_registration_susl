@@ -17,7 +17,7 @@
         @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
 
                 <div class="pull-left">
-                    <h2>Eligible Student List</h2>
+                    <h2>Eligible Students</h2>
                 </div>
 
             @if ($message = Session::get('success'))
@@ -264,7 +264,7 @@
 {{--                });--}}
 {{--            </script>--}}
 
-            @if(checkPermission(['Admin','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+            @if(checkPermission(['Admin','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess']))
 {{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
 
                 <form action="{{ route('getESByFormRequest') }}" id="selectform" method="GET">
@@ -342,7 +342,7 @@
         <table id="divFrmAll" class="table table-bordered form-duration-div">
             <tr>
                             <th>No</th>
-                @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+                @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess']))
 
                 <th>Registration status</th>
 
@@ -350,7 +350,7 @@
                 <th>Name</th>
                 <th style="width: auto">Register Number</th>
                 <th>Index Number</th>
-                @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+                @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess']))
                 <th>Faculty</th>
                 <th>Department</th>
                 <th>Degree Name</th>
@@ -368,7 +368,7 @@
             @foreach ($students as $allEligibleStudent)
                 <tr>
 
-                    @if(checkPermission(['Admin','viceChancellor']))
+                    @if(checkPermission(['Admin','viceChancellor','surveyAccess']))
                         <td>{{ ++$a }}</td>
                         @include('component.allEligibleStudentsTableComponent')
                     @endif
