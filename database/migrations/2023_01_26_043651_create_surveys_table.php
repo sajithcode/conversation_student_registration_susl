@@ -14,9 +14,9 @@ class CreateSurveysTable extends Migration
     public function up()
     {
         Schema::create('surveys', function (Blueprint $table) {
+            $table->id();
             $table->string('stdName');
             $table->string('regNum')->unique();
-
             $table->string('email');
             $table->string('contactNumber');
             $table->string('gender');
