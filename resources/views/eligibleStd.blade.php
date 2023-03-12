@@ -97,7 +97,7 @@
                         </div>
                         <div class="visible-print text-center">
                             {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(100)->generate(route('studentRegistration.show',$studentRegistration->id)); !!}
-                            <p>Scan me</p>
+{{--                            <p>Scan me</p>--}}
                         </div>
                     @endif
                 @endforeach

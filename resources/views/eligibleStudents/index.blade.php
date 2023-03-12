@@ -14,6 +14,13 @@
 
 
     <div style="margin: 50px">
+        @if(checkPermission(['surveyAccess']))
+            <div class="col" style="margin-bottom: 10px">
+                <div class="pull-center">
+                    <a class="btn btn-success" href="{{ route('survey.index') }}">Survey</a>
+                </div>
+            </div>
+        @endif
         @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
 
                 <div class="pull-left">
