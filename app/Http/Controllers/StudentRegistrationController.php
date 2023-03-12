@@ -250,10 +250,12 @@ class StudentRegistrationController extends Controller
         //
     }
 
-    public function export()
+    public function export(Request $request)
 
     {
-        return Excel::download(new StudentRegistrationExport, 'Registered All Students.xlsx');
+//        return Excel::download(new StudentRegistrationExport, 'Registered All Students.xlsx');
+        return (new StudentRegistrationExport($request->input('convocationName')))->download('Registered All Students.xlsx');
+
     }
 
     public function exportbyfaculty(Request $request, StudentRegistration $studentRegistration)
@@ -263,7 +265,7 @@ class StudentRegistrationController extends Controller
 
 //        print $request->input('faculty');
 
-        return (new StudentRegistrationExportByFaculty($request->input('faculty')))->download('Registered in Faculty.xlsx');
+        return (new StudentRegistrationExportByFaculty($request->input('faculty'),$request->input('convocationName')))->download('Registered in Faculty.xlsx');
 
 //        return Excel::download(new StudentRegistrationExport, 'Registered Students.xlsx');
     }
