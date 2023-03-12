@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-
+        @if(checkPermission(['Admin','surveyAccess']))
         <div style="overflow-x:auto;">
             <table class="table table-bordered form-duration-div">
                 <tr>
@@ -199,4 +199,5 @@
             </table>
 
     </div>
+    @endif
 @endsection

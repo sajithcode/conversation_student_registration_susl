@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(checkPermission(['Admin','surveyAccess']))
     <div class="row" style="margin: 50px">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -649,6 +650,6 @@
         </div>
     </div>
 
-
+    @endif
 
 @endsection
