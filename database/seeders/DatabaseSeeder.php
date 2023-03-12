@@ -142,6 +142,13 @@ class DatabaseSeeder extends Seeder
                 'is_permission'=>'0',
                 'password'=> bcrypt('123456'),
             ],
+            [
+                'name'=>'Survey',
+                'regNum'=>'non',
+                'email'=>'survey@gmail.com',
+                'is_permission'=>'4',
+                'password'=> bcrypt('123456'),
+            ],
         ];
 
 
