@@ -48,6 +48,9 @@ function getMyPermission($id)
         case 3:
             return 'viceChancellor';
             break;
+        case 4:
+            return 'surveyAccess';
+            break;
 
         default:
             return 'student';
