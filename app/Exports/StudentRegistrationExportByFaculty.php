@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\FromView;
+use PhpParser\Node\Scalar\String_;
 
 class StudentRegistrationExportByFaculty implements FromView
 {
@@ -16,25 +17,20 @@ class StudentRegistrationExportByFaculty implements FromView
     */
     use Exportable;
 
-    public function __construct(string $faculty)
+    public function __construct(string $faculty, string $convocationName)
     {
         $this->faculty = $faculty;
+        $this->convocationName = $convocationName;
     }
 
-//    public function query()
-//    {
-//        return StudentRegistration::query()->where('faculty', $this->faculty);
-//    }
-
-//    public function collection()
-//    {
-//        return StudentRegistration::all();
-//    }
     public function view(): View
     {
         // TODO: Implement view() method.
         return view('studentRegistration.table', [
-            'studentRegistrations' => StudentRegistration::query()->where('faculty', $this->faculty)->get()
+            'studentRegistrations' => StudentRegistration::query()
+                ->where('convocationName',$this->convocationName)
+                ->where('faculty', $this->faculty)
+                ->get()
         ]);
     }
 }
