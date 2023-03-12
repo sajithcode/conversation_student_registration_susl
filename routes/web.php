@@ -94,6 +94,7 @@ Route::put('/statusConfirm',[App\Http\Controllers\EligibleStudentsController::cl
 Route::get('/completeEmailVerification',[App\Http\Controllers\EligibleStudentsController::class, 'completeEmailVerification'])->name('completeEmailVerification');;
 Route::get('/getByEmail',[App\Http\Controllers\EligibleStudentsController::class, 'getByEmail'])->name('getByEmail');;
 Route::get('/getByRegNum',[App\Http\Controllers\EligibleStudentsController::class, 'getByRegNum'])->name('getByRegNum');
+Route::get('/getESByFormRequest',[App\Http\Controllers\EligibleStudentsController::class, 'getESByFormRequest'])->name('getESByFormRequest');
 
 
 
@@ -119,6 +120,7 @@ Route::resource('report', \App\Http\Controllers\ReportController::class);
 Route::resource('faculty', \App\Http\Controllers\FacultyController::class);
 Route::resource('convocation', \App\Http\Controllers\ConvocationController::class);
 Route::resource('survey', \App\Http\Controllers\SurveyController::class);
+Route::resource('user', \App\Http\Controllers\UserController::class);
 
 
 //Route::get('/getPDF', [App\Http\Controllers\PDFController::class, 'download']);
