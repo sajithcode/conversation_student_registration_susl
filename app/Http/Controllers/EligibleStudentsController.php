@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Convocation;
 use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
 use App\Models\VerifiedEmail;
@@ -20,11 +21,12 @@ class EligibleStudentsController extends Controller
     public function index()
     {
         session_start();
-
+        $convo = Convocation::all()->pluck('convocation', 'id');
 //        $stdEmail = $_SESSION["email"];
-        $allEligibleStudents = DB::select('
+        $students = DB::select('
 SELECT
 eligible_students.id,
+student_registrations.id as "sid",
 eligible_students.nameWithInitials,
 eligible_students.regNum,
 eligible_students.indexNum,
@@ -40,107 +42,12 @@ FROM eligible_students
 LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
 ');
 
-        $registeredStudents = DB::select('
-SELECT
-student_registrations.id "sid",
-eligible_students.id "eid",
-eligible_students.nameWithInitials,
-eligible_students.regNum,
-eligible_students.indexNum,
-eligible_students.faculty,
-eligible_students.department,
-eligible_students.degreeName,
-eligible_students.cloakIssueDate,
-eligible_students.cloakReturnDate,
-eligible_students.garlandReturnDate,
-student_registrations.status
 
-FROM eligible_students
-INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
-');
-
-        $registeredPendingStudents = DB::select('
-SELECT
-student_registrations.id "sid",
-eligible_students.id "eid",
-eligible_students.nameWithInitials,
-eligible_students.regNum,
-eligible_students.indexNum,
-eligible_students.faculty,
-eligible_students.department,
-eligible_students.degreeName,
-eligible_students.cloakIssueDate,
-eligible_students.cloakReturnDate,
-eligible_students.garlandReturnDate,
-student_registrations.status
-
-FROM eligible_students
-INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
-WHERE student_registrations.status IN ("Pending")
-');
-
-        $registeredRejectStudents = DB::select('
-SELECT
-student_registrations.id "sid",
-eligible_students.id "eid",
-eligible_students.nameWithInitials,
-eligible_students.regNum,
-eligible_students.indexNum,
-eligible_students.faculty,
-eligible_students.department,
-eligible_students.degreeName,
-eligible_students.cloakIssueDate,
-eligible_students.cloakReturnDate,
-eligible_students.garlandReturnDate,
-student_registrations.status
-
-FROM eligible_students
-INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
-WHERE student_registrations.status IN ("Reject")');
-
-        $registeredAcceptStudents = DB::select('
-SELECT
-student_registrations.id "sid",
-eligible_students.id "eid",
-eligible_students.nameWithInitials,
-eligible_students.regNum,
-eligible_students.indexNum,
-eligible_students.faculty,
-eligible_students.department,
-eligible_students.degreeName,
-eligible_students.cloakIssueDate,
-eligible_students.cloakReturnDate,
-eligible_students.garlandReturnDate,
-student_registrations.status
-
-FROM eligible_students
-INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
-WHERE student_registrations.status IN ("Accept")');
-
-
-
-        $notRegisteredStudents = DB::select('
-SELECT
-eligible_students.id,
-eligible_students.nameWithInitials,
-eligible_students.regNum,
-eligible_students.indexNum,
-eligible_students.faculty,
-eligible_students.department,
-eligible_students.degreeName,
-eligible_students.cloakIssueDate,
-eligible_students.cloakReturnDate,
-eligible_students.garlandReturnDate
-
-FROM eligible_students
-LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
-WHERE student_registrations.regNum IS NULL
-');
 
 //        $studentRegistrations = StudentRegistration::all();
 //        $eligibleStudents = EligibleStudent::all();
 
-        return view('eligibleStudents.index',compact('registeredStudents','registeredPendingStudents','registeredRejectStudents','registeredAcceptStudents','notRegisteredStudents','allEligibleStudents'));
+        return view('eligibleStudents.index',compact('students','convo'));
         //
     }
 
@@ -177,11 +84,189 @@ WHERE student_registrations.regNum IS NULL
      * @param  \App\Models\EligibleStudent  $eligibleStudent
      * @return \Illuminate\Http\Response
      */
-    public function show(EligibleStudent $eligibleStudent)
+    public function show(Request $request,EligibleStudent $eligibleStudent)
     {
+
+
+
 //        $studentRegistrations = StudentRegistration::all();
 //        $eligibleStudents = EligibleStudent::all();
 //        return view('eligibleStudents.show',compact('eligibleStudents','studentRegistrations'));
+
+    }
+
+
+    public function getESByFormRequest(Request $request)
+    {
+
+        $studentRegEligible = $request->input('studentRegEligible');
+        $faculty = $request->input('faculty');
+
+
+        if($request->input('studentRegEligible')=="All") {
+            if($request->input('faculty')!="All Faculty"){
+                $students = collect(DB::select('
+
+SELECT
+eligible_students.id,
+student_registrations.id as "sid",
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+'))->where('faculty', '=', $faculty);
+            }else{
+                $students = collect(DB::select('
+
+SELECT
+eligible_students.id,
+student_registrations.id as "sid",
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+'));
+            }
+     return view('eligibleStudents.index',compact('students'));
+
+        }
+
+        elseif ($request->input('studentRegEligible')=="Registered"){
+
+            if($request->input('faculty')!="All Faculty"){
+                $students = collect(DB::select('
+
+SELECT
+student_registrations.id as "sid",
+eligible_students.id,
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+'))->where('faculty', '=', $faculty);
+            }else{
+                $students = collect(DB::select('
+
+SELECT
+student_registrations.id as "sid",
+eligible_students.id,
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum;
+'));
+            }
+            return view('eligibleStudents.index',compact('students'));
+        }
+
+        elseif ($request->input('studentRegEligible')=="NotRegistered"){
+
+            if($request->input('faculty')!="All Faculty"){
+                $students = collect(DB::select('
+SELECT
+eligible_students.id,
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+WHERE student_registrations.regNum IS NULL
+'))->where('faculty', '=', $faculty);
+            }else{
+                $students = collect(DB::select('
+SELECT
+eligible_students.id,
+eligible_students.nameWithInitials,
+eligible_students.regNum,
+eligible_students.indexNum,
+eligible_students.faculty,
+eligible_students.department,
+eligible_students.degreeName,
+eligible_students.cloakIssueDate,
+eligible_students.cloakReturnDate,
+eligible_students.garlandReturnDate,
+student_registrations.status
+
+FROM eligible_students
+LEFT JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+WHERE student_registrations.regNum IS NULL
+'));
+            }
+            return view('eligibleStudents.index',compact('students'));
+        }
+
+
+
+        else{
+            if($request->input('studentRegEligible')=="Pending"||$request->input('studentRegEligible')=="Reject"||$request->input('studentRegEligible')=="Accept") {
+                $students = collect(DB::select('
+        SELECT
+        student_registrations.id as "sid",
+        eligible_students.id,
+        eligible_students.nameWithInitials,
+        eligible_students.regNum,
+        eligible_students.indexNum,
+        eligible_students.faculty,
+        eligible_students.department,
+        eligible_students.degreeName,
+        eligible_students.cloakIssueDate,
+        eligible_students.cloakReturnDate,
+        eligible_students.garlandReturnDate,
+        student_registrations.status
+        FROM eligible_students
+        INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum'))
+                    ->where('status', '=', $studentRegEligible)
+                    ->where('faculty', '=', $faculty);
+
+                return view('eligibleStudents.index',compact('students'));
+
+            }
+        }
+
 
     }
 
