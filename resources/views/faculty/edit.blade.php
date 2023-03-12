@@ -9,17 +9,17 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
-            <div class="row" style="margin-bottom: 10px">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="pull-right">
-                        <a target="_blank" class="btn btn-dark" href="{{ route('faculty.create') }}">Add a new faculty</a>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="row" style="margin-bottom: 10px">--}}
+{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                    <div class="pull-right">--}}
+{{--                        <a target="_blank" class="btn btn-dark" href="{{ route('faculty.create') }}">Add a new faculty</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         <table class="table table-bordered form-duration-div">
             <tr>
 
-                @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+                @if(checkPermission(['Admin']))
                     <th>No</th>
                     <th>Faculty</th>
                     <th>Status</th>
@@ -33,7 +33,7 @@
             @foreach ($faculties as $faculty)
                 <tr>
 
-                    @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+                    @if(checkPermission(['Admin']))
                         <td>{{ ++$a }}</td>
                         <td>{{ $faculty->faculty }}</td>
 
