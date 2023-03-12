@@ -20,7 +20,7 @@
 <td>
     <form action="{{ route('eligibleStudents.destroy',$allEligibleStudent->id) }}" method="POST">
 
-        @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+        @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess']))
             <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$allEligibleStudent->id) }}">Edit</a>
 
             @csrf
@@ -28,7 +28,8 @@
 
             <button type="submit" class="btn btn-danger">Delete</button>
             @if($allEligibleStudent->status=="Pending"||$allEligibleStudent->status=="Reject"||$allEligibleStudent->status=="Accept")
-                <a class="btn btn-info" href="{{ route('studentRegistration.show',$allEligibleStudent->sid) }}">Registration {{$allEligibleStudent->status}}</a>
+                <a style="margin-top: 5px" class="btn btn-info" href="{{ route('studentRegistration.show',$allEligibleStudent->sid) }}">Registration {{$allEligibleStudent->status}}</a>
+                <a style="margin-top: 5px" class="btn btn-info" href="{{ route('survey.show',$allEligibleStudent->svid) }}">Survey</a>
 
             @endif
         @endif
