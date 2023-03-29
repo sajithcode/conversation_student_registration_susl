@@ -57,6 +57,8 @@
                                             <option selected value=17>EBSC_Tech</option>
                                             <option selected value=16>EBSC_Agri</option>
                                             <option selected value=18>EBSC_GS</option>
+                                            <option selected value=19>EBSC_Computing</option>
+                                            <option selected value=20>EBSC_Sport</option>
                                             <option selected value=2>Main Store Clark</option>
                                             <option selected value=3>Vice Chancellor</option>
                                             <option selected value=4>Survey Access</option>

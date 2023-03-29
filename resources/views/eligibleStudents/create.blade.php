@@ -159,6 +159,7 @@
                     <select required name="faculty" class="custom-select" id="inputGroupSelect01" >
                         <option selected>Choose...</option>
                         {{--                                                <option value="Graduate Studies">Graduate Studies</option>--}}
+                        <option value="Computing">Computing</option>
                         <option value="Agricultural Sciences">Agricultural Sciences</option>
                         <option value="Applied Sciences">Applied Sciences</option>
                         <option value="Geomatics">Geomatics</option>
@@ -166,6 +167,7 @@
                         <option value="Medicine">Medicine</option>
                         <option value="Social Sciences & Languages">Social Sciences & Languages</option>
                         <option value="Technology">Technology</option>
+                        <option value="Sport">Sport</option>
                         <option value="Graduate Studies">Graduate Studies</option>
                     </select>
                 </div>

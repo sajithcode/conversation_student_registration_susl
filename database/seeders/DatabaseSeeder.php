@@ -39,7 +39,13 @@ class DatabaseSeeder extends Seeder
             ],[
                 'faculty' => 'Graduate Studies',
                 'status' => 'Open'
-            ],
+            ],[
+                'faculty' => 'Computing',
+                'status' => 'Open'
+            ],[
+                'faculty' => 'Sport',
+                'status' => 'Open'
+            ]
 
         ];
         $user = [
@@ -106,7 +112,13 @@ class DatabaseSeeder extends Seeder
                 'is_permission'=>'18',
                 'password'=> bcrypt('123456'),
             ],
-
+            [
+                'name'=>'Computing Examination Branch Subject Clark',
+                'regNum'=>'none',
+                'email'=>'computing@adm.sab.ac.lk',
+                'is_permission'=>'19',
+                'password'=> bcrypt('123456'),
+            ],
             [
                 'name'=>'Main Store Clark',
                 'regNum'=>'none',
