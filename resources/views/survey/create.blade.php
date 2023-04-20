@@ -1004,7 +1004,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>37. How long have you been waited to get this job since the effecive date of your degree?</strong>
-                    <select required name="howLongWaitedToGetJob" class="custom-select" id="inputGroupSelect29" >
+                    <select name="howLongWaitedToGetJob" class="custom-select" id="inputGroupSelect29" >
                         <option></option>
                         <option value="Less than 3 months">Less than 3 months</option>
                         <option value="3-6 months">3-6 months</option>

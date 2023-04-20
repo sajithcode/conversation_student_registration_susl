@@ -27,6 +27,8 @@ class StudentRegistrationExport implements FromView
 
     public function view(): View
     {
+
+        $convo = Convocation::all()->pluck('convocation', 'id');
 //
 //        return view('studentRegistration.table', [
 //            'studentRegistrations' => StudentRegistration::all()
@@ -34,7 +36,7 @@ class StudentRegistrationExport implements FromView
 
         return view('studentRegistration.table', [
             'studentRegistrations' => StudentRegistration::query()
-                ->where('convocationName',$this->convocationName)
+                ->where('convocationName',$convo[$this->convocationName])
                 ->get()
         ]);
     }

@@ -89,7 +89,7 @@ class CreateSurveysTable extends Migration
             $table->string('jobRelatedDegree')->nullable();
             $table->string('whenFIndCurrentJob')->nullable();
             $table->string('satisfiedCurrentJob')->nullable();
-            $table->string('howLongWaitedToGetJob');
+            $table->string('howLongWaitedToGetJob')->nullable();
             $table->string('lookingNowEmployee');
             $table->string('indicateReason')->nullable();
             $table->string('obstaclesForJob')->nullable();

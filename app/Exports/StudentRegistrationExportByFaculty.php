@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Convocation;
 use App\Models\StudentRegistration;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -25,10 +26,11 @@ class StudentRegistrationExportByFaculty implements FromView
 
     public function view(): View
     {
+        $convo = Convocation::all()->pluck('convocation', 'id');
         // TODO: Implement view() method.
         return view('studentRegistration.table', [
             'studentRegistrations' => StudentRegistration::query()
-                ->where('convocationName',$this->convocationName)
+                ->where('convocationName',$convo[$this->convocationName])
                 ->where('faculty', $this->faculty)
                 ->get()
         ]);
