@@ -23,6 +23,13 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Name with initials:</strong>
+                {{ $studentRegistration->nameWithInitial }}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Full name in english block letters:</strong>
                 {{ $studentRegistration->fullNameInEnglishBlock }}
             </div>
@@ -30,7 +37,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Full Name in English Block Letters:</strong>
+                <strong>Full Name in Sinhala:</strong>
                 {{ $studentRegistration->fullNameInSinhala }}
             </div>
         </div>

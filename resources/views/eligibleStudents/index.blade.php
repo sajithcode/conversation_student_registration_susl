@@ -7,6 +7,7 @@
     $id = 0;
     $_SESSION["user_id"] = $id;
 
+
     ?>
 
         <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
@@ -37,6 +38,11 @@
                     <div class="col" style="margin-bottom: 10px">
                         <div class="pull-center">
                             <a class="btn btn-dark" href="{{ route('survey.index') }}">Survey</a>
+                        </div>
+                    </div>
+                    <div class="col" style="margin-bottom: 10px">
+                        <div class="pull-center">
+                            <a class="btn btn-dark" href="{{ route('price.index') }}">Price</a>
                         </div>
                     </div>
                     <div class="col" style="margin-bottom: 10px">
@@ -272,12 +278,20 @@
 {{--                });--}}
 {{--            </script>--}}
 
+
             @if(checkPermission(['Admin','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess']))
 {{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
 
                 <form action="{{ route('getESByFormRequest') }}" id="selectform" method="GET">
                     @csrf
                     <div style="margin: 20px" class="row">
+
+                        <div class="form-group">
+
+                            {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                        </div>
+
+
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group" style="margin-top: 20px">

@@ -35,15 +35,18 @@
 
                     @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
                         <td>{{ ++$a }}</td>
-                        <td>{{ $convocation->convocation }}</td>
+{{--                        <td>{{ $convocation->convocation }}</td>--}}
 
 
 
                         <form action="{{ route('convocation.update',$convocation->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-
                             <td>
+                                <input value="{{$convocation->convocation}}"  name="convocation" class="form-control" />
+                            </td>
+                            <td>
+
 
                                 <select required name="status" class="custom-select" id="inputGroupSelect01" >
                                     <option selected>{{ $convocation->status }}</option>

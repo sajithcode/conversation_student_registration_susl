@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Convocation;
+use App\Models\Price;
 use Illuminate\Http\Request;
 
-class ConvocationController extends Controller
+class PriceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class ConvocationController extends Controller
      */
     public function index()
     {
-        $convocations = Convocation::all();
-        return view('convocation.edit',compact('convocations'));
+        //
+        $prices = Price::all();
+        return view('price.edit',compact('prices'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ConvocationController extends Controller
      */
     public function create()
     {
-        return view('convocation.create');
+        //
     }
 
     /**
@@ -36,18 +37,16 @@ class ConvocationController extends Controller
      */
     public function store(Request $request)
     {
-        Convocation::create($request->all());
-        return redirect()->route('convocation.index')
-            ->with('success','New convocation added successfully.');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Convocation  $convocation
+     * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function show(Convocation $convocation)
+    public function show(Price $price)
     {
         //
     }
@@ -55,39 +54,38 @@ class ConvocationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Convocation  $convocation
+     * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function edit(Convocation $convocation)
+    public function edit(Price $price)
     {
-
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Convocation  $convocation
+     * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Convocation $convocation)
+    public function update(Request $request, Price $price)
     {
-        $convocation->update([
-            'convocation'=>$request->input('convocation'),
-            'status'=>$request->input('status'),
+        $price->update([
+            'presence'=>$request->input('presence'),
+            'absence'=>$request->input('absence')
         ]);
-        return redirect()->route('convocation.index')
+        return redirect()->route('price.index')
             ->with('success', 'Updated successfully');
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Convocation  $convocation
+     * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Convocation $convocation)
+    public function destroy(Price $price)
     {
         //
     }

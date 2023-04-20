@@ -119,6 +119,7 @@ Route::resource('studentRegistration', \App\Http\Controllers\StudentRegistration
 Route::resource('report', \App\Http\Controllers\ReportController::class);
 Route::resource('faculty', \App\Http\Controllers\FacultyController::class);
 Route::resource('convocation', \App\Http\Controllers\ConvocationController::class);
+Route::resource('price', \App\Http\Controllers\PriceController::class);
 Route::resource('survey', \App\Http\Controllers\SurveyController::class);
 Route::resource('user', \App\Http\Controllers\UserController::class);
 

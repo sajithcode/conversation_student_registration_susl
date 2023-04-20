@@ -8,6 +8,7 @@ use App\Mail\RegistrationUpdate;
 use App\Models\Convocation;
 use App\Models\EligibleStudent;
 use App\Models\Faculty;
+use App\Models\Price;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -50,9 +51,10 @@ class StudentRegistrationController extends Controller
 
 //        $stdEmail = $_SESSION["email"];
 
+        $prices = Price::all();
         $studentRegistrations = StudentRegistration::all();
         $eligibleStudents = EligibleStudent::all();
-        return view('eligibleStd',compact('eligibleStudents','studentRegistrations'));
+        return view('eligibleStd',compact('eligibleStudents','studentRegistrations','prices'));
 
     }
     /**
