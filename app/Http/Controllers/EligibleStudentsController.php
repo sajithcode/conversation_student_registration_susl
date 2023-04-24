@@ -60,7 +60,8 @@ LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
      */
     public function create()
     {
-        return view('eligibleStudents.create');
+        $convo = Convocation::all()->pluck('convocation', 'id');
+        return view('eligibleStudents.create',compact('convo'));
     }
 
 //    public function show()
@@ -75,7 +76,19 @@ LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
      */
     public function store(Request $request)
     {
-        EligibleStudent::create($request->all());
+        $convo = Convocation::all()->pluck('convocation', 'id');
+        $pro=new EligibleStudent();
+        $pro->nameWithInitials = $request->nameWithInitials;
+        $pro->gender = $request->gender;
+        $pro->degreeName = $request->degreeName;
+        $pro->regNum = $request->regNum;
+        $pro->indexNum = $request->indexNum;
+        $pro->degreeClass = $request->degreeClass;
+        $pro->faculty = $request->faculty;
+        $pro->department = $request->department;
+        $pro->convocationName = $convo[$request->convocationName];
+        $pro->save();
+//        EligibleStudent::create($request->all());
         return redirect()->route('eligibleStudents.index')
             ->with('success','Student add successfully.');
     }
@@ -304,7 +317,8 @@ WHERE student_registrations.regNum IS NULL
      */
     public function edit(EligibleStudent $eligibleStudent)
     {
-        return view('eligibleStudents.edit',compact('eligibleStudent'));
+        $convo = Convocation::all()->pluck('convocation', 'id');
+        return view('eligibleStudents.edit',compact('eligibleStudent','convo'));
 
     }
 
@@ -319,6 +333,7 @@ WHERE student_registrations.regNum IS NULL
      */
     public function update(Request $request, EligibleStudent $eligibleStudent)
     {
+        $convo = Convocation::all()->pluck('convocation', 'id');
         if($request->input('regNum')) {
             $eligibleStudent->update([
                 'nameWithInitials' => $request->input('nameWithInitials'),
@@ -333,6 +348,7 @@ WHERE student_registrations.regNum IS NULL
                 'degreeClass' => $request->input('degreeClass'),
                 'faculty' => $request->input('faculty'),
                 'department' => $request->input('department'),
+                'convocationName' => $convo[$request->input('convocationName')]
 
             ]);
 

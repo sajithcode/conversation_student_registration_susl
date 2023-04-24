@@ -42,7 +42,7 @@
                     </div>
                     <div class="col" style="margin-bottom: 10px">
                         <div class="pull-center">
-                            <a class="btn btn-dark" href="{{ route('price.index') }}">Price</a>
+                            <a class="btn btn-dark" href="{{ route('price.index') }}">Convocation Fee</a>
                         </div>
                     </div>
                     <div class="col" style="margin-bottom: 10px">

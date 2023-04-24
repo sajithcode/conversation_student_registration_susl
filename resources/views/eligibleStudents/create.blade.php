@@ -181,7 +181,10 @@
                            placeholder="Department">
                 </div>
             </div>
-
+            <div class="form-group">
+                <strong>Convocation:</strong>
+                {{ Form::select('convocationName', $convo, null, ['class' => 'form-control']) }}
+            </div>
 
 
 

@@ -196,6 +196,10 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <strong>Convocation:</strong>
+                    {{ Form::select('convocationName', $convo, null, ['class' => 'form-control']) }}
+                </div>
 {{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
 {{--                    <div class="form-group">--}}
 {{--                        <strong>Degree Name:</strong>--}}
