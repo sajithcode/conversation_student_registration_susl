@@ -25,7 +25,7 @@
                 @foreach (($eligibleStudents) as $eligibleStudent)
 
 {{--                    @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
-                    @if (strtoupper(trim(str_replace(' ', '', $eligibleStudent->regNum))) === strtoupper(trim(str_replace(' ', '', Auth::user()->regNum))))
+                    @if (strtoupper(trim(str_replace(' ', '', str_replace('/', '', $eligibleStudent->regNum)))) === strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))))
                         @php
                             $i = 2;
                             $_SESSION["convocationName"]=$eligibleStudent->convocationName;
@@ -41,7 +41,7 @@
                 @foreach ($studentRegistrations as $studentRegistration)
 
 {{--                    @if (strtoupper(trim($studentRegistration->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
-                        @if (strtoupper(trim(str_replace(' ', '', $studentRegistration->regNum))) === strtoupper(trim(str_replace(' ', '', Auth::user()->regNum))))
+                        @if (strtoupper(trim(str_replace(' ', '', str_replace('/', '', $studentRegistration->regNum)))) === strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))))
                         @php
                             $i = 3
                         @endphp

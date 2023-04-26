@@ -41,7 +41,7 @@ class MailController extends Controller
         $student = EligibleStudent::where(
 //            'regNum', strtoupper(trim($_SESSION["regNum"])))->get();
 //            'regNum', strtoupper(trim(str_replace(' ', '', $_SESSION["regNum"]))))->get();
-            'regNum', strtoupper(trim(str_replace(' ', '', str_replace('/', '', $_SESSION["regNum"])))))->get();
+            'regNum', strtoupper(trim(str_replace(' ', '', $_SESSION["regNum"]))))->get();
         return view('checkedData',compact('student','studentRegistrations','eligibleStudents','reports','faculties','convocations'));
 
     }
@@ -100,7 +100,7 @@ class MailController extends Controller
         $eligibleStudents = EligibleStudent::all();
                 foreach ($eligibleStudents as $std){
 //                    if((strtoupper(trim($std->regNum))==strtoupper(trim($request->regNum)))&&($std->status=='Confirmed')&&(strtoupper(trim($_SESSION["user_reg"]))==strtoupper(trim($request->regNum)))){
-                    if((strtoupper(trim(str_replace(' ', '', $std->regNum)))==strtoupper(trim(str_replace(' ', '', $request->regNum))))&&($std->status=='Confirmed')&&(strtoupper(trim(str_replace(' ', '', $_SESSION["user_reg"])))==strtoupper(trim(str_replace(' ', '', $request->regNum))))){
+                    if((strtoupper(trim(str_replace(' ', '', str_replace('/', '', $std->regNum))))==strtoupper(trim(str_replace(' ', '', str_replace('/', '', $request->regNum)))))&&($std->status=='Confirmed')&&(strtoupper(trim(str_replace(' ', '', str_replace('/', '', $_SESSION["user_reg"]))))==strtoupper(trim(str_replace(' ', '', str_replace('/', '', $request->regNum)))))){
                         return redirect()->route('eligibleStd')
                             ->with('success', 'You already confirmed the details');
 //                        $studentRegistrations = StudentRegistration::all();
@@ -109,7 +109,7 @@ class MailController extends Controller
 
                     }
 //                    if((strtoupper(trim($std->regNum))==strtoupper(trim($request->regNum)))&&($std->status=='Pending')&&(strtoupper(trim($_SESSION["user_reg"]))==strtoupper(trim($request->regNum)))){
-                        if((strtoupper(trim(str_replace(' ', '', $std->regNum)))==strtoupper(trim(str_replace(' ', '', $request->regNum))))&&($std->status=='Pending')&&(strtoupper(trim(str_replace(' ', '', $_SESSION["user_reg"])))==strtoupper(trim(str_replace(' ', '', $request->regNum))))){
+                        if((strtoupper(trim(str_replace(' ', '', str_replace('/', '', $std->regNum))))==strtoupper(trim(str_replace(' ', '', str_replace('/', '', $request->regNum)))))&&($std->status=='Pending')&&(strtoupper(trim(str_replace(' ', '', str_replace('/', '', $_SESSION["user_reg"]))))==strtoupper(trim(str_replace(' ', '', str_replace('/', '', $request->regNum)))))){
                         return redirect()->route('checkData')
                             ->with('success','Confirm your details to continue');
                     }

@@ -41,7 +41,7 @@
         @foreach ($eligibleStudents as $eligibleStudent)
 
 {{--            @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
-            @if (strtoupper(trim(str_replace(' ', '', $eligibleStudent->regNum))) === strtoupper(trim(str_replace(' ', '', Auth::user()->regNum))))
+            @if (strtoupper(trim(str_replace(' ', '', str_replace('/', '', $eligibleStudent->regNum)))) === strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))))
 
                 @foreach($convocations as $convocation)
                     @if(($convocation->convocation==$eligibleStudent->convocationName)&&($convocation->status=="Closed"))
