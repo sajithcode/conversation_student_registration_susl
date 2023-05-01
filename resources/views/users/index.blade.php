@@ -25,15 +25,34 @@
             </div>
             <table class="table table-bordered form-duration-div">
                 <tr>
+                    <th>Reg.No</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Update</th>
                     <th>Delete</th>
                 </tr>
                 @foreach ($users as $user)
                     <tr>
+
                         <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
+                        <form action="{{ route('user.update',$user->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <td>
+                                <input value="{{$user->regNum}}"  name="email" class="form-control" />
+                            </td>
+                            <td>
+                                <input value="{{$user->email}}"  name="email" class="form-control" />
+                            </td>
+
+                            <td>
+                                <button type="submit" class="btn btn-danger">Update</button>
+                            </td>
+                        </form>
+{{--                        <td>{{$user->email}}</td>--}}
                         <td>
+
+
                             <form action="{{ route('user.destroy',$user->id) }}" method="POST">
                                  @csrf
                                     @method('DELETE')

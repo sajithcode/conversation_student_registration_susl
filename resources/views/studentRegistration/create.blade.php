@@ -13,6 +13,20 @@
             </div>
         @endif
 
+            @foreach (($eligibleStudents) as $eligibleStudent)
+
+                {{--                    @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
+                @if (strtoupper(trim(str_replace(' ', '', str_replace('/', '', $eligibleStudent->regNum)))) === strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))))
+                    @php
+                        $_SESSION["convocationName"]=$eligibleStudent->convocationName;
+                    @endphp
+
+                @endif
+            @endforeach
+
+
+
+
         <div style="margin: 60px" class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">

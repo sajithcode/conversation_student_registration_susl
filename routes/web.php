@@ -90,6 +90,9 @@ Route::get('/loginfilter',[MailController::class, 'loginfilter'])->name('loginfi
 Route::put('/statusConfirm',[App\Http\Controllers\EligibleStudentsController::class, 'statusConfirm'])->name('statusConfirm');;
 
 
+Route::post('/statusConfirm',[App\Http\Controllers\StudentRegistrationController::class, 'registerdReset'])->name('statusConfirm');;
+
+
 
 Route::get('/completeEmailVerification',[App\Http\Controllers\EligibleStudentsController::class, 'completeEmailVerification'])->name('completeEmailVerification');;
 Route::get('/getByEmail',[App\Http\Controllers\EligibleStudentsController::class, 'getByEmail'])->name('getByEmail');;
@@ -145,6 +148,10 @@ Route::post('/upload-users', [\App\Http\Controllers\EligibleStudentsController::
 
 Route::get('/export', [\App\Http\Controllers\StudentRegistrationController::class, 'export'])->name('export');;
 Route::get('/exportbyfaculty', [\App\Http\Controllers\StudentRegistrationController::class, 'exportbyfaculty'])->name('exportbyfaculty');;
+Route::get('/eligiblestudentreset', [\App\Http\Controllers\StudentRegistrationController::class, 'eligiblestudentreset'])->name('eligiblestudentreset');;
+
+Route::get('/registerdreset', [\App\Http\Controllers\StudentRegistrationController::class, 'registerdreset'])->name('registerdreset');;
+Route::get('/registerdwithsurveyreset', [\App\Http\Controllers\StudentRegistrationController::class, 'registerdwithsurveyreset'])->name('registerdwithsurveyreset');;
 
 Route::get('/forget-password', '\App\Http\Controllers\Auth\ForgotPasswordController@getEmail');
 Route::post('/forget-password', '\App\Http\Controllers\Auth\ForgotPasswordController@postEmail');

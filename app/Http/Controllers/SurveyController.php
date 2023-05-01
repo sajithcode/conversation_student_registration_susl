@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EligibleStudent;
 use App\Models\Survey;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SurveyController extends Controller
 {
@@ -26,13 +28,14 @@ class SurveyController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->route('surveyView')
+            ->with('success','Complete the Survey to Complete Registration.');
     }
 
     public function surveyView()
     {
-
-        return view('survey.create');
+        $eligibleStudents = EligibleStudent::all();
+        return view('survey.create',compact('eligibleStudents'));
 
     }
 
@@ -135,23 +138,36 @@ class SurveyController extends Controller
         $pro->careerGoalsNextTwoYears = json_encode($request->careerGoalsNextTwoYears);
         $pro->universityEducation = $request->universityEducation;
         $pro->employmentAfterGraduation = $request->employmentAfterGraduation;
+        $pro->stdName = $request->stdName;
+//        $pro->regNum = $request->regNum;
+        $pro->convocationName = $request->convoName;
 
 
         session_start();
-        $pro->stdName = $_SESSION["stdName"];
+//        $pro->stdName = $_SESSION["stdName"];
         $pro->regNum = $_SESSION["user_reg"];
-        $pro->convocationName=$_SESSION["convocationName"];
+//        $pro->convocationName=$_SESSION["convocationName"];
 
         try {
-            $_SESSION["regPro"]->save();
-            $pro->save();
+//            $result = SurveyController::checkRegistration(strtoupper(trim(str_replace(' ', '', str_replace('/', '', $_SESSION["user_reg"])))));
+//            if(count($result)>0){
+//                $pro->save();
+//            }else{
+                $pro->save();
+//                $_SESSION["regPro"]->save();
+//
+//            }
+
         }catch (QueryException $e){
+
+
             return redirect()->route('eligibleStd')
-                ->with('success','Survey Already Completed.');
+                ->with('success',$e);
         }
 
         return redirect()->route('eligibleStd')
             ->with('success','Registration successfully Completed.');
+//            ->with('success','safda');
     }
 
     /**
@@ -196,6 +212,24 @@ class SurveyController extends Controller
      */
     public function destroy(Survey $survey)
     {
-        //
+        $survey -> delete();
+
     }
+
+    public static function checkSurvey ($regNumber){
+
+        return collect(DB::select('
+SELECT surveys.regNum FROM surveys;
+'))->where('regNum', '=', $regNumber);
+
+    }
+
+    public static function checkRegistration ($regNumber){
+
+        return collect(DB::select('
+SELECT student_registrations.regNum FROM student_registrations;
+'))->where('regNum', '=', $regNumber);
+
+    }
+
 }

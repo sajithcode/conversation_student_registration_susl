@@ -56,7 +56,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
 //            strtoupper(trim(str_replace(' ', '', str_replace('/', '', $data['regNum'])))) => ['required', 'string', 'max:255','exists:eligible_students,regNum', 'unique:users'],
             'regNum' => ['required', 'string', 'max:255','exists:eligible_students,regNum', 'unique:users'],
-            'name' => ['required', 'string', 'max:255','regex:/^([^0-9$.#@!=^&*(){}+-]*)$/'],
+            'name' => ['required', 'string', 'max:255','regex:/^([^0-9$#@!=^&*(){}+-]*)$/'],
 //            'email' => ['required', 'string', 'email', 'max:255', 'unique:users','regex:/sab.ac.lk/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],

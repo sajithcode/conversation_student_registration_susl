@@ -84,7 +84,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+            'email'=>$request->input('email'),
+        ]);
+        return redirect()->route('user.index')
+            ->with('success', 'Updated successfully');
     }
 
     /**

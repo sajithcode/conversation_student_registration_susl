@@ -131,6 +131,7 @@
                                         <option value="Medicine">Medicine</option>
                                         <option value="Social Sciences & Languages">Social Sciences & Languages</option>
                                         <option value="Technology">Technology</option>
+                                        <option value="Sport">Sport</option>
                                         <option value="Graduate Studies">Graduate Studies</option>
                                     </select>
                                 </div>
@@ -149,7 +150,9 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <input style="display: none" required value="Applied Sciences" type="text" name="faculty" class="form-control" >
-
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
                                         <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Applied Sciences</button>
                                     </div>
@@ -164,7 +167,9 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <input style="display: none" required value="Agricultural Sciences" type="text" name="faculty" class="form-control"  >
-
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
                                         <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Agricultural Sciences</button>
                                     </div>
@@ -179,7 +184,9 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <input style="display: none" required value="Geomatics" type="text" name="faculty" class="form-control"  >
-
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
                                         <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Geomatics</button>
                                     </div>
@@ -194,7 +201,9 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <input style="display: none" required value="Management Studies" type="text" name="faculty" class="form-control"  >
-
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
                                         <button type="submit"  class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Management Studies</button>
                                     </div>
@@ -209,7 +218,9 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <input style="display: none" required value="Medicine" type="text" name="faculty" class="form-control"  >
-
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
                                         <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Medicine</button>
                                     </div>
@@ -224,7 +235,9 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <input style="display: none" required value="Social Sciences & Languages" type="text" name="faculty" class="form-control"  >
-
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
                                         <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Social Sciences & Languages</button>
                                     </div>
@@ -239,7 +252,60 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <input style="display: none" required value="Technology" type="text" name="faculty" class="form-control" >
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
+                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Technology</button>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </form>
+                    @endif
+                    @if(checkPermission(['EBSC_GS']))
+                        <form method="GET" action="{{route('exportbyfaculty')}}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-footer">
+                                <div class="row">
+                                    <input style="display: none" required value="Technology" type="text" name="faculty" class="form-control" >
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
+                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Technology</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    @endif
+                    @if(checkPermission(['EBSC_Computing']))
+                        <form method="GET" action="{{route('exportbyfaculty')}}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-footer">
+                                <div class="row">
+                                    <input style="display: none" required value="Technology" type="text" name="faculty" class="form-control" >
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
+                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Technology</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    @endif
+                    @if(checkPermission(['EBSC_Sport']))
+                        <form method="GET" action="{{route('exportbyfaculty')}}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-footer">
+                                <div class="row">
+                                    <input style="display: none" required value="Technology" type="text" name="faculty" class="form-control" >
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
                                         <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Technology</button>
                                     </div>
@@ -287,7 +353,6 @@
                     <div style="margin: 20px" class="row">
 
                         <div class="form-group">
-
                             {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
                         </div>
 

@@ -11,6 +11,7 @@ use App\Models\Faculty;
 use App\Models\Price;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -123,8 +124,8 @@ class StudentRegistrationController extends Controller
         $_SESSION["regNum"]=$request->regNum;
 
 
-        $_SESSION["regPro"]=$pro;
-//            $pro->save();
+//        $_SESSION["regPro"]=$pro;
+            $pro->save();
 
 
 
@@ -249,7 +250,46 @@ class StudentRegistrationController extends Controller
      */
     public function destroy(StudentRegistration $studentRegistration)
     {
-        //
+        $studentRegistration -> delete();
+
+    }
+
+    public static function registerdwithsurveyreset (Request $request)
+    {
+
+        DB::table('eligible_students')
+            ->where('id', $request->input('eid'))
+            ->update(['status' => 'Pending']);
+
+        DB::table('student_registrations')->where('id', '=', $request->input('sid'))->delete();
+        DB::table('surveys')->where('id', '=', $request->input('svid'))->delete();
+
+        return redirect()->route('eligibleStudents.index')
+            ->with('success', 'Reset successfully');
+
+    }
+    public static function registerdreset (Request $request){
+
+        DB::table('eligible_students')
+            ->where('id', $request->input('eid'))
+            ->update(['status' => 'Pending']);
+
+        DB::table('student_registrations')->where('id', '=', $request->input('sid'))->delete();
+
+        return redirect()->route('eligibleStudents.index')
+            ->with('success','Reset successfully');
+
+    }
+
+    public static function eligiblestudentreset (Request $request){
+
+        DB::table('eligible_students')
+            ->where('id', $request->input('eid'))
+            ->update(['status' => 'Pending']);
+
+        return redirect()->route('eligibleStudents.index')
+            ->with('success','Reset successfully');
+
     }
 
     public function export(Request $request)

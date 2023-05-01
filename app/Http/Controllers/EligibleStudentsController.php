@@ -176,6 +176,7 @@ LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
         elseif ($request->input('studentRegEligible')=="Registered"){
 
             if($request->input('faculty')!="All Faculty"){
+
                 $students = collect(DB::select('
 
 SELECT
@@ -231,6 +232,7 @@ LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
             if($request->input('faculty')!="All Faculty"){
                 $students = collect(DB::select('
 SELECT
+    student_registrations.id as "sid",
 eligible_students.id,
 eligible_students.nameWithInitials,
 eligible_students.regNum,
@@ -252,6 +254,7 @@ WHERE student_registrations.regNum IS NULL
             }else{
                 $students = collect(DB::select('
 SELECT
+    student_registrations.id as "sid",
 eligible_students.id,
 eligible_students.nameWithInitials,
 eligible_students.regNum,
@@ -277,7 +280,9 @@ WHERE student_registrations.regNum IS NULL
 
         else{
             if($request->input('studentRegEligible')=="Pending"||$request->input('studentRegEligible')=="Reject"||$request->input('studentRegEligible')=="Accept") {
-                $students = collect(DB::select('
+
+                if($request->input('faculty')!="All Faculty") {
+                    $students = collect(DB::select('
         SELECT
         student_registrations.id as "sid",
         eligible_students.id,
@@ -297,9 +302,35 @@ WHERE student_registrations.regNum IS NULL
         INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
         LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
 '))
-                    ->where('status', '=', $studentRegEligible)
-                    ->where('faculty', '=', $faculty)
-                    ->where('convocationName', '=', $convocationName);
+                        ->where('status', '=', $studentRegEligible)
+                        ->where('faculty', '=', $faculty)
+                        ->where('convocationName', '=', $convocationName);
+                }
+                else{
+                    $students = collect(DB::select('
+        SELECT
+        student_registrations.id as "sid",
+        eligible_students.id,
+        eligible_students.nameWithInitials,
+        eligible_students.regNum,
+        eligible_students.indexNum,
+        eligible_students.faculty,
+        eligible_students.department,
+        eligible_students.degreeName,
+        eligible_students.cloakIssueDate,
+        eligible_students.cloakReturnDate,
+        eligible_students.garlandReturnDate,
+        eligible_students.convocationName,
+        student_registrations.status,
+        surveys.id as "svid"
+        FROM eligible_students
+        INNER JOIN student_registrations ON eligible_students.regNum=student_registrations.regNum
+        LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
+'))
+                        ->where('status', '=', $studentRegEligible)
+                        ->where('convocationName', '=', $convocationName);
+                }
+
 
                 return view('eligibleStudents.index',compact('students','convo'));
 
@@ -375,7 +406,14 @@ WHERE student_registrations.regNum IS NULL
             $eligibleStudent->update([
                 'garlandReturnDate' => $request->input('garlandReturnDate'),
             ]);
+            return redirect()->route('eligibleStudents.index')
+                ->with('success', 'Successfully updated');
+        }
 
+        elseif (($request->input('status'))){
+            $eligibleStudent->update([
+                'status' => $request->input('status'),
+            ]);
             return redirect()->route('eligibleStudents.index')
                 ->with('success', 'Successfully updated');
         }
@@ -415,7 +453,7 @@ WHERE student_registrations.regNum IS NULL
         //
         $eligibleStudent -> delete();
         return redirect()->route('eligibleStudents.index')
-            ->with('success','Product deleted successfully');
+            ->with('success','Successfully deleted');
     }
 
     public function importstudents()
