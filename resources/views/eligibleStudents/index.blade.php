@@ -268,12 +268,12 @@
                             @csrf
                             <div class="card-footer">
                                 <div class="row">
-                                    <input style="display: none" required value="Technology" type="text" name="faculty" class="form-control" >
+                                    <input style="display: none" required value="Graduate Studies" type="text" name="faculty" class="form-control" >
                                     <div class="form-group">
                                         {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
-                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Technology</button>
+                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Graduate Studies</button>
                                     </div>
                                 </div>
 
@@ -285,12 +285,12 @@
                             @csrf
                             <div class="card-footer">
                                 <div class="row">
-                                    <input style="display: none" required value="Technology" type="text" name="faculty" class="form-control" >
+                                    <input style="display: none" required value="Computing" type="text" name="faculty" class="form-control" >
                                     <div class="form-group">
                                         {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
-                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Technology</button>
+                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Computing</button>
                                     </div>
                                 </div>
 
@@ -302,12 +302,12 @@
                             @csrf
                             <div class="card-footer">
                                 <div class="row">
-                                    <input style="display: none" required value="Technology" type="text" name="faculty" class="form-control" >
+                                    <input style="display: none" required value="Sport" type="text" name="faculty" class="form-control" >
                                     <div class="form-group">
                                         {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
-                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Technology</button>
+                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Faculty of Sport</button>
                                     </div>
                                 </div>
 
