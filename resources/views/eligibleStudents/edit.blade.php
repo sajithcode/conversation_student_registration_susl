@@ -197,8 +197,16 @@
                 </div>
 
                 <div class="form-group">
-                    <strong>Convocation:</strong>
-                    {{ Form::select('convocationName', $convo, null, ['class' => 'form-control']) }}
+                    <strong>Convocation:--</strong>
+
+
+                    <select id="convocationName" name="convocationName" class="form-control">
+                        @foreach ($convo as $key => $value)
+                            <option value="{{ $key }}"  @if($eligibleStudent->convocationName==$value) selected @endif>{{ $value }}</option>
+                        @endforeach
+                    </select>
+
+
                 </div>
 {{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
 {{--                    <div class="form-group">--}}
