@@ -11,7 +11,7 @@
         session_start();
 //
         $_SESSION["user_reg"]=strtoupper(trim(Auth::user()->regNum));
-//        $_SESSION["stdName"]=strtoupper(trim(Auth::user()->name));
+        $_SESSION["stdName"]=strtoupper(trim(Auth::user()->name));
 //
 //
         ?>
@@ -72,26 +72,26 @@
 {{--    <form  id="selectform" method="POST">--}}
         @csrf
         <div style="margin: 20px" class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Student Name</strong>
-                    <input  required type="text" name="stdName" class="form-control" placeholder="Name">
-                </div>
-            </div>
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Student Name</strong>--}}
+{{--                    <input  required type="text" name="stdName" class="form-control" placeholder="Name">--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Registration Number</strong>
-                    <input  required type="text" name="regNum" class="form-control" placeholder="Reg. Num">
-                </div>
-            </div>
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Registration Number</strong>--}}
+{{--                    <input  required type="text" name="regNum" class="form-control" placeholder="Reg. Num">--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Convocation Name</strong>
-                    <input  required type="text" name="convoName" class="form-control" placeholder="Convocation Name">
-                </div>
-            </div>
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Convocation Name</strong>--}}
+{{--                    <input  required type="text" name="convoName" class="form-control" placeholder="Convocation Name">--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <strong>01. Contact Details:</strong>
             <div class="col-xs-12 col-sm-12 col-md-12">

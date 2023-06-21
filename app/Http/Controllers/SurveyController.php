@@ -138,29 +138,25 @@ class SurveyController extends Controller
         $pro->careerGoalsNextTwoYears = json_encode($request->careerGoalsNextTwoYears);
         $pro->universityEducation = $request->universityEducation;
         $pro->employmentAfterGraduation = $request->employmentAfterGraduation;
-        $pro->stdName = $request->stdName;
+//        $pro->stdName = $request->stdName;
 //        $pro->regNum = $request->regNum;
-        $pro->convocationName = $request->convoName;
+//        $pro->convocationName = $request->convoName;
 
 
         session_start();
-//        $pro->stdName = $_SESSION["stdName"];
+        $pro->stdName = $_SESSION["stdName"];
         $pro->regNum = $_SESSION["user_reg"];
-//        $pro->convocationName=$_SESSION["convocationName"];
+        $pro->convocationName=$_SESSION["convocationName"];
 
         try {
-//            $result = SurveyController::checkRegistration(strtoupper(trim(str_replace(' ', '', str_replace('/', '', $_SESSION["user_reg"])))));
-//            if(count($result)>0){
-//                $pro->save();
-//            }else{
                 $pro->save();
-//                $_SESSION["regPro"]->save();
-//
-//            }
-
         }catch (QueryException $e){
-
-
+            return redirect()->route('eligibleStd')
+                ->with('success',$e);
+        }
+        try {
+            $_SESSION["regPro"]->save();
+        }catch (QueryException $e){
             return redirect()->route('eligibleStd')
                 ->with('success',$e);
         }
@@ -228,6 +224,14 @@ SELECT surveys.regNum FROM surveys;
 
         return collect(DB::select('
 SELECT student_registrations.regNum FROM student_registrations;
+'))->where('regNum', '=', $regNumber);
+
+    }
+
+    public static function getFacultyFromEligibleStudent ($regNumber){
+
+        return collect(DB::select('
+SELECT * FROM eligible_students;
 '))->where('regNum', '=', $regNumber);
 
     }

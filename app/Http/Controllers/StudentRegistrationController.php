@@ -10,6 +10,7 @@ use App\Models\EligibleStudent;
 use App\Models\Faculty;
 use App\Models\Price;
 use App\Models\StudentRegistration;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -124,8 +125,8 @@ class StudentRegistrationController extends Controller
         $_SESSION["regNum"]=$request->regNum;
 
 
-//        $_SESSION["regPro"]=$pro;
-            $pro->save();
+        $_SESSION["regPro"]=$pro;
+//            $pro->save();
 
 
 
@@ -137,11 +138,28 @@ class StudentRegistrationController extends Controller
 //        return redirect('http://employability-study.sociologicalnotes.com/');
 
 
+        if($request->faculty=="Graduate Studies"){
+            try {
+                $pro->save();
+            }catch (QueryException $e){
+                return redirect()->route('eligibleStd')
+                    ->with('success',$e);
+            }
+            return redirect()->route('eligibleStd')
+                ->with('success','Registration successfully Completed.');
+        }else{
+            return redirect()->route('surveyView')
+                ->with('success','Complete the Survey to Complete Registration.');
+        }
+
+//        return redirect()->route('surveyView')
+//            ->with('success','Complete the Survey to Complete Registration.');
+
+
 
 
 //        StudentRegistration::create($request->all());
-        return redirect()->route('surveyView')
-            ->with('success','Complete the Survey to Complete Registration.');
+
     }
 
     /**

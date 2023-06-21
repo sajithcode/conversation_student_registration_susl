@@ -446,7 +446,13 @@
 
                                                 {{--                        <button type="submit" class="btn btn-primary">Submit</button>--}}
                                             @endif
-                                            <button type="submit" class="btn btn-primary">Next</button>
+                                                @if($eligibleStudent->faculty=='Graduate Studies')
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                @else
+                                                <button type="submit" class="btn btn-primary">Next</button>
+                                                @endif
+
+
                                         </div>
 
                                     </div>

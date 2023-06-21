@@ -20,9 +20,15 @@
                 @php
                     $resultSurvey = App\Http\Controllers\SurveyController::checkSurvey(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
                     $resultRegistration = App\Http\Controllers\SurveyController::checkRegistration(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
-                @endphp
+                    $facultyFromEligibleStudent = App\Http\Controllers\SurveyController::getFacultyFromEligibleStudent(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
+                $data = json_decode($facultyFromEligibleStudent, true);
+                $faculty = $data[0]['faculty'];
+                    @endphp
+{{--                <div>--}}
+{{--                    {{$faculty}}--}}
+{{--                </div>--}}
 
-                @if(count($resultSurvey)==0 && count($resultRegistration)>0)
+                @if(count($resultSurvey)==0 && count($resultRegistration)>0 && $faculty!="Graduate Studies")
                     <p style="color:red;font-weight: bold; font-size: 20px">Please Successfully Complete the Survey to Complete Your Registration</p>
 
                     <div class="col" style="margin-bottom: 10px">
