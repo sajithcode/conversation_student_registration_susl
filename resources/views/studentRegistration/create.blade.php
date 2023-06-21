@@ -304,9 +304,9 @@
                                                 <strong>Whether you attend the convocation:</strong>
                                                 <div>
                                                     <select required name="attendance" class="form-control" id="frm_duration">
-                                                        <option selected>Choose...</option>
-                                                        <option value="Yes">Yes</option>
+                                                        <option ></option>
                                                         <option value="No">No</option>
+                                                        <option value="Yes">Yes</option>
                                                     </select>
                                                 </div>
                                             </div>
