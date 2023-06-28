@@ -137,6 +137,14 @@ class StudentRegistrationController extends Controller
 
 //        return redirect('http://employability-study.sociologicalnotes.com/');
 
+        $resultSurvey = SurveyController::checkSurvey(strtoupper(trim(str_replace(' ', '', str_replace('/', '', $request->regNum)))));
+        $SurveyGDocuments = json_decode($resultSurvey, true);
+        $SurveyDocumentsCount = count($SurveyGDocuments);
+
+
+        $resultRegistration = SurveyController::checkRegistration(strtoupper(trim(str_replace(' ', '', str_replace('/', '', $request->regNum)))));
+        $rGDocuments = json_decode($resultRegistration, true);
+        $rGDocumentsCount = count($rGDocuments);
 
         if($request->faculty=="Graduate Studies"){
             try {
@@ -147,7 +155,17 @@ class StudentRegistrationController extends Controller
             }
             return redirect()->route('eligibleStd')
                 ->with('success','Registration successfully Completed.');
-        }else{
+        }elseif ($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $request->faculty!="Graduate Studies"){
+            try {
+                $pro->save();
+            }catch (QueryException $e){
+                return redirect()->route('eligibleStd')
+                    ->with('success',$e);
+            }
+            return redirect()->route('eligibleStd')
+                ->with('success','Registration successfully Completed.');
+        }
+        else{
             return redirect()->route('surveyView')
                 ->with('success','Complete the Survey to Complete Registration.');
         }

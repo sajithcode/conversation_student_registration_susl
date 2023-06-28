@@ -19,21 +19,37 @@
             <div class="row">
                 @php
                     $resultSurvey = App\Http\Controllers\SurveyController::checkSurvey(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
+                    $SurveyGDocuments = json_decode($resultSurvey, true);
+                    $SurveyDocumentsCount = count($SurveyGDocuments);
+
+
                     $resultRegistration = App\Http\Controllers\SurveyController::checkRegistration(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
+                    $rGDocuments = json_decode($resultRegistration, true);
+                    $rGDocumentsCount = count($rGDocuments);
+
                     $facultyFromEligibleStudent = App\Http\Controllers\SurveyController::getFacultyFromEligibleStudent(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
                 $data = json_decode($facultyFromEligibleStudent, true);
-                $faculty = $data[0]['faculty'];
+                $keys = array_keys($data);
+                $key = $keys[0];
+                $faculty = $data[$key]['faculty'];
                     @endphp
 {{--                <div>--}}
 {{--                    {{$faculty}}--}}
 {{--                </div>--}}
 
-                @if(count($resultSurvey)==0 && count($resultRegistration)>0 && $faculty!="Graduate Studies")
+                @if($SurveyDocumentsCount==0 && $rGDocumentsCount>0 && $faculty!="Graduate Studies")
                     <p style="color:red;font-weight: bold; font-size: 20px">Please Successfully Complete the Survey to Complete Your Registration</p>
 
                     <div class="col" style="margin-bottom: 10px">
                         <div class="pull-center">
                             <a class="btn btn-danger" href="{{ route('survey.create') }}">Click here to complete the Survey</a>
+                        </div>
+                    </div>
+                @elseif($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $faculty!="Graduate Studies")
+                    <p style="color:red;font-weight: bold; font-size: 20px">Survey results submitted Successful but registration not Successful, Please Retry</p>
+                    <div class="col" style="margin-bottom: 10px">
+                        <div class="pull-center">
+                            <a class="btn btn-danger" href="{{ route('studentRegistration.create') }}">Click here to complete the Registration</a>
                         </div>
                     </div>
                 @else

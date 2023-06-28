@@ -446,10 +446,30 @@
 
                                                 {{--                        <button type="submit" class="btn btn-primary">Submit</button>--}}
                                             @endif
+
+
+                                                @php
+                                                    $resultSurvey = App\Http\Controllers\SurveyController::checkSurvey(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
+                                                    $SurveyGDocuments = json_decode($resultSurvey, true);
+                                                    $SurveyDocumentsCount = count($SurveyGDocuments);
+
+
+                                                    $resultRegistration = App\Http\Controllers\SurveyController::checkRegistration(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
+                                                    $rGDocuments = json_decode($resultRegistration, true);
+                                                    $rGDocumentsCount = count($rGDocuments);
+
+                                                    $facultyFromEligibleStudent = App\Http\Controllers\SurveyController::getFacultyFromEligibleStudent(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
+                                                $data = json_decode($facultyFromEligibleStudent, true);
+                                                $keys = array_keys($data);
+                                                $key = $keys[0];
+                                                $faculty = $data[$key]['faculty'];
+                                                @endphp
                                                 @if($eligibleStudent->faculty=='Graduate Studies')
                                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                                @elseif($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $faculty!="Graduate Studies")
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
                                                 @else
-                                                <button type="submit" class="btn btn-primary">Next</button>
+                                                    <button type="submit" class="btn btn-primary">Next</button>
                                                 @endif
 
 

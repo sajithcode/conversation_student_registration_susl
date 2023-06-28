@@ -187,9 +187,11 @@
                     <strong>05. Faculty/Institution:</strong>
                     <select required name="faculty" class="custom-select" id="inputGroupSelect04" >
                         <option></option>
+                        <option value="Faculty of Computing">Faculty of Computing</option>
                         <option value="Faculty of Agriculture Sciences">Faculty of Agriculture Sciences</option>
                         <option value="Faculty of Applied Sciences">Faculty of Applied Sciences</option>
                         <option value="Faculty of Geomatics">Faculty of Geomatics</option>
+                        <option value="Faculty of Sports">Faculty of Sports</option>
                         <option value="Faculty of Management Studies">Faculty of Management Studies</option>
                         <option value="Faculty of Medicine">Faculty of Medicine</option>
                         <option value="Faculty of Social Sciences and Languages">Faculty of Social Sciences and Languages</option>
