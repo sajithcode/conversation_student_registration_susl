@@ -14,6 +14,27 @@
         </div>
         @if(checkPermission(['Admin','surveyAccess']))
         <div style="overflow-x:auto;">
+            <div class="row">
+
+                    <form method="GET" action="{{route('exportsurvey')}}" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-xs-10 col-sm-10 col-md-10" >
+                                    <div class="form-group">
+                                        <strong>Convocation:</strong>
+                                        {{ Form::select('convocationName', $convo, null, ['class' => 'form-control']) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2" style="display: inline-flex;justify-content: center">
+                                    <button type="submit" class="btn btn-success btn-user float-right mb-3">Export Survey</button>
+                                </div>
+                            </div>
+                            {{--                    <a class="btn btn-primary float-right mr-3 mb-3" href="{{ route('users.index') }}">Cancel</a>--}}
+                        </div>
+                    </form>
+            </div>
             <table class="table table-bordered form-duration-div">
                 <tr>
                     <th>Name</th>

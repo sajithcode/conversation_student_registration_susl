@@ -150,6 +150,8 @@ Route::get('/export', [\App\Http\Controllers\StudentRegistrationController::clas
 Route::get('/exportbyfaculty', [\App\Http\Controllers\StudentRegistrationController::class, 'exportbyfaculty'])->name('exportbyfaculty');;
 Route::get('/eligiblestudentreset', [\App\Http\Controllers\StudentRegistrationController::class, 'eligiblestudentreset'])->name('eligiblestudentreset');;
 
+Route::get('/exportsurvey', [\App\Http\Controllers\SurveyController::class, 'exportSurvey'])->name('exportsurvey');;
+
 Route::get('/registerdreset', [\App\Http\Controllers\StudentRegistrationController::class, 'registerdreset'])->name('registerdreset');;
 Route::get('/registerdwithsurveyreset', [\App\Http\Controllers\StudentRegistrationController::class, 'registerdwithsurveyreset'])->name('registerdwithsurveyreset');;
 

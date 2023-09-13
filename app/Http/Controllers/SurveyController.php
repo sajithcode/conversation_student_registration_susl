@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SurveyExport;
+use App\Models\Convocation;
 use App\Models\EligibleStudent;
 use App\Models\Survey;
 use Illuminate\Database\QueryException;
@@ -18,7 +20,8 @@ class SurveyController extends Controller
     public function index()
     {
         $surveys = Survey::all();
-        return view('survey.index',compact('surveys',));
+        $convo = Convocation::all()->pluck('convocation', 'id');
+        return view('survey.index',compact('surveys','convo'));
     }
 
     /**
@@ -233,6 +236,13 @@ SELECT student_registrations.regNum FROM student_registrations;
         return collect(DB::select('
 SELECT * FROM eligible_students;
 '))->where('regNum', '=', $regNumber);
+
+    }
+
+    public function exportSurvey(Request $request)
+    {
+//        return Excel::download(new StudentRegistrationExport, 'Registered All Students.xlsx');
+        return (new SurveyExport($request->input('convocationName')))->download('Survey by convocation name.xlsx');
 
     }
 
