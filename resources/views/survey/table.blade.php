@@ -98,6 +98,7 @@
             <td>{{ $survey->stdName }}</td>
             <td>{{ $survey->email }}</td>
             <td>{{ $survey->contactNumber }}</td>
+            <td>{{ $survey->gender }}</td>
             <td>{{ $survey->district }}</td>
             <td>{{ $survey->zScore }}</td>
             <td>{{ $survey->ethnicity }}</td>
@@ -146,7 +147,6 @@
             <td>{{ $survey->helpfulTeachingMaterial }}</td>
             <td>{{ $survey->promotionOfInteraction }}</td>
             <td>{{ $survey->assignmentAndFeedback }}</td>
-            <td>{{ $survey->practicalKnowledge }}</td>
             <td>{{ $survey->supervisionOfProjectWork }}</td>
             <td>{{ $survey->monitoringRoleModel }}</td>
             <td>{{ $survey->monthlySalary }}</td>
