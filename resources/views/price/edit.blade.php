@@ -13,7 +13,7 @@
             <table class="table table-bordered form-duration-div">
                 <tr>
 
-                    @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+                    @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing']))
                         <th>No</th>
                         <th>Presence</th>
                         <th >Absence</th>
@@ -26,7 +26,7 @@
                 @foreach ($prices as $price)
                     <tr>
 
-                        @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS']))
+                        @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing']))
                             <td>{{ ++$a }}</td>
                             {{--                        <td>{{ $convocation->convocation }}</td>--}}
 

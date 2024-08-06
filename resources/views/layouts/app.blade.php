@@ -87,7 +87,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                            @if(checkPermission(['mainStoreClark','viceChancellor','Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess']))
+                            @if(checkPermission(['mainStoreClark','viceChancellor','Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
 
                                 <a href="{{ route('eligibleStudents.index') }}" style="color: #a8a8a8" class="dropdown-item" href="#" aria-expanded="false" v-pre>
                                     Dashboard
