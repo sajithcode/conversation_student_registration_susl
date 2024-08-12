@@ -21,7 +21,11 @@ class EligibleStudentsController extends Controller
     public function index()
     {
         session_start();
-        $convo = Convocation::all()->pluck('convocation', 'id');
+        $convo = Convocation::orderBy('convocation', 'desc')->pluck('convocation', 'id');
+        $lastConvocation = DB::table('convocations')
+        ->orderBy('id', 'desc')
+        ->value('convocation');
+        
 //        $stdEmail = $_SESSION["email"];
         $students = DB::select('
 SELECT
@@ -41,8 +45,9 @@ surveys.id as "svid"
 
 FROM eligible_students
 LEFT JOIN student_registrations ON eligible_students.regNum = student_registrations.regNum
-LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
-');
+LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum
+WHERE eligible_students.convocationName = ?;
+', [$lastConvocation]);
 
 
 
@@ -113,7 +118,7 @@ LEFT JOIN surveys ON student_registrations.regNum = surveys.regNum;
 
     public function getESByFormRequest(Request $request)
     {
-        $convo = Convocation::all()->pluck('convocation', 'id');
+        $convo = Convocation::orderBy('convocation', 'desc')->pluck('convocation', 'id');
         $studentRegEligible = $request->input('studentRegEligible');
         $faculty = $request->input('faculty');
         $convocationName = $convo[$request->input('convocationName')];
