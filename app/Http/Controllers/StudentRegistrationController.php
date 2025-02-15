@@ -56,6 +56,9 @@ class StudentRegistrationController extends Controller
         $prices = Price::all();
         $studentRegistrations = StudentRegistration::all();
         $eligibleStudents = EligibleStudent::all();
+        // if ($eligibleStudents->isEmpty()) {
+        //     return view('noEligibleStudents'); // Redirects to another page
+        // }
         return view('eligibleStd',compact('eligibleStudents','studentRegistrations','prices'));
 
     }
