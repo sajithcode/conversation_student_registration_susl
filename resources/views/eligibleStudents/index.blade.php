@@ -25,7 +25,7 @@
         @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing']))
 
                 <div class="pull-left">
-                    <h2>Eligible Students</h2>
+                    <h2 >Eligible Students</h2>
                 </div>
 
             @if ($message = Session::get('success'))
@@ -362,75 +362,61 @@
 {{--            </script>--}}
 
 
-            @if(checkPermission(['Admin','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
-{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+ @if(checkPermission(['Admin','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
+    <div class=" mt-4 w-100 pb-4">
+        <div class="card shadow p-4" style="background-color: #E9DDDD;">
+            <h4 class="text-center mb-4">Search Eligible Students</h4>
 
-                <form action="{{ route('getESByFormRequest') }}" id="selectform" method="GET">
-                    @csrf
-                    <div style="margin: 20px" class="row">
-
-                        <div class="form-group">
-                            {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
-                        </div>
-
-
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group" style="margin-top: 20px">
-                                <div>
-                                    <select required name="studentRegEligible" class="form-control" id="frm_duration">
-                                        {{--                            <option selected>Choose</option>--}}
-                                        <option selected value="All">All Eligible Students</option>
-                                        <option value="Registered">Registered Students</option>
-                                        <option value="Pending">Registered Students Pending</option>
-                                        <option value="Reject">Registered Students Rejected</option>
-                                        <option value="Accept">Registered Students Accepted</option>
-                                        <option value="NotRegistered">Not Registered Students</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group" style="margin-top: 20px">
-                                <div>
-                                    <select required name="faculty" class="form-control" id="frm_duration">
-                                        {{--                            <option selected>Choose</option>--}}
-                                        <option value="All Faculty">All Faculty</option>
-                                        <option value="Computing">Computing</option>
-                                        <option value="Agricultural Sciences">Agricultural Sciences</option>
-                                        <option value="Applied Sciences">Applied Sciences</option>
-                                        <option value="Geomatics">Geomatics</option>
-                                        <option value="Management Studies">Management Studies</option>
-                                        <option value="Medicine">Medicine</option>
-                                        <option value="Social Sciences & Languages">Social Sciences & Languages</option>
-                                        <option value="Technology">Technology</option>
-                                        <option value="Sport">Sport</option>
-                                        <option value="Graduate Studies">Graduate Studies</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </div>
-
-
-
-
+            <form action="{{ route('getESByFormRequest') }}" id="selectform" method="GET">
+                @csrf
+                <div class="row g-3">
+                    
+                    <div class="col-12">
+                        <label for="convocationName" class="form-label">Convocation Name</label>
+                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-select']) }}
                     </div>
 
-                </form>
-                <div style="margin-bottom:50px;margin-top: -30px" class="row">
-                    <div class="col-xs-11 col-sm-11 col-md-11 text-center">
+                    <div class="col-md-6">
+                        <label for="studentRegEligible" class="form-label">Registration Status</label>
+                        <select required name="studentRegEligible" class="form-select">
+                            <option selected value="All">All Eligible Students</option>
+                            <option value="Registered">Registered Students</option>
+                            <option value="Pending">Registered Students Pending</option>
+                            <option value="Reject">Registered Students Rejected</option>
+                            <option value="Accept">Registered Students Accepted</option>
+                            <option value="NotRegistered">Not Registered Students</option>
+                        </select>
                     </div>
-                    <div  class="col-xs-1 col-sm-1 col-md-1">
-                        <button class="btn btn-dark" onclick="document.getElementById('selectform').reset(); document.getElementById('from').value = null; return false;">
+
+                    <div class="col-md-6">
+                        <label for="faculty" class="form-label">Faculty</label>
+                        <select required name="faculty" class="form-select">
+                            <option value="All Faculty">All Faculty</option>
+                            <option value="Computing">Computing</option>
+                            <option value="Agricultural Sciences">Agricultural Sciences</option>
+                            <option value="Applied Sciences">Applied Sciences</option>
+                            <option value="Geomatics">Geomatics</option>
+                            <option value="Management Studies">Management Studies</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Social Sciences & Languages">Social Sciences & Languages</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Sport">Sport</option>
+                            <option value="Graduate Studies">Graduate Studies</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-center gap-3 mt-3">
+                        <button type="submit" class="btn btn-primary px-4">Search</button>
+                        <button type="button" class="btn btn-outline-secondary px-4" 
+                            onclick="document.getElementById('selectform').reset();">
                             Reset
                         </button>
                     </div>
+
                 </div>
+            </form>
+        </div>
+    </div>
 
 
 
