@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\StudentRegistrationExport;
 use App\Exports\StudentRegistrationExportByFaculty;
+use App\Mail\RegistrationSend;
 use App\Mail\RegistrationUpdate;
 use App\Models\Convocation;
 use App\Models\EligibleStudent;
@@ -49,7 +50,7 @@ class StudentRegistrationController extends Controller
     }
 
 
-    public function eligibleStd()
+    public function eligibleStd(Request $request)
     {
         session_start();
 
@@ -61,6 +62,11 @@ class StudentRegistrationController extends Controller
         // if ($eligibleStudents->isEmpty()) {
         //     return view('noEligibleStudents'); // Redirects to another page
         // }
+
+        // $name= "Sajith";
+
+        // Mail:: to($request->email)->send(new RegistrationSend($name));
+
         return view('eligibleStd',compact('eligibleStudents','studentRegistrations','prices'));
 
     }
@@ -151,6 +157,12 @@ class StudentRegistrationController extends Controller
         $resultRegistration = SurveyController::checkRegistration(strtoupper(trim(str_replace(' ', '', str_replace('/', '', $request->regNum)))));
         $rGDocuments = json_decode($resultRegistration, true);
         $rGDocumentsCount = count($rGDocuments);
+
+        $status= "Pending";
+
+        
+
+        Mail:: to($request->email)->send(new RegistrationSend($status));
 
         if($request->faculty=="Graduate Studies"){
             try {

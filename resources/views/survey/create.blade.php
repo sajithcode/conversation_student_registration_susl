@@ -251,13 +251,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>10. Class received:</strong>
-                    <select required name="classReceived" class="custom-select" id="inputGroupSelect08" >
-                        <option></option>
-                        <option value="First Class">First Class</option>
-                        <option value="Second Upper">Second Upper</option>
-                        <option value="Second Lower">Second Lower</option>
-                        <option value="General Pass">General Pass</option>
-                    </select>
+                    <input readonly value="{{ $eligibleStudent->degreeClass }}" required type="text" name="classReceived" class="form-control" placeholder="classReceived">
                 </div>
             </div>
 
