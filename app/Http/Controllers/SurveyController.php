@@ -158,7 +158,10 @@ class SurveyController extends Controller
                 ->with('success',$e);
         }
         try {
-            $_SESSION["regPro"]->save();
+            if (isset($_SESSION['regPro'])) {
+    $_SESSION['regPro']->save();
+}
+
         }catch (QueryException $e){
             return redirect()->route('eligibleStd')
                 ->with('success',$e);
