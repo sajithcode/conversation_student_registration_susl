@@ -134,7 +134,7 @@ class StudentRegistrationController extends Controller
         $_SESSION["regStatus"] = 'Yes';
         $_SESSION["nameWithInitial"] = $request->nameWithInitial;
         $_SESSION["regNum"] = $request->regNum;
-        $_SESSION["convocationName"] = $request->convocationName;
+        // $_SESSION["convocationName"] = $request->convocationName;
         $_SESSION["regPro"] = $pro;
 
         // $pro->save();

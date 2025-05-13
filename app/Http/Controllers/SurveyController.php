@@ -184,9 +184,9 @@ class SurveyController extends Controller
      * @param  \App\Models\SurveyResponse  $survey
      * @return \Illuminate\Http\Response
      */
-    public function show(SurveyResponse $surveyresponse)
+    public function show(SurveyResponse $surveyresponses)
     {
-        return view('survey.show',compact('survey_response'));
+        return view('survey.show',compact('surveyresponses'));
     }
 
     /**

@@ -89,40 +89,51 @@ protected $fillable = [
         'convocationName',
 ];
 
-public function setAbilitiesAttribute($value) {
-    $this->attributes['abilities'] = is_array($value) ? json_encode($value) : $value;
-}
+// public function setAbilitiesAttribute($value) {
+//     $this->attributes['abilities'] = json_encode($value);
+// }
 
-public function getAbilitiesAttribute($value) {
-    return json_decode($value);
-}
+// public function getAbilitiesAttribute($value) {
+//     return $this->attributes['abilities'] = json_decode($value);
+// }
 
-// For unemp_reasons
-public function setUnempReasonsAttribute($value) {
-    $this->attributes['unemp_reasons'] = is_array($value) ? json_encode($value) : $value;
-}
+// // For unemp_reasons
+// public function setUnempReasonsAttribute($value) {
+//     $this->attributes['unemp_reasons'] = json_encode($value);
+// }
 
-public function getUnempReasonsAttribute($value) {
-    return json_decode($value);
-}
+// public function getUnempReasonsAttribute($value) {
+//     return $this->attributes['unemp_reasons'] = json_decode($value);
+// }
 
-// For job_search_steps
-public function setJobSearchStepsAttribute($value) {
-    $this->attributes['job_search_steps'] = is_array($value) ? json_encode($value) : $value;
-}
+// // For job_search_steps
+// public function setJobSearchStepsAttribute($value) {
+//     $this->attributes['job_search_steps'] = json_encode($value);
+// }
 
-public function getJobSearchStepsAttribute($value) {
-    return json_decode($value);
-}
+// public function getJobSearchStepsAttribute($value) {
+//     return $this->attributes['job_search_steps'] = json_decode($value);
+// }
 
-// For career_goals
-public function setCareerGoalsAttribute($value) {
-    $this->attributes['career_goals'] = is_array($value) ? json_encode($value) : $value;
-}
+// // For career_goals
+// public function setCareerGoalsAttribute($value) {
+//     $this->attributes['career_goals'] = json_encode($value);
+// }
 
-public function getCareerGoalsAttribute($value) {
-    return json_decode($value);
-}
+// public function getCareerGoalsAttribute($value) {
+//     return $this->attributes['career_goals'] = json_decode($value);
+// }
+
+public function setCategoryAttribute($value)
+    {
+        $this->attributes['category'] = json_encode($value);
+    }
+
+    public function getCategoryAttribute($value)
+    {
+        return $this->attributes['category'] = json_decode($value);
+    }
+
 
 
 }
