@@ -30,8 +30,9 @@
             <th>Internship Semester</th>
             <th>Other Courses</th>
             <th>Course Type</th>
-            <th>Course Field</th>
             <th>Course Completed</th>
+            <th>Course Field</th>
+            <th>Involved in Extracurricular Activities</th>
             <th>Extra Activities</th>
             <th>Employment Status</th>
             <th>Employment Type</th>
@@ -111,8 +112,9 @@
             <td>{{ $survey_response->internship_semester }}</td>
             <td>{{ $survey_response->other_courses_yesno }}</td>
             <td>{{ $survey_response->other_course_type }}</td>
-            <td>{{ $survey_response->other_course_field }}</td>
             <td>{{ $survey_response->other_course_completed }}</td>
+            <td>{{ $survey_response->other_course_field }}</td>
+            <td>{{ $survey_response->extra_activities_yesno }}</td>
             <td>{{ $survey_response->extra_activities }}</td>
             <td>{{ $survey_response->employment_status }}</td>
             <td>{{ $survey_response->employment_type }}</td>

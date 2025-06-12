@@ -96,8 +96,9 @@ class SurveyController extends Controller
         $pro->internship_semester = $request->internship_semester;
         $pro->other_courses_yesno = $request->other_courses_yesno;
         $pro->other_course_type = $request->other_course_type;
-        $pro->other_course_field = $request->other_course_field;
         $pro->other_course_completed = $request->other_course_completed;
+        $pro->other_course_field = $request->other_course_field;
+        $pro->extra_activities_yesno = $request->extra_activities_yesno;
         $pro->extra_activities = json_encode($request->extra_activities);
         // $pro->extraCurricular = $request->extraCurricular;
         // $pro->extraCurricularDes = $request->extraCurricularDes;

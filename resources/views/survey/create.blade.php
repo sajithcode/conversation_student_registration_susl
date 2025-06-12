@@ -220,7 +220,18 @@
 <div class="form-row">
     <div class="col">
         <label for="faculty">8. Faculty:</label>
-        <input type="text" id="faculty" name="faculty" class="form-control" required>
+        {{-- <input type="text" id="faculty" name="faculty" class="form-control" required> --}}
+        <select name="faculty" class="form-control" required>
+        <option value="" disabled selected>Select</option>
+        <option value="Management Studies">Management Studies</option>
+        <option value="Social Sciences & Languages">Social Sciences & Languages</option>
+        <option value="Applied Sciences">Applied Sciences</option>
+        <option value="Agricultural Sciences">Agricultural Sciences</option>
+        <option value="Geomatics">Geomatics</option>
+        <option value="Medicine">Medicine</option>
+        <option value="Technology">Technology</option>
+        <option value="Computing">Computing</option>
+    </select>
     </div>
     <div class="col">
         <label for="department">9. Department:</label>
@@ -376,6 +387,14 @@
             </select>
         </div>
         <div class="col">
+            <label>Completed?</label>
+            <select name="other_course_completed" class="form-control">
+                <option value="" disabled selected>Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+        <div class="col">
             <label>Field:</label>
             <select name="other_course_field" class="form-control">
                 <option value="" disabled selected>Select</option>
@@ -388,15 +407,16 @@
                 <option value="Other">Other</option>
             </select>
         </div>
-        <div class="col">
-            <label>Completed?</label>
-            <select name="other_course_completed" class="form-control">
+        
+    </div>
+    <div class="form-group mt-2">
+            <label>Were you involved in any extracurricular activities?</label>
+            <select name="extra_activities_yesno" class="form-control">
                 <option value="" disabled selected>Select</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
         </div>
-    </div>
     <div class="form-group mt-2">
         <label>18E. Extracurricular activities:</label><br>
         <div class="form-check form-check-inline">
@@ -430,7 +450,7 @@
 
 <div class="form-group">
   <label>20. Are you an Employee / Employer / Self-employment / Family worker?</label>
-  <select name="employment_type" class="form-control" required>
+  <select name="employment_type" class="form-control">
     <option value="" disabled selected>Select</option>
     <option value="Employee">Employee</option>
     <option value="Employer">Employer</option>
@@ -441,7 +461,7 @@
 
 <div class="form-group">
   <label>21. Employment permanence:</label>
-  <select name="employment_permanence" class="form-control" required>
+  <select name="employment_permanence" class="form-control">
     <option value="" disabled selected>Select</option>
     <option value="Permanent">Permanent</option>
     <option value="Temporary">Temporary</option>
@@ -452,7 +472,7 @@
 
 <div class="form-group">
   <label>22. Sector of employer:</label>
-  <select name="employer_sector" class="form-control" required>
+  <select name="employer_sector" class="form-control">
     <option value="" disabled selected>Select</option>
     <option value="Government">Government</option>
     <option value="Semi Government">Semi Government</option>
@@ -464,12 +484,12 @@
 
 <div class="form-group">
   <label for="employerName">23. Name of institution:</label>
-  <input type="text" id="employerName" name="employer_name" class="form-control" required>
+  <input type="text" id="employerName" name="employer_name" class="form-control">
 </div>
 
 <div class="form-group">
   <label>24. Occupation category:</label>
-  <select name="occupation_category" class="form-control" required>
+  <select name="occupation_category" class="form-control">
     <option value="" disabled selected>Select</option>
     <option value="Managers">Managers</option>
     <option value="Professionals">Professionals</option>
@@ -487,7 +507,7 @@
 
 <div class="form-group">
   <label>25. Economic sector:</label>
-  <select name="job_economic_sector" class="form-control" required>
+  <select name="job_economic_sector" class="form-control">
     <option value="" disabled selected>Select</option>
     <option value="Agriculture, Forestry & Fishing">Agriculture, Forestry & Fishing</option>
     <option value="Mining & Quarrying">Mining & Quarrying</option>
@@ -514,7 +534,7 @@
 <div class="form-row">
   <div class="col">
     <label>26. When did you find your current job?</label>
-    <select name="when_found_job" class="form-control" required>
+    <select name="when_found_job" class="form-control">
       <option value="" disabled selected>Select</option>
       <option value="During University">During University</option>
       <option value="After final exam">After final exam</option>
@@ -523,18 +543,18 @@
   </div>
   <div class="col">
     <label>27. Related to your field?</label>
-    <select name="job_field_match" class="form-control" required>
+    <select name="job_field_match" class="form-control">
       <option value="" disabled selected>Select</option>
       <option value="Yes, fully">Yes, fully</option>
       <option value="Partially">Partially</option>
-      <option value="No">No</option>
+      <option value="No">No, my education level is higher than required</option>
     </select>
   </div>
 </div>
 
 <div class="form-group mt-3">
   <label>28. Use of university-acquired skills:</label>
-  <select name="use_skills" class="form-control" required>
+  <select name="use_skills" class="form-control">
     <option value="" disabled selected>Select</option>
     <option value="Always">Always</option>
     <option value="Frequently">Frequently</option>
@@ -547,7 +567,7 @@
 <div class="form-row">
   <div class="col">
     <label>29. Took job outside field due to lack of opportunities?</label>
-    <select name="outside_field_due" class="form-control" required>
+    <select name="outside_field_due" class="form-control">
       <option value="" disabled selected>Select</option>
       <option value="Yes">Yes</option>
       <option value="No">No</option>
@@ -555,12 +575,12 @@
   </div>
   <div class="col">
     <label>30. Salary vs expectations:</label>
-    <select name="salary_expectation" class="form-control" required>
+    <select name="salary_expectation" class="form-control">
       <option value="" disabled selected>Select</option>
-      <option value="Exceeds">Exceeds</option>
-      <option value="Matches">Matches</option>
-      <option value="Below">Below</option>
-      <option value="Significantly below">Significantly below</option>
+      <option value="Exceeds">Exceeds expectations</option>
+      <option value="Matches">Matches expectations</option>
+      <option value="Below">Below expectations</option>
+      <option value="Significantly below">Significantly below expectations</option>
     </select>
   </div>
 </div>
@@ -568,7 +588,7 @@
 <div class="form-row mt-3">
   <div class="col">
     <label>31. Gross monthly salary:</label>
-    <select name="gross_salary" class="form-control" required>
+    <select name="gross_salary" class="form-control">
       <option value="" disabled selected>Select</option>
       <option value="below 50,000">below 50,000</option>
       <option value="50,000-100,000">50,000-100,000</option>
@@ -579,7 +599,7 @@
   </div>
   <div class="col">
     <label>32. Career growth satisfaction:</label>
-    <select name="career_growth_sat" class="form-control" required>
+    <select name="career_growth_sat" class="form-control">
       <option value="" disabled selected>Select</option>
       <option value="Very satisfied">Very satisfied</option>
       <option value="Somewhat satisfied">Somewhat satisfied</option>
@@ -592,7 +612,7 @@
 
 <div class="form-group mt-3">
   <label>33. Considering job change due to underemployment?</label>
-  <select name="consider_change" class="form-control" required>
+  <select name="consider_change" class="form-control">
     <option value="" disabled selected>Select</option>
     <option value="Yes, actively searching">Yes, actively searching</option>
     <option value="Yes, but not actively">Yes, but not actively</option>
@@ -601,7 +621,9 @@
 </div>
 
             {{--            =======================--}}
-
+<p class="bg-warning text-dark p-3 mb-0 rounded">
+            If you are not having any employment, please provide information to section D.
+        </p>
 {{-- SECTION D – Unemployment Information --}}
 <h4 class="mt-5">Section D - Unemployment Information</h4>
 
@@ -629,7 +651,7 @@
 <div class="form-row">
     <div class="col">
         <label>35. Expected employment type:</label>
-        <select name="future_employment_type" class="form-control" required>
+        <select name="future_employment_type" class="form-control">
             <option value="" disabled selected>Select</option>
             <option value=">Self-employment">Self-employment</option>
             <option value="Paid employment">Paid employment</option>
@@ -638,19 +660,19 @@
     </div>
     <div class="col">
         <label>36. Expected job sector:</label>
-        <select name="expected_sector" class="form-control" required>
+        <select name="expected_sector" class="form-control">
             <option value="" disabled selected>Select</option>
-            <option value="Public">Public</option>
-            <option value="Semi Government">Semi Government</option>
-            <option value="Private">Private</option>
-            <option value="Any">Any</option>
+            <option value="Public">Public sector</option>
+            <option value="Semi Government">Semi Government sector</option>
+            <option value="Private">Private sector</option>
+            <option value="Any">Any sector</option>
         </select>
     </div>
 </div>
 
 <div class="form-group mt-3">
     <label>37. Did you take any steps in the last 4 weeks to find work or start self-employment?</label>
-    <select name="took_steps" class="form-control" required>
+    <select name="took_steps" class="form-control">
         <option value="" disabled selected>Select</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
@@ -677,7 +699,7 @@
 
 <div class="form-group">
     <label>39. Minimum salary expected (reservation wage):</label>
-    <select name="reservation_wage" class="form-control" required>
+    <select name="reservation_wage" class="form-control">
         <option value="" disabled selected>Select</option>
         <option value="<= 50,000">&le; 50,000</option>
         <option value="50,001-100,000">50,001-100,000</option>
@@ -689,7 +711,7 @@
 
 <div class="form-group">
     <label>40. Expected occupation:</label>
-    <select name="expected_occupation" class="form-control" required>
+    <select name="expected_occupation" class="form-control">
         <option value="" disabled selected>Select</option>
         @foreach([
             'Managers',
@@ -711,7 +733,7 @@
 
 <div class="form-group">
     <label>41. Expected economic sector:</label>
-    <select name="expected_job_economic_sector" class="form-control" required>
+    <select name="expected_job_economic_sector" class="form-control">
         <option value="" disabled selected>Select</option>
         @foreach([
             'Agriculture, Forestry & Fishing',
@@ -741,7 +763,7 @@
 
 <div class="form-group">
     <label>42. How long have you been looking for a job after graduation? (months)</label>
-    <input type="number" name="job_search_duration" class="form-control" placeholder="Number of months" required>
+    <input type="number" name="job_search_duration" class="form-control" placeholder="Number of months">
 </div>
 
             {{--            =======================--}}
