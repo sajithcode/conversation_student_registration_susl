@@ -131,14 +131,13 @@ class StudentRegistrationController extends Controller
 
         session_start();
         $pro->convocationName = $_SESSION["convocationName"];
+        $_SESSION["regStatus"] = 'Yes';
+        $_SESSION["nameWithInitial"] = $request->nameWithInitial;
+        $_SESSION["regNum"] = $request->regNum;
+        // $_SESSION["convocationName"] = $request->convocationName;
+        $_SESSION["regPro"] = $pro;
 
-        $_SESSION["regStatus"]='Yes';
-        $_SESSION["nameWithInitial"]=$request->nameWithInitial;
-        $_SESSION["regNum"]=$request->regNum;
-
-
-        $_SESSION["regPro"]=$pro;
-//            $pro->save();
+        // $pro->save();
 
 
 
@@ -164,7 +163,7 @@ class StudentRegistrationController extends Controller
 
         Mail:: to($request->email)->send(new RegistrationSend($status));
 
-        if($request->faculty=="Graduate Studies"){
+        if($request->faculty=="Graduate Studies" || $request->faculty=="Indigenous Knowledge & Community Studies"){
             try {
                 $pro->save();
             }catch (QueryException $e){
@@ -173,7 +172,7 @@ class StudentRegistrationController extends Controller
             }
             return redirect()->route('eligibleStd')
                 ->with('success','Registration successfully Completed.');
-        }elseif ($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $request->faculty!="Graduate Studies"){
+        }elseif ($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $request->faculty!="Graduate Studies" && $request->faculty!="Indigenous Knowledge & Community Studies"){
             try {
                 $pro->save();
             }catch (QueryException $e){
