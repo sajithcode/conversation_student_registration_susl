@@ -32,7 +32,7 @@
                     //            session_destroy();
                     ?>
                     
-                    @if(checkPermission(['Admin', 'EBSC_Applied', 'EBSC_Geo', 'EBSC_Social', 'EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing']))
+                    @if(checkPermission(['Admin', 'EBSC_Applied', 'EBSC_Geo', 'EBSC_Social', 'EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing','EBSC_CIKCS']))
 
                     
                         <div class="nav justify-content-center">

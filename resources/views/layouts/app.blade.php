@@ -97,7 +97,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="#">Hello, {{ Auth::user()->name }}</a>
                     </li>
-                    @if(checkPermission(['Admin', 'EBSC_Applied', 'EBSC_Geo', 'EBSC_Social', 'EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing']))
+                    @if(checkPermission(['Admin', 'EBSC_Applied', 'EBSC_Geo', 'EBSC_Social', 'EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing','EBSC_CIKCS']))
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('eligibleStudents.index') }}">Dashboard</a>
                         </li>
