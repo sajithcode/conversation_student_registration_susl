@@ -61,12 +61,14 @@
                 @foreach ($studentRegistrations as $studentRegistration)
                     @if (strtoupper(trim(str_replace(' ', '', str_replace('/', '', $studentRegistration->regNum)))) === strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))))
                         @php $i = 3; @endphp
-                        <div class="col-lg-12 text-center my-4">
-                            @if($studentRegistration->status === 'Pending')
+                        <div class="col-lg-12 text-center my-4">                            @if($studentRegistration->status === 'Pending')
                                 <h2 class="text-info fw-bold">Your Registration is Pending</h2>
                                 <div class="mt-3 d-flex justify-content-center gap-3">
                                     <a class="btn btn-primary" href="{{ route('studentRegistration.edit', $studentRegistration->id) }}">Edit Registration</a>
                                     <a class="btn btn-dark" target="_blank" href="https://www.sab.ac.lk/payment-boc/">Make Payment</a>
+                                    <a class="btn btn-success" href="{{ route('studentRegistration.downloadPDF', $studentRegistration->id) }}">
+                                        <i class="fa fa-download"></i> Download Registration Details
+                                    </a>
                                 </div>
                             @endif
                             @if($studentRegistration->status === 'Reject')
@@ -75,10 +77,18 @@
                                 <div class="mt-3 d-flex justify-content-center gap-3">
                                     <a class="btn btn-primary" href="{{ route('studentRegistration.edit', $studentRegistration->id) }}">Edit Registration</a>
                                     <a class="btn btn-dark" target="_blank" href="https://www.sab.ac.lk/payment-boc/">Make Payment</a>
+                                    <a class="btn btn-success" href="{{ route('studentRegistration.downloadPDF', $studentRegistration->id) }}">
+                                        <i class="fa fa-download"></i> Download Registration Details
+                                    </a>
                                 </div>
                             @endif
                             @if($studentRegistration->status === 'Accept')
                                 <h2 class="text-success fw-bold">You are already Registered</h2>
+                                <div class="mt-3 d-flex justify-content-center gap-3">
+                                    <a class="btn btn-success" href="{{ route('studentRegistration.downloadPDF', $studentRegistration->id) }}">
+                                        <i class="fa fa-download"></i> Download Registration Details
+                                    </a>
+                                </div>
                             @endif
                         </div>
                         <div class="text-center">

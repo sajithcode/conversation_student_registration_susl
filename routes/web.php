@@ -181,3 +181,4 @@ Route::get('/tab2',function (){
 Route::get('/tab3',function (){
     return view('home');
 });
+Route::get('studentRegistration/{id}/download-pdf', [App\Http\Controllers\StudentRegistrationController::class, 'downloadPDF'])->name('studentRegistration.downloadPDF')->middleware('auth');

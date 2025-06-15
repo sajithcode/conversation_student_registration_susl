@@ -365,4 +365,22 @@ class StudentRegistrationController extends Controller
 //        return Excel::download(new StudentRegistrationExport, 'Registered Students.xlsx');
     }
 
+    public function downloadPDF($id)
+    {
+        $studentRegistration = StudentRegistration::findOrFail($id);
+        
+        // Check if the current user is authorized to download this registration
+        session_start();
+        $userRegNum = strtoupper(trim(str_replace(' ', '', str_replace('/', '', auth()->user()->regNum))));
+        $registrationRegNum = strtoupper(trim(str_replace(' ', '', str_replace('/', '', $studentRegistration->regNum))));
+        
+        if ($userRegNum !== $registrationRegNum) {
+            abort(403, 'Unauthorized access to registration details.');
+        }
+        
+        $pdf = app('dompdf.wrapper')->loadView('pdf.registration-details', compact('studentRegistration'));
+        
+        return $pdf->download('registration-details-' . $studentRegistration->regNum . '.pdf');
+    }
+
 }
