@@ -327,6 +327,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Payment Receipt: <span style="color: red">(Please upload an image or PDF file. Maximum size: 2MB.)</span></strong>
+                        <!-- Alert message for re-upload -->
+                        <div class="alert alert-info alert-dismissible fade show mt-2" role="alert">
+                            <i class="fas fa-info-circle"></i>
+                            <strong>Note:</strong> You may re-upload the existing receipt again or upload a new one. Uploading a receipt is mandatory for updating.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                         <input required type="file" name="image" class="form-control" placeholder="image or PDF" id="image" accept="image/*,application/pdf" onchange="previewFile()">
                         
                         <!-- Image Preview Section -->

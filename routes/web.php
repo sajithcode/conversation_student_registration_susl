@@ -23,10 +23,12 @@ use App\Http\Controllers\MailController;
 */
 
 Route::get('/', function () {
+    //return view('maintence');
     return view('auth.login');
 });
 
 Route::get('/', function () {
+    //return view('maintence');
     return view('auth.login');
 })->name('welcome');
 

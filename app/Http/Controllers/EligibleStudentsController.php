@@ -341,7 +341,7 @@ WHERE student_registrations.regNum IS NULL
 
             }
         }
-
+        
 
     }
 

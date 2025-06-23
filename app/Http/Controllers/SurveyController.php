@@ -160,6 +160,8 @@ class SurveyController extends Controller
         $pro->regNum = $_SESSION["user_reg"];
         $pro->convocationName = $_SESSION["convocationName"];
 
+        // console.log($pro->regNum);
+
 
         try {
                 $pro->save();

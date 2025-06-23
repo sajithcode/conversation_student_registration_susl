@@ -524,9 +524,9 @@
                                                 $key = $keys[0];
                                                 $faculty = $data[$key]['faculty'];
                                                 @endphp
-                                                @if($eligibleStudent->faculty=='Graduate Studies' || $eligibleStudent->faculty=='Indigenous Knowledge & Community Studies')
+                                                @if($eligibleStudent->faculty=='Graduate Studies' || $eligibleStudent->faculty=='Indigenous Knowledge & Community Studies' || $eligibleStudent->faculty=="Agricultural Sciences" || $eligibleStudent->faculty=="Management Studies" || $eligibleStudent->faculty=="Social Sciences & Languages" || $eligibleStudent->faculty=="Medicine")
                                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                                @elseif($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $faculty!="Graduate Studies" && $faculty!="Indigenous Knowledge & Community Studies")
+                                                @elseif($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $faculty!="Graduate Studies" && $faculty!="Indigenous Knowledge & Community Studies" && $faculty!="Agricultural Sciences" && $faculty!="Management Studies" && $faculty!="Social Sciences & Languages" && $faculty!="Medicine")
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                 @else
                                                     <button type="submit" class="btn btn-primary">Next</button>
