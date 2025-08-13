@@ -50,7 +50,7 @@
     @endif
 
 
-    <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
         @csrf
         @foreach ($eligibleStudents as $eligibleStudent)
 
@@ -400,6 +400,17 @@
                                                 var reader = new FileReader();
                                         
                                                 if (file) {
+                                                    // Check file size (2MB = 2 * 1024 * 1024 bytes)
+                                                    var maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                                                    
+                                                    if (file.size > maxSize) {
+                                                        alert('File size exceeds 2MB. Please select a smaller file.');
+                                                        document.querySelector('#image').value = ''; // Clear the file input
+                                                        previewImage.style.display = 'none';
+                                                        previewPDF.style.display = 'none';
+                                                        return; // Exit the function
+                                                    }
+                                                    
                                                     var fileType = file.type;
                                         
                                                     if (fileType.startsWith('image')) {
@@ -419,6 +430,8 @@
                                                         };
                                                         reader.readAsDataURL(file);
                                                     } else {
+                                                        alert('Please select only image or PDF files.');
+                                                        document.querySelector('#image').value = ''; // Clear the file input
                                                         previewImage.style.display = 'none';
                                                         previewPDF.style.display = 'none';
                                                     }
@@ -593,6 +606,29 @@
                 }
             }
         });
-        </script>
+
+        // Form validation function
+        function validateForm() {
+            var fileInput = document.querySelector('#image');
+            var file = fileInput.files[0];
+            
+            if (file) {
+                var maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                
+                if (file.size > maxSize) {
+                    alert('File size exceeds 2MB. Please select a smaller file before submitting.');
+                    return false; // Prevent form submission
+                }
+                
+                var allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'application/pdf'];
+                if (!allowedTypes.includes(file.type)) {
+                    alert('Please select only image (JPEG, PNG, GIF) or PDF files.');
+                    return false; // Prevent form submission
+                }
+            }
+            
+            return true; // Allow form submission
+        }
+    </script>
         
 @endsection
