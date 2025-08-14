@@ -57,7 +57,11 @@ Route::get('/', function () {
 
 Route::get('/eligibleStd',[App\Http\Controllers\StudentRegistrationController::class, 'eligibleStd'])->name('eligibleStd');
 Route::get('/surveyView',[App\Http\Controllers\SurveyController::class, 'surveyView'])->name('surveyView');
-Route::get('/checkData',[App\Http\Controllers\MailController::class, 'checkData'])->name('checkData');;
+Route::get('/checkData',[App\Http\Controllers\MailController::class, 'checkData'])->name('checkData');
+Route::get('/submit-google-survey',[App\Http\Controllers\SurveyController::class, 'submitGoogleSurvey'])->name('submitGoogleSurvey');
+Route::post('/mark-survey-completed',[App\Http\Controllers\SurveyController::class, 'markSurveyCompleted'])->name('markSurveyCompleted');
+Route::get('/check-survey-status',[App\Http\Controllers\SurveyController::class, 'checkSurveyStatus'])->name('checkSurveyStatus');
+Route::post('/reset-survey-completion',[App\Http\Controllers\SurveyController::class, 'resetSurveyCompletion'])->name('resetSurveyCompletion');
 
 
 Route::get('/check', function () {

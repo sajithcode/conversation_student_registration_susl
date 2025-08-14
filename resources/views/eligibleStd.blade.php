@@ -29,6 +29,20 @@
                 $keys = array_keys($data);
                 $key = $keys[0];
                 $faculty = $data[$key]['faculty'];
+
+                // Check if user has submitted Google Form survey
+                $hasSurveySubmitted = App\Http\Controllers\SurveyController::checkGoogleFormSurvey(strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))));
+                
+                // Get survey completion details if exists
+                $surveyCompletionDetails = null;
+                if ($hasSurveySubmitted) {
+                    $surveyResponse = \App\Models\SurveyResponse::where('regNum', strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))))
+                                        ->where('google_form_completed', true)
+                                        ->first();
+                    if ($surveyResponse) {
+                        $surveyCompletionDetails = $surveyResponse;
+                    }
+                }
             @endphp
 
             @if($SurveyDocumentsCount == 0 && $rGDocumentsCount > 0 && $faculty != "Graduate Studies" && $faculty != "Indigenous Knowledge & Community Studies" && $faculty != "Agricultural Sciences" && $faculty != "Management Studies" && $faculty != "Social Sciences & Languages" && $faculty != "Medicine")
@@ -75,12 +89,25 @@
                                 </div>
                                 @if($faculty != "Graduate Studies" && $faculty != "Indigenous Knowledge & Community Studies")
                                     <div class="mt-4 text-center">
-                                        <p class="text-danger fw-bold mb-3">
-                                            Please complete the survey.
-                                        </p>
-                                        <a class="btn btn-success" href="https://forms.gle/GHfDEB253DfGG6LM9" target="_blank">
-                                            Submit Survey
-                                        </a>
+                                        @if($hasSurveySubmitted)
+                                            <div class="alert alert-success">
+                                                <p class="text-success fw-bold mb-2">
+                                                    ✅ You have successfully completed the survey!
+                                                </p>
+                                                @if($surveyCompletionDetails && $surveyCompletionDetails->google_form_completed_at)
+                                                    <small class="text-muted">
+                                                        Completed on: {{ \Carbon\Carbon::parse($surveyCompletionDetails->google_form_completed_at)->format('M d, Y \a\t h:i A') }}
+                                                    </small>
+                                                @endif
+                                            </div>
+                                        @else
+                                            <p class="text-danger fw-bold mb-3">
+                                                Please complete the survey.
+                                            </p>
+                                            <a class="btn btn-success" href="{{ route('submitGoogleSurvey') }}">
+                                                Submit Survey
+                                            </a>
+                                        @endif
                                     </div>
                                 @endif
                             @endif
@@ -101,13 +128,26 @@
                                 <h2 class="text-success fw-bold">You are already Registered</h2>
                                 @if($faculty != "Graduate Studies" && $faculty != "Indigenous Knowledge & Community Studies")
                                     <div class="mt-4 text-center">
-                                        <p class="text-danger fw-bold mb-3">
-                                            Please complete the survey.<br>
-                                            If already filled, you may ignore this message.
-                                        </p>
-                                        <a class="btn btn-success" href="https://forms.gle/GHfDEB253DfGG6LM9" target="_blank">
-                                            Submit Survey
-                                        </a>
+                                        @if($hasSurveySubmitted)
+                                            <div class="alert alert-success">
+                                                <p class="text-success fw-bold mb-2">
+                                                    ✅ You have successfully completed the survey!
+                                                </p>
+                                                @if($surveyCompletionDetails && $surveyCompletionDetails->google_form_completed_at)
+                                                    <small class="text-muted">
+                                                        Completed on: {{ \Carbon\Carbon::parse($surveyCompletionDetails->google_form_completed_at)->format('M d, Y \a\t h:i A') }}
+                                                    </small>
+                                                @endif
+                                            </div>
+                                        @else
+                                            <p class="text-danger fw-bold mb-3">
+                                                Please complete the survey.<br>
+                                                If already filled, you may ignore this message.
+                                            </p>
+                                            <a class="btn btn-success" href="{{ route('submitGoogleSurvey') }}">
+                                                Submit Survey
+                                            </a>
+                                        @endif
                                     </div>
                                 @endif
                             @endif
