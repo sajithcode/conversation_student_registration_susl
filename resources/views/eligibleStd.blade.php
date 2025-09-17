@@ -45,14 +45,14 @@
                 }
             @endphp
 
-            @if($SurveyDocumentsCount == 0 && $rGDocumentsCount > 0 && $faculty != "Graduate Studies" && $faculty != "Indigenous Knowledge & Community Studies" && $faculty != "Agricultural Sciences" && $faculty != "Management Studies" && $faculty != "Social Sciences & Languages" && $faculty != "Medicine")
+            @if($SurveyDocumentsCount == 0 && $rGDocumentsCount > 0 && $faculty != "Graduate Studies" && $faculty != "Indigenous Knowledge & Community Studies" && $faculty != "Agricultural Sciences" && $faculty != "Management Studies" && $faculty != "Social Sciences & Languages" && $faculty != "Medicine" && $faculty != "Applied Sciences" && $faculty != "Geomatics" && $faculty != "Technology" && $faculty != "Computing" )  
                 <div class="alert alert-warning text-center fw-bold fs-5">
                     Please Successfully Complete the Survey to Complete Your Registration
                 </div>
                 <div class="text-center mt-3">
                     <a class="btn btn-danger btn-lg" href="{{ route('survey.create') }}">Complete the Survey</a>
                 </div>
-            @elseif($SurveyDocumentsCount > 0 && $rGDocumentsCount == 0 && $faculty != "Graduate Studies" && $faculty != "Indigenous Knowledge & Community Studies" && $faculty != "Agricultural Sciences" && $faculty != "Management Studies" && $faculty != "Social Sciences & Languages" && $faculty != "Medicine")
+            @elseif($SurveyDocumentsCount > 0 && $rGDocumentsCount == 0 && $faculty != "Graduate Studies" && $faculty != "Indigenous Knowledge & Community Studies" && $faculty != "Agricultural Sciences" && $faculty != "Management Studies" && $faculty != "Social Sciences & Languages" && $faculty != "Medicine" && $faculty != "Applied Sciences" && $faculty != "Geomatics" && $faculty != "Technology" && $faculty != "Computing")
                 <div class="alert alert-danger text-center fw-bold fs-5">
                     Survey results submitted successfully but registration not completed. Please retry.
                 </div>
