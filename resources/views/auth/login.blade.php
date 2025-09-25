@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8 m-5">
             {{-- Registration deadline extended alert --}}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <i class="fas fa-clock"></i> <strong>Important Notice:</strong> Registration deadline has been extended to 20th June 2025 at 2:00 PM.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+            </div> --}}
             {{-- Maintenance over alert --}}
             {{-- <div class="alert alert-info alert-dismissible fade show" role="alert">
                 <i class="fas fa-check-circle"></i> <strong>System Update:</strong> Maintenance has been completed successfully. All registration services are now available.
@@ -99,10 +99,13 @@
                 </div>
 
             </div>
-
-            {{-- <a target="_blank" style="font-weight: bold" href="https://drive.google.com/drive/folders/1aiQIPxoFe-E3EzZ_axrltyMXSG-Wgguq?usp=sharing">Download The Guide</a> --}}
+            
+            <div class="mt-4">
+                <a   target="_blank" style="font-weight: bold" href="https://drive.google.com/drive/folders/1bcvhNJlzEj1vrTevtWW1ur11Nh-uwkOi?usp=sharing">Download The Guide</a>
+            </div>
+            
             <div style="font-weight: bold" class="mt-3">{{ __('Help Desk:') }}</div>
-            {{-- <div style="font-weight: bold" class="">{{ __('Please download the guide and read it before calling us.') }}</div> --}}
+            <div style="font-weight: bold" class="">{{ __('Please download the guide and read it before calling us.') }}</div>
             <div class="">{{ __('If you have any question about Registration:') }}</div>
             <div class="">{{ __('helpdesk@ccs.sab.ac.lk') }}</div>
             <div class="">{{ __('045-3135090') }}</div>

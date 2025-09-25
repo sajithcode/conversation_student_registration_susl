@@ -27,8 +27,20 @@
         <form action="{{ route('studentRegistration.update',$studentRegistration->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+        <style>
+        .responsive-margin {
+            margin: 20px;
+        }
 
-            <div style="margin: 60px" class="row">
+        @media (min-width: 768px) {
+            .responsive-margin {
+                margin: 60px;
+            }
+        }
+        </style>
+
+      
+            <div  class="row responsive-margin">
 
 
 {{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}

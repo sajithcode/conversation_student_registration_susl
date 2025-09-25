@@ -78,10 +78,10 @@
                         <div class="col-lg-12 text-center my-4">
                             @if($studentRegistration->status === 'Pending')
                             {{-- Registration deadline extended alert --}}
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <i class="fas fa-clock"></i> <strong>Important Notice:</strong> Registration deadline has been extended to 20th June 2025 at 2:00 PM.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                            </div> --}}
                                 <h2 class="text-info fw-bold">Your Registration is Pending</h2>
                                 <div class="mt-3 d-flex justify-content-center gap-3">
                                     <a class="btn btn-primary" href="{{ route('studentRegistration.edit', $studentRegistration->id) }}">Edit Registration</a>
@@ -92,7 +92,7 @@
                                         @if($hasSurveySubmitted)
                                             <div class="alert alert-success">
                                                 <p class="text-success fw-bold mb-2">
-                                                    ✅ You have successfully completed the survey!
+                                                    You have successfully completed the survey!
                                                 </p>
                                                 @if($surveyCompletionDetails && $surveyCompletionDetails->google_form_completed_at)
                                                     <small class="text-muted">
@@ -113,10 +113,10 @@
                             @endif
                             @if($studentRegistration->status === 'Reject')
                             {{-- Registration deadline extended alert --}}
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <i class="fas fa-clock"></i> <strong>Important Notice:</strong> Registration deadline has been extended to 20th June 2025 at 2:00 PM.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                            </div> --}}
                                 <h2 class="text-danger fw-bold">Your Registration is Rejected</h2>
                                 <p class="text-danger">{{ $studentRegistration->statusMessage }}</p>
                                 <div class="mt-3 d-flex justify-content-center gap-3">
@@ -131,7 +131,7 @@
                                         @if($hasSurveySubmitted)
                                             <div class="alert alert-success">
                                                 <p class="text-success fw-bold mb-2">
-                                                    ✅ You have successfully completed the survey!
+                                                    You have successfully completed the survey!
                                                 </p>
                                                 @if($surveyCompletionDetails && $surveyCompletionDetails->google_form_completed_at)
                                                     <small class="text-muted">
@@ -171,10 +171,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {{-- Registration deadline extended alert --}}
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <i class="fas fa-clock"></i> <strong>Important Notice:</strong> Registration deadline has been extended to 20th June 2025 at 2:00 PM.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                            </div> --}}
                         <h2 class="text-success fw-bold">Congratulations! You are Eligible for Convocation</h2>
                         <p class="fw-bold">Please complete your payment first and then proceed with the registration.</p>
                         @foreach ($prices as $price)

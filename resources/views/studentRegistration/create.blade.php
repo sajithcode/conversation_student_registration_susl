@@ -69,7 +69,18 @@
                                     </div>
                                 @endif
                                 @if(($faculty->faculty==$eligibleStudent->faculty)&&($faculty->status=="Open"))
-                                    <div style="margin: 60px" class="row">
+                                <style>
+                                    .responsive-margin {
+                                        margin: 40px;
+                                    }
+
+                                    @media (min-width: 768px) {
+                                        .responsive-margin {
+                                            margin: 60px;
+                                        }
+                                    }
+                                    </style>    
+                                <div  class="row responsive-margin">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Name with initials:</strong>
