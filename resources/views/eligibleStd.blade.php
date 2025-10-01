@@ -166,10 +166,10 @@
                 @if ($i === 2)
                     <div class="col-lg-12 text-center my-4">
                         {{-- Maintenance over alert --}}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
             <i class="fas fa-check-circle"></i> <strong>System Update:</strong> Maintenance has been completed successfully. All registration services are now available.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        </div> --}}
         {{-- Registration deadline extended alert --}}
                             {{-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <i class="fas fa-clock"></i> <strong>Important Notice:</strong> Registration deadline has been extended to 20th June 2025 at 2:00 PM.
