@@ -119,7 +119,7 @@ WHERE eligible_students.convocationName = ?;
 
     public function getESByFormRequest(Request $request)
     {
-        $convo = Convocation::orderBy('convocation', 'desc')->pluck('convocation', 'id');
+        $convo = Convocation::orderBy('convocation', 'asc')->pluck('convocation', 'id');
         $studentRegEligible = $request->input('studentRegEligible');
         $faculty = $request->input('faculty');
         $convocationName = $convo[$request->input('convocationName')];
